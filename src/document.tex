@@ -1,0 +1,149 @@
+\documentclass[brazil,11pt,a4paper,twoside]{icmc}
+% pdftex
+%\includeonly{sdl-pr} %para compilar apenas o cap1
+
+\usepackage[top=30mm,bottom=35mm,left=25mm,right=25mm,twoside]{geometry}
+% pdftex
+\usepackage{syntax}
+\usepackage[utf8]{inputenc}
+\usepackage{ae}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{setspace}
+\usepackage{babel}
+\usepackage{ifthen}
+\usepackage{indentfirst}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage[dvips]{graphicx}
+\usepackage{subcaption}
+%\usepackage[natbib=true,sorting=none, firstinits=true]{biblatex}
+%\usepackage[maxcitenames=1,backend=bibtex,firstinits=true]{biblatex}
+\usepackage[style=authoryear,maxcitenames=1,natbib=true, backend=bibtex, firstinits=true]{biblatex}
+% \usepackage{cite} % should not be used with natbib
+\usepackage{verbatim}
+\usepackage{enumerate}
+\usepackage{caption}
+\usepackage{lettrine}
+\usepackage{colortbl}
+\usepackage{color}
+\usepackage{textfit}
+\usepackage{wrapfig}
+\usepackage{bibentry}
+\usepackage{hlundef}
+\usepackage{slashbox}
+\usepackage{multirow}
+\usepackage[nottoc,notlof,notlot]{tocbibind}
+\usepackage{url}                  %% usa pacote "url"
+\usepackage{fancychap}
+\usepackage{hyperref}
+%\usepackage{pdfpages}
+%\usepackage{titlesec}
+\usepackage{xcolor}
+
+
+\let\oldurl=\url
+\def\url{\protect\oldurl}
+
+\definecolor{cinza}{rgb}{0.5,0.5,0.5}
+
+\let\cite=\citep
+\clubpenalty=10000 \widowpenalty=10000 \exhyphenpenalty=10000
+\hyphenpenalty=1000
+
+\hypersetup{
+  colorlinks=true,
+  citecolor=black,
+  filecolor=black,
+  linkcolor=black,
+  urlcolor=black
+}
+
+\nobibliography*
+\newcommand{\apud}[2]{(\@apud#1,#2\@endapud)}
+\def\@apud#1,#2\@endapud{%
+   \citet{#1} \textbf{apud} \citet{#2}}%
+%}
+
+\newtheorem{definicao}{Definição}[chapter]
+\newtheorem{teorema}{Teorema}[chapter]
+
+\bibliography{referencias}
+
+\begin{document}
+
+\title{Dual Projections: \\
+Uma Nova Abordagem para Redução de Dimensionalidade e Exploração do Espaço de Atributos.}
+
+\author{Francisco Morgani Fatore}
+
+\titulation{\hyphenpenalty=10000 Monografia apresentada ao Instituto
+de Ciências Matemáticas e de Computação -- ICMC/USP, para o Exame de Qualificação, como parte dos requisitos para a obtenção do título de Mestre na Área de Ciências de Computação e Matemática Computacional.} 
+\advisor{Prof. Dr. Fernando Vieira Paulovich}
+\address{USP -- São Carlos/SP}
+\date{\ifcase\month\or
+        Janeiro\or
+        Fevereiro\or
+        Março\or
+        Abril\or
+        Maio\or
+        Junho\or
+        Julho\or
+        Agosto\or
+        Setembro\or
+        Outubro\or
+        Novembro\or
+        Dezembro\fi/\the\year}
+
+\begingroup
+\maketitle
+
+\frontmatter \pagestyle{plain}
+
+\floatplacement{table}{!ht}
+
+\input src/resumo.tex
+\input src/abstract.tex
+
+\tableofcontents
+\listoffigures
+\listoftables
+\input src/siglas.tex
+\clearpage{\pagestyle{plain}\clearpage}
+
+\endgroup
+
+\mainmatter
+
+\renewcommand{\chaptermark}[1]{%
+
+\markboth{\chaptername
+\ \thechapter.\ #1}{}}  %
+
+\renewcommand{\sectionmark}[1]{%
+ \markright{\thesection.\ #1}}
+
+\input src/intro.tex
+\input src/revisao.tex
+\input src/proposta.tex
+
+\printbibliography
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

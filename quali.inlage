@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--Inlage 4.5.0 Project File-->
+<InlageProject title="Quali" opened="1" active="true">
+  <MasterFile opened="3" filename="document.tex">
+    <SpellChecker enabled="true" />
+    <Bibtex name="referencias" />
+  </MasterFile>
+  <Files>
+    <Content filename="src\abstract.tex" />
+    <Content filename="src\conclusao.tex" />
+    <Content filename="src\intro.tex" />
+    <Content filename="src\proposta.tex" />
+    <Content filename="src\resumo.tex" opened="2" />
+    <Content filename="src\revisao.tex" />
+    <Content filename="src\siglas.tex" />
+    <Content filename="babelbst.tex" />
+    <Bibtex filename="referencias.bib" />
+    <Other filename="fancychap.sty" />
+    <Other filename="hlundef.sty" />
+    <Other filename="icmc.cls" />
+    <Other filename="icmc2.bst" />
+    <Other filename="slashbox.sty" />
+  </Files>
+</InlageProject>

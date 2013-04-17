@@ -1,0 +1,76 @@
+
+A exploração de conjuntos de dados é um problema abordado com frequência em computação, tanto na área acadêmica quanto na indústria~\cite{Ngai2009,Harding2006} (sim-clust tem outros exemplos, ou var). Tal exploração tem como objetivo uma melhor compreensão dos fenômenos que afetam a sociedade em determinados aspectos. Com base nos novos conhecimentos adquiridos, espera-se melhorar o processo de tomadas de decisões como por exemplo, previsão de condições climáticas, diagnósticos de doenças, detecções de fraude, análise de mercado, etc.
+
+O procedimento para a exploração inicia pela coleta e armazenamento dos dados. Esta tarefa pode ser realizada por sensores, sistemas de monitoramento, simulações ou aplicações diversas que utilizam banco de dados. A meta é coletar o máximo de informação sobre um domínio e espera-se, posteriormente, extrair novos conhecimentos a partir dos dados coletados~\cite{Keim2002}. 
+
+Uma consequência direta de se coletar o máximo de informação em uma determinada aplicação é que dificilmente se conhecerá a dimensionalidade intrínseca dos dados, isto é, o conjunto de dimensões\footnote{No contexto deste documento, os termos dimensões, vaiáveis (terminologia estatística) e atributos (terminologia de banco de dados) serão utilizados com o mesmo significado.} observadas que realmente são relevantes para a compreensão do fenômeno observado. Isso faz com que muitas vezes se utilize todos os atributos coletados nas investigações, o que eleva o custo computacional e dificulta as análises. 
+
+Quando o número de atributos utilizado nas análises for muito elevado, 50 variáveis por exemplo, há a ocorrência do problema conhecido como ``Maldição da Dimensionalidade''~\cite{Beyer1999}. Esta ``maldição'' refere-se ao fato de que algumas das propriedades geométricas de espaços bi ou tridimensionais não se mantém para espaços de maior dimensionalidade. Uma consequência prática de tal fato é que conforme o número de  dimensões aumenta, a distância entre um ponto e seu vizinho mais próximo tende a mesma distância deste ponto ao seu vizinho mais distante~\citet{Beyer1999}.
+
+Ao enfrentar as dificuldades impostas pela alta dimensionalidade, uma abordagem adotada com frequência é o uso de métodos de redução de dimensionalidade. O objetivo desses métodos é encontrar o menor espaço dimensional que é capaz de descrever os dados mantendo informações que são relevantes segundo determinado critério. Tal abordagem é  viabilizada pelo fato de que a maioria dos conjuntos de dados possuem atributos que não são ``importantes'' para a compreensão do fenômeno observado.
+
+A maioria dos métodos de redução de dimensionalidade são ditos métodos caixa-preta, ou seja, o usuário inspeciona apenas os dados de entrada e saída, desconhecendo o processamento interno realizado. Deste modo, esses métodos restringem a interação do usuário, o que além de tornar o processo pouco intuitivo, impede que o usuário modifique os resultados de acordo com a sua experiência na área. 
+
+A área de visualização computacional é uma alternativa interessante em relação aos métodos automáticos para a  exploração de conjuntos de dados, pois permite que o usuário utilize sua percepção visual para detectar padrões e seu conhecimento sobre o domínio para  orientar as análises. 
+
+%Porém, muitos dos métodos visuais são limitados pelo número de elementos e dimensões das bases de dados.
+
+% A área \emph{Visual Analytics}~\cite{Thomas2005} surgiu como uma união entre os métodos automáticos e visualização, seu objetivo é utilizar as vantagens das duas áreas para cobrirem suas limitações individuais. Essa união tem viabilizado avanços em diversas atividades de pesquisa, inclusive na tarefa de redução de dimensionalidade. 
+
+Este projeto de mestrado propõe o uso de projeções multidimensionais coordenadas entre itens e dimensões para apoiar o usuário na tarefa de redução de dimensionalidade de forma mais intuitiva, ágil e confiável. Além disso, propõe-se um método que permite ao usuário modificar os resultados obtidos, quando necessário, por meio da transformação do espaço de atributos.
+
+A obtenção de conjuntos de dados concisos, ou seja, conjuntos que não contém atributos irrelevantes ou redundantes, proporcionará  uma análise mais efetiva dos dados. Por exemplo, pode se melhorar o desempenho de agrupadores e classificadores de dados. Pretende-se avaliar as contribuições deste trabalho justamente pela quantificação do desempenho de tais métodos ao utilizar as técnicas desenvolvidas, seguida de uma comparação com técnicas já estabelecidas na literatura.
+
+% Métodos automáticos são frequentemente utilizados para compor subconjuntos de atributos que capturam a maior parte da informação contida nos dados. Porém, como o nome sugere, esses métodos fornecem poucos, ou nenhum, dispositivos de interação o que torna o processo pouco intuitivo. Técnicas de visualização computacional têm sido utilizadas com sucesso na análise exploratória de grandes conjuntos de dados, pois permitem que o usuário utilize sua percepção visual para detectar padrões presentes nos dados e seu conhecimento sobre o domínio para interagir com os dados e orientar as análises. Assim, este projeto de mestrado tem como objetivo desenvolver mecanismos de interação sobre representações visuais para apoiar o usuário na tarefa de redução de dimensionalidade de forma mais intuitiva, ágil e confiável.
+
+% A proposta deste projeto é a elaboração de técnicas que possam ser utilizadas para analisar as relações e dependências de atributos de uma base de dados. Parte-se da hipótese de que a união entre os campos de visualização computacional e aprendizado de máquina pode viabilizar a confecção de tais técnicas.  
+
+\section{Contexto e Motivação}
+
+De um modo geral, as técnicas de visualização computacional mapeiam ou relações entre os atributos dos dados ou entre as instâncias de dados. As projeções multidimensionais se encaixam no segundo grupo. Assim, não é possível entender ao certo quais relacionamentos foram responsáveis pelo resultado obtido sem o auxílio de outra técnica que apresente alguma informação sobre os atributos.
+
+Este projeto propõe aturar justamente sobre esta limitação das projeções multidimensionais. Ao oferecer uma visualização que combina gráficos entre itens e atributos, o usuário é capaz de melhor compreender os resultados obtidos. O processo de investigação utilizando esta abordagem é mais intuitivo que outras combinações propostas, pois o usuário se mantém sempre sobre a mesma metáfora visual, evitando assim uma sobrecarga do sistema cognitivo do usuário.
+
+A análise efetiva de dados requer uma discriminação entre dimensões relevantes e irrelevantes para que somente as primeiras sejam incluídas em futuras análises. Caso contrário, as dimensões irrelevantes podem esconder relações de interesse ao invés de ajudar a encontrá-las~\cite{Guo2003}. 
+
+A maioria das aplicações não são capazes de realizar essa discriminação e acabam dependendo que o usuário forneça os atributos de entrada. No entanto, nessas condições é pouco provável que o usuário encontre novos padrões nos dados, além dos esperados conforme seus conhecimentos sobre o assunto. Assim, o propósito exploratório da análise acaba se perdendo juntamente com a aquisição de novos conhecimentos.    
+
+Como mencionado em outras seções deste documento, métodos automáticos podem ser utilizados tanto para escolher quais atributos são relevantes, quanto para combiná-los em busca de se manter certas características dos dados. Porém, esses métodos evitam ao máximo a interação do usuário, o que além de tornar o processo pouco intuitivo, impede que o usuário modifique os resultados de acordo com seu conhecimento sobre o domínio.
+
+% PCA methods can only work well for linear relationships.
+% The impact of every original dimension is more or less still there.
+% Scalability to high dimensionality. Although efficient algorithms for K-means or EM-based clustering have been developed repeatedly using such clustering algorithms to evaluate a large number of candidates (i.e., subsets of dimensions) can still cause computational efficiency problems, especially when both d and n are large.
+
+A área de visualização computacional contribuiu com diversos trabalhos que buscam justamente apoiar o usuário da tarefa de redução de dimensionalidade. No entanto, nenhum desses trabalhos apresentam mecanismos adequados para a manipulação dos atributos. O conceito de projeção multidimensional das dimensões, apresentado em \cite{Yang2007}, e às visões múltiplas apresentadas em \cite{Turkay2011} servem como ponto de partida para este trabalho.
+
+A seguir os objetivos e metodologia deste projeto são apresentados.
+
+
+%--------------------------------------------------------------------------------
+\section{Objetivos}
+
+Dentro do contexto apresentado anteriormente, o seguinte parágrafo representa a declaração do principal objetivo do projeto de mestrado aqui definido:
+
+\begin{quote}
+  \emph{``Este projeto de mestrado tem como objetivo desenvolver mecanismos interativos sobre projeções multidimensionais coordenadas entre atributos e itens que auxiliem o usuário na tarefa de redução de dimensionalidade. Os mecanismos devem permitir tanto a seleção quanto a combinação de atributos. Caso os resultados não reflitam o conhecimento do usuário, este poderá manipular as projeções para transformar o espaço de atributos de modo a criar um modelo mais representativo.''}
+\end{quote}
+
+Certas exigências devem ser cumpridas a fim de se alcançar o objetivo proposto. Primeiramente, a interface responsável pela interação deve ser simples e intuitiva, sendo este é um dos grandes diferenciais da metodologia proposta. A complexidade dos métodos computacionais deve permitir que o usuário receba um retorno instantâneo das manipulações realizadas, o qual será responsável por guiar o usuário nas análises. 
+
+A metodologia proposta por este trabalho inicia pela escolha de uma medida para o cálculo da similaridade entre pares de dimensões. Com base nessas distâncias projeta-se as dimensões utilizando alguma técnica de projeção multidimensional, como MDS. Neste ponto permite-se que o usuário utilize os mecanismos interativos de redução de dimensionalidade e de transformação do espaço de atributos. Ele pode, por exemplo, construir um espaço dimensional reduzido que é prontamente apresentado em visualizações coordenadas. Finalmente, se o resultado obtido não for satisfatório, o usuário pode iniciar novamente o ciclo partindo do novo espaço dimensional construído, ou pode realizar novas manipulações sobre os dados.
+
+Para avaliar o procedimento proposto, adota-se a abordagem descrita a seguir.
+
+% Um aspecto fundamental para a qualidade das técnicas é o método responsável pelo cálculo da similaridade entre as dimensões. 
+
+% Uma tarefa fundamental para a execução deste trabalho é maneira como define-se a similaridade entre as dimensões. Deve-se ter em mente que a medida deve ser aplicada à valores numéricos e nominais.
+
+% Valores numéricos devem ser discretizados para serem comparáveis com valores nominais. Esta discretização não é um problema resolvido facilmente e inerentemente embute erros durante o processo.
+
+% As técnicas de MDS têm sido estudadas profundamente e são técnicas bem estabelecidas na literatura. Assim, espera-se que as posições geradas pelo MDS realmente transmitam a matriz de distância com uma qualidade aceitável. Sendo assim, a maior preocupação é calcular adequadamente a matriz de distâncias, pois diferentes medidas de correlação podem ser aplicadas (11,3,var) e cada uma delas tende a uma projeção distinta. 
+
+% Coord. apresenta o método MCE e o método NM (Nested Means) para discretização de valores contínuos. High-D também calcula MCE e usa NM para discretização. Utilizou MST (Guo 2002) para ordenar as dimensões com base em um grafo construído a partir da matriz de MCE.\cite{Zhang2006} calcula o coeficiente de correlação linear entre as dimensões e realiza um clustering hierárquico sobre a matriz de similaridade construída por este cálculo. Guiding utiliza a equação proposta por 2 para definir sua medida de similaridade. Permitem que o usuário investigue cada elemento da equação individualmente, caso necessário. Molina (15 de Guiding) descreve medidas baseadas em entropia e uma série de outras possibilidades. Guiding utilizou 18 para produzir um histograma otimizado para visualização. Este histograma inicial não é adequado para a comparação de features utilizando métodos estatísticos. Assim, aplicaram k-medoids em um pré-processamento secundário. Utilizam k-medoids pela sua simplicidade e tolerância a outliers.
+
+%--------------------------------------------------------------------------------
+
+
