@@ -124,11 +124,27 @@ A qualidade de uma medida de similaridade costuma variar de acordo com o domíni
 %--------------------------------------------------------------------------------
 \subsection{Mapeamento no Espaço Bidimensional}
 
+O mapeamento dos elementos em um espaço bidimensional se baseia em algum método de redução de dimensionalidade. 
+
+Um ponto fundamental para o mapeamento dos elementos no plano é compreender o erro embutido no processo. O resultado ótimo de qualquer método de redução é levar os dados de m em p, onde p equivale à dimensionalidade intrínseca dos dados. No entanto,  não há garantias de que p equivale à um espaço bidimensional, assim ao mapear os dados em um plano, a dimensionalidade dos dados será reduzida além da dimensionalidade intrínseca e consequentemente haverá perda de informação.
+
+Conclui-se que independentemente do método de redução adotado, a não ser que a dimensionalidade intrínseca dos dados seja equivalente a dois, haverá um erro ao mapear os dados em um plano. Dois tipos de erros podem ocorrer: pontos similares posicionados distantes entre si (falsos negativos), ou pontos diferentes posicionados próximos entre si (falsos positivos). 
+
+Em uma analogia à tarefa de recuperação de informação \emph{information retrieval}, esses erros podem ser associados respectivamente às medidas de precisão \emph{precision} e revocação \emph{recall} (citar 8 e 9 de Kaski).
+
+% Tenho que falar do erro embutido 
 Uma vez definido o cálculo de similaridade entre as dimensões, cria-se uma matriz de distâncias 
 
+Não é possível ter garantias de que a dimensionalidade intrínseca dos dados se encaixa no plano bi
+Ao mapear os dados em um plano bidimensional não é possível garantir que a dimensionalidade  
 
-%--------------------------------------------------------------------------------
-\subsection{Visualização da Incerteza}
+\subsection{Projeção das Dimensões}
+
+\subsection{Projeção dos Itens}
+
+O propósito principal da visualização da projeção dos itens é possibilitar que o usuário crie subconjuntos dos dados, por exemplo, possibilitar a remoção de \emph{outliers} ou a inspeção de um grupo de interesse.
+
+Além disso esta visualização serve como um ferramenta adicional aos resultados dos classificadores para avaliar a separação entre os itens.
 
 
 %--------------------------------------------------------------------------------
@@ -137,6 +153,8 @@ Uma vez definido o cálculo de similaridade entre as dimensões, cria-se uma mat
 
 %--------------------------------------------------------------------------------
 \subsection{Forma de Avaliação}
+
+% Tenho que falar aqui que vou aplicar diferentes métodos de redução (eventualmente ter que explicar os que eu escolhi cada um, de preferência falar que cada um tem uma característica específica) e em seguida vou verificar a qualidade da classificação e o tempo de execução do classificador.
 
 A forma mais adotada na literatura para a avaliação de métodos de redução de dimensionalidade é a comparação dos erros obtidos em tarefas de classificação ao utilizar diferentes técnicas. 
 

@@ -8,12 +8,13 @@ Os trabalhos contidos na literatura que mais se assemelham ao o aqui proposto ap
 A redução de dimensionalidade é o processo realizado para se representar dados de alta dimensionalidade em um espaço de menor dimensionalidade, onde, idealmente, o espaço reduzido corresponde à dimensionalidade intrínseca dos dados. 
 A dimensionalidade intrínseca dos dados é o número mínimo de parâmetros necessários para descrever as propriedades dos dados~\cite{Fukunaga1990}.
 
-Diversas aplicações se beneficiam de métodos de redução de dimensionalidade. 
+Dentre os propósitos da redução de dimensionalidade os principais são a melhoria na eficiência dos métodos que operam sobre os dados e a e redução no custo computacional desses métodos.  
 \citeauthor{Konig2000}~\cite{Konig2000}, por exemplo, apresenta melhorias na precisão de sistemas de classificação e no desempenho de sistemas de reconhecimento automático ao preceder os procedimentos com o processo de redução de dimensionalidade. 
-Até mesmo outras melhorias não tão diretas podem ser alcançadas por meio do uso de técnicas de redução. 
+Até mesmo outros benefícios não tão diretos podem ser alcançados por meio do uso de técnicas de redução. 
 Trata-se do caso do mesmo trabalho apresentado por \citeauthor{Konig2000}, onde métodos de redução de dimensionalidade são utilizados para reduzir a complexidade de designs de circuitos integrados, resultando em uma redução na área e no consumo de energia dos circuitos.
+Uma terceira utilidade para os métodos de redução é viabilizar a visualização de conjuntos de dados multidimensionais~\footnote{No contexto de visualização computacional, conjuntos de dados multidimensionais são aqueles com mais do que três atributos.}. Representações visuais dos dados são cruciais para a análise exploratória de dados, principalmente para investigações iniciais dos dados, onde ainda não se conhece as propriedades dos dados~\cite{Kaski2011}. 
 
-Mais formalmente, este o problema de se reduzir a dimensionalidade dos conjuntos de dados pode ser descrito da seguinte forma: 
+Mais formalmente, o problema de se reduzir a dimensionalidade dos conjuntos de dados pode ser descrito da seguinte forma: 
 Dado um conjunto de dados representado por uma matriz $\textbf{X}$ composta por $n$ vetores $\textbf{x}_i~(i \in \{1,2,...,n\})$ $m-$dimensonas. 
 Uma técnica de redução de dimensionalidade é uma transformação $t: \textbf{X} \rightarrow \textbf{Y}$, onde $\textbf{Y}$ trata-se de uma matriz composta por $n$ vetores $\textbf{y}_i~(i \in \{1,2,...n\}$ de dimensionalidade $p$ ($p < m$). 
 Normalmente $p \ll m$ e, idealmente, $p$ equivale à dimensionalidade intrínseca dos dados, fazendo com que $t$ mantenha em $\textbf{Y}$ o máximo das propriedades de $\textbf{X}$ quanto for possível. 
@@ -26,13 +27,29 @@ No entanto, a pesquisa de técnicas visuais para o problema redução de dimensi
 
 \section{Redução de Dimensionalidade Automática}
 
-A redução de dimensionalidade automática pode ser realizada seguindo duas abordagens. A primeira, dita seleção de características (\emph{feature selection}), busca selecionar quais dos atributos do conjunto de dados são realmente relevantes para a análise segundo algum critério. Já a segunda abordagem, parte da combinação entre atributos para criar um novo conjunto de dimensões que busca conservar as propriedades e relacionamentos do conjunto original. Por construir um novo conjunto de atributos, a segunda abordagem recebe o nome de extração de características (\emph{feature extraction}).
+A redução de dimensionalidade automática pode ser realizada seguindo duas abordagens. 
+A primeira, dita seleção de características (\emph{feature selection}), busca selecionar quais dos atributos do conjunto de dados são realmente relevantes para a análise segundo algum critério. 
+Já a segunda abordagem parte da combinação entre atributos para criar um novo conjunto de dimensões que busca conservar certas propriedades ou relacionamentos do conjunto original. 
+Por construir um novo conjunto de atributos, a segunda abordagem recebe o nome de extração de características (\emph{feature extraction}).
 
 \subsection{Seleção de Características}
 
 \subsection{Extração de Características}
 
-Existem três principais abordagens para se reduzir a dimensionalidade dos conjuntos de dados a partir da combinação dos atributos. Análise de Componentes Principais (\textit{Principal Component Analysis)}~ ou simplesmente PCA, realiza combinações lineares sobre os atributos de modo que o novo espaço agregue a maior parte da variância dos dados. Para análises onde relações não lineares devem ser consideradas, \textit{Multimensional Scaling} (MDS) é uma alternativa interessante, pois trata-se de um algoritmo de otimização iterativo não linear, que busca minimizar as distâncias entre os elementos no espaço projeto e no espaço original. A área de aprendizado de máquina contribuiu com o método não supervisionado \textit{Self Organizing Maps} (SOM) para transformar conjuntos de dados em mapas bidimensionais.
+Como apresentado por \citeauthor{Maaten2009}~\cite{Maaten2009} e ilustrado na Figura~\ref{fig:fex}, existe uma grande variedade de métodos de extração de características. Não é intuito desta subseção detalhar cada uma dessas técnicas e levantar suas limitações, mas sim ilustrar a limitação que todas apresentam em comum de retornar resultados pouco intuitivos para o usuário e impedi-lo de interagir com os dados.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{images/var1.png}
+    \caption[]{}
+    \label{fig:fex}
+\end{figure}
+
+
+Existem três principais abordagens para se reduzir a dimensionalidade dos conjuntos de dados a partir da combinação dos atributos. 
+Análise de Componentes Principais (\textit{Principal Component Analysis)}~ ou simplesmente PCA, realiza combinações lineares sobre os atributos de modo que o novo espaço agregue a maior parte da variância dos dados. 
+Para análises onde relações não lineares devem ser consideradas, \textit{Multimensional Scaling} (MDS) é uma alternativa interessante, pois trata-se de um algoritmo de otimização iterativo não linear, que busca minimizar as distâncias entre os elementos no espaço projetado e no espaço original. 
+A área de aprendizado de máquina contribuiu com o método não supervisionado \textit{Self Organizing Maps} (SOM) para transformar conjuntos de dados em mapas bidimensionais.
 
 % Sem dúvida a técnica mais importante é PCA
 
