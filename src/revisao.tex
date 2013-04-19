@@ -4,39 +4,39 @@
 
 % A literatura em redução de dimensionalidade é extensa e os métodos desenvolvidos apresentam grande diversidade em relação a aspectos matemáticos e computacionais. Buscando uma melhor contextualização, esta seção aborda apenas trabalhos que buscam de alguma forma utilizar representações visuais para a execução desta tarefa.
 
-Os trabalhos contidos na literatura que mais se assemelham ao o aqui proposto aparecem sobre o nome de métodos de redução de dimensionalidade. 
+Os trabalhos do atual estado da arte que mais se assemelham ao o aqui proposto aparecem sobre o nome de métodos de redução de dimensionalidade. 
 A redução de dimensionalidade é o processo realizado para se representar dados de alta dimensionalidade em um espaço de menor dimensionalidade, onde, idealmente, o espaço reduzido corresponde à dimensionalidade intrínseca dos dados. 
-A dimensionalidade intrínseca dos dados é o número mínimo de parâmetros necessários para descrever as propriedades dos dados~\cite{Fukunaga1990}.
+Por sua vez, a dimensionalidade intrínseca dos dados é o número mínimo de parâmetros necessários para descrever as propriedades dos dados~\cite{Fukunaga1990}.
 
-Dentre os propósitos da redução de dimensionalidade os principais são a melhoria na eficiência dos métodos que operam sobre os dados e a e redução no custo computacional desses métodos.  
+Dentre os propósitos da redução de dimensionalidade, os principais são a melhoria na eficiência dos métodos que operam sobre os dados e a redução do custo computacional desses métodos.  
 \citeauthor{Konig2000}~\cite{Konig2000}, por exemplo, apresenta melhorias na precisão de sistemas de classificação e no desempenho de sistemas de reconhecimento automático ao preceder os procedimentos com o processo de redução de dimensionalidade. 
 Até mesmo outros benefícios não tão diretos podem ser alcançados por meio do uso de técnicas de redução. 
 Trata-se do caso do mesmo trabalho apresentado por \citeauthor{Konig2000}, onde métodos de redução de dimensionalidade são utilizados para reduzir a complexidade de designs de circuitos integrados, resultando em uma redução na área e no consumo de energia dos circuitos.
-Uma terceira utilidade para os métodos de redução é viabilizar a visualização de conjuntos de dados multidimensionais~\footnote{No contexto de visualização computacional, conjuntos de dados multidimensionais são aqueles com mais do que três atributos.}. Representações visuais dos dados são cruciais para a análise exploratória de dados, principalmente para investigações iniciais dos dados, onde ainda não se conhece as propriedades dos dados~\cite{Kaski2011}. 
+
+Uma terceira utilidade para os métodos de redução de dimensionalidade é viabilizar a construção de representações visuais de dados multidimensionais~\footnote{No contexto de visualização computacional, conjuntos de dados multidimensionais são aqueles com mais do que três atributos.}, permitindo que sejam mapeados em um espaço bidimensional (tela computador).
+Representações visuais dos dados são cruciais para a análise exploratória de dados, principalmente para investigações iniciais dos dados, onde ainda não se conhece as propriedades dos dados~\cite{Kaski2011}. 
 
 Mais formalmente, o problema de se reduzir a dimensionalidade dos conjuntos de dados pode ser descrito da seguinte forma: 
-Dado um conjunto de dados representado por uma matriz $\textbf{X}$ composta por $n$ vetores $\textbf{x}_i~(i \in \{1,2,...,n\})$ $m-$dimensonas. 
-Uma técnica de redução de dimensionalidade é uma transformação $t: \textbf{X} \rightarrow \textbf{Y}$, onde $\textbf{Y}$ trata-se de uma matriz composta por $n$ vetores $\textbf{y}_i~(i \in \{1,2,...n\}$ de dimensionalidade $p$ ($p < m$). 
+Dado um conjunto de dados representado por uma matriz $\textbf{X}$ composta por $n$ vetores $\textbf{x}_i~(i \in \{1,2,...,n\})$ $m-$dimensionais, uma técnica de redução de dimensionalidade é uma transformação $t: \textbf{X} \rightarrow \textbf{Y}$, onde $\textbf{Y}$ trata-se de uma matriz composta por $n$ vetores $\textbf{y}_i~(i \in \{1,2,...n\}$ de dimensionalidade $p$ ($p < m$). 
 Normalmente $p \ll m$ e, idealmente, $p$ equivale à dimensionalidade intrínseca dos dados, fazendo com que $t$ mantenha em $\textbf{Y}$ o máximo das propriedades de $\textbf{X}$ quanto for possível. 
 
 A literatura em redução de dimensionalidade é extensa e os métodos desenvolvidos apresentam grande diversidade em relação a aspectos matemáticos e computacionais. 
 Buscando uma melhor organização, este capítulo foi dividido em duas seções. 
 A primeira busca descrever sucintamente os métodos automáticos e apresentar suas limitações, principalmente evidenciar que a falta da participação do usuário no processo faz com que muitas vezes os resultados obtidos não sejam facilmente compreendidos. 
-A segunda seção apresenta os métodos que buscam de algum modo utilizar representações visuais para a execução da tarefa e que diante das limitações dos métodos automáticos, se mostram como uma alternativa interessante, pois permitem a interação do usuário. 
-No entanto, a pesquisa de técnicas visuais para o problema redução de dimensionalidade ainda se encontra em um estágio inicial e os métodos desenvolvidos apresentam grandes limitações.
+A segunda seção apresenta os métodos que permitem que o usuário participe do processo de redução de dimensionalidade por meio da interação com representações visuais. Ao longo da segunda seção discute-se que apesar dos métodos interativos se mostrarem como uma interessante alternativa, os mecanismos de interação propostos apresentam grandes limitações. Nas considerações finais deste capítulo as principais limitações dos métodos interativos são resumidos na Tabela~(criar tabela). 
 
 \section{Redução de Dimensionalidade Automática}
 
 A redução de dimensionalidade automática pode ser realizada seguindo duas abordagens. 
 A primeira, dita seleção de características (\emph{feature selection}), busca selecionar quais dos atributos do conjunto de dados são realmente relevantes para a análise segundo algum critério. 
 Já a segunda abordagem parte da combinação entre atributos para criar um novo conjunto de dimensões que busca conservar certas propriedades ou relacionamentos do conjunto original. 
-Por construir um novo conjunto de atributos, a segunda abordagem recebe o nome de extração de características (\emph{feature extraction}).
+Por extrair um novo conjunto de atributos a partir dos dados originais, a segunda abordagem recebe o nome de extração de características (\emph{feature extraction}).
 
 \subsection{Seleção de Características}
 
 \subsection{Extração de Características}
 
-Como apresentado por \citeauthor{Maaten2009}~\cite{Maaten2009} e ilustrado na Figura~\ref{fig:fex}, existe uma grande variedade de métodos de extração de características. Não é intuito desta subseção detalhar cada uma dessas técnicas e levantar suas limitações, mas sim ilustrar a limitação que todas apresentam em comum de retornar resultados pouco intuitivos para o usuário e impedi-lo de interagir com os dados.
+Como apresentado por~\citeauthor{Maaten2009}~\cite{Maaten2009} e ilustrado na Figura~\ref{fig:fex}, existe uma grande variedade de métodos de extração de características. Não é intuito desta subseção detalhar cada uma dessas técnicas e levantar suas limitações particulares, mas sim ilustrar a limitação que todas apresentam em comum de retornar resultados pouco intuitivos para o usuário e impedi-lo de interagir com os dados.
 
 \begin{figure}[h!]
     \centering
