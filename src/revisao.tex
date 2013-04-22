@@ -16,42 +16,58 @@ Trata-se do caso do mesmo trabalho apresentado por \citeauthor{Konig2000}, onde 
 Uma terceira utilidade para os métodos de redução de dimensionalidade é viabilizar a construção de representações visuais de dados multidimensionais~\footnote{No contexto de visualização computacional, conjuntos de dados multidimensionais são aqueles com mais do que três atributos.}, permitindo que sejam mapeados em um espaço bidimensional (tela computador).
 Representações visuais dos dados são cruciais para a análise exploratória de dados, principalmente para investigações iniciais dos dados, onde ainda não se conhece as propriedades dos dados~\cite{Kaski2011}. 
 
-Mais formalmente, o problema de se reduzir a dimensionalidade dos conjuntos de dados pode ser descrito da seguinte forma: 
-Dado um conjunto de dados representado por uma matriz $\textbf{X}$ composta por $n$ vetores $\textbf{x}_i~(i \in \{1,2,...,n\})$ $m-$dimensionais, uma técnica de redução de dimensionalidade é uma transformação $t: \textbf{X} \rightarrow \textbf{Y}$, onde $\textbf{Y}$ trata-se de uma matriz composta por $n$ vetores $\textbf{y}_i~(i \in \{1,2,...n\}$ de dimensionalidade $p$ ($p < m$). 
-Normalmente $p \ll m$ e, idealmente, $p$ equivale à dimensionalidade intrínseca dos dados, fazendo com que $t$ mantenha em $\textbf{Y}$ o máximo das propriedades de $\textbf{X}$ quanto for possível. 
-
 A literatura em redução de dimensionalidade é extensa e os métodos desenvolvidos apresentam grande diversidade em relação a aspectos matemáticos e computacionais. 
 Buscando uma melhor organização, este capítulo foi dividido em duas seções. 
 A primeira busca descrever sucintamente os métodos automáticos e apresentar suas limitações, principalmente evidenciar que a falta da participação do usuário no processo faz com que muitas vezes os resultados obtidos não sejam facilmente compreendidos. 
-A segunda seção apresenta os métodos que permitem que o usuário participe do processo de redução de dimensionalidade por meio da interação com representações visuais. Ao longo da segunda seção discute-se que apesar dos métodos interativos se mostrarem como uma interessante alternativa, os mecanismos de interação propostos apresentam grandes limitações. Nas considerações finais deste capítulo as principais limitações dos métodos interativos são resumidos na Tabela~(criar tabela). 
+A segunda seção apresenta os métodos que permitem que o usuário participe do processo de redução de dimensionalidade por meio da interação com representações visuais. 
+Ao longo da segunda seção discute-se que apesar dos métodos interativos se mostrarem como uma interessante alternativa, os mecanismos de interação propostos apresentam grandes limitações. 
+Nas considerações finais deste capítulo, resume-se as principais limitações dos métodos interativos. 
 
 \section{Redução de Dimensionalidade Automática}
 
 A redução de dimensionalidade automática pode ser realizada seguindo duas abordagens. 
-A primeira, dita seleção de características (\emph{feature selection}), busca selecionar quais dos atributos do conjunto de dados são realmente relevantes para a análise segundo algum critério. 
-Já a segunda abordagem parte da combinação entre atributos para criar um novo conjunto de dimensões que busca conservar certas propriedades ou relacionamentos do conjunto original. 
-Por extrair um novo conjunto de atributos a partir dos dados originais, a segunda abordagem recebe o nome de extração de características (\emph{feature extraction}).
-
-\subsection{Seleção de Características}
+A primeira parte da combinação entre atributos para criar um novo conjunto de dimensões que busca conservar certas propriedades ou relacionamentos do conjunto original. 
+Por extrair um novo conjunto de atributos a partir dos dados originais, esta abordagem recebe o nome de extração de características (\emph{feature extraction}).
+Já a segunda abordagem busca selecionar quais dos atributos do conjunto de dados são realmente relevantes para a análise segundo algum critério. 
+Como os dados não são modificados, esta segunda abordagem é chamada de seleção de características (\emph{feature selection}).
 
 \subsection{Extração de Características}
 
-Como apresentado por~\citeauthor{Maaten2009}~\cite{Maaten2009} e ilustrado na Figura~\ref{fig:fex}, existe uma grande variedade de métodos de extração de características. Não é intuito desta subseção detalhar cada uma dessas técnicas e levantar suas limitações particulares, mas sim ilustrar a limitação que todas apresentam em comum de retornar resultados pouco intuitivos para o usuário e impedi-lo de interagir com os dados.
+O problema de extração de características pode ser descrito da seguinte forma: 
+Dado um conjunto de dados representado por uma matriz $\textbf{X}$ composta por $n$ vetores $\textbf{x}_i~(i \in \{1,2,...,n\})$ $m-$dimensionais, deseja-se encontrar uma transformação $t: \textbf{X} \rightarrow \textbf{Y}$, onde $\textbf{Y}$ trata-se de uma matriz composta por $n$ vetores $\textbf{y}_i~(i \in \{1,2,...n\}$ de dimensionalidade $p$ ($p < m$). 
+Normalmente $p \ll m$ e, idealmente, $p$ equivale à dimensionalidade intrínseca dos dados, fazendo com que $t$ mantenha em $\textbf{Y}$ o máximo das propriedades de $\textbf{X}$ quanto for possível. 
+
+Como apresentado por~\citeauthor{Maaten2009}~\cite{Maaten2009} e ilustrado na Figura~\ref{fig:fex}, existe uma grande variedade de métodos de extração de características. Não é intuito desta subseção detalhar cada uma dessas técnicas e levantar suas limitações particulares, mas sim ilustrar a limitação que todas apresentam em comum de retornar resultados pouco intuitivos para o usuário e impedi-lo de interagir com os dados. Para este fim, o método de análise de componentes principais (PCA) será utilizado como base para os exemplos.
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=\textwidth]{images/var1.png}
-    \caption[]{}
+    \includegraphics[width=10cm]{images/fex.png}
+    \caption[Principais Métodos de Extração de Características.]{Principais métodos de extração de características, adaptado de \cite{Maaten2009}.}
     \label{fig:fex}
 \end{figure}
 
+% LER OS PAPERS DE RED DIM PARA INSPIRAÇÃO E REFERÊNCIAS.
 
-Existem três principais abordagens para se reduzir a dimensionalidade dos conjuntos de dados a partir da combinação dos atributos. 
-Análise de Componentes Principais (\textit{Principal Component Analysis)}~ ou simplesmente PCA, realiza combinações lineares sobre os atributos de modo que o novo espaço agregue a maior parte da variância dos dados. 
-Para análises onde relações não lineares devem ser consideradas, \textit{Multimensional Scaling} (MDS) é uma alternativa interessante, pois trata-se de um algoritmo de otimização iterativo não linear, que busca minimizar as distâncias entre os elementos no espaço projetado e no espaço original. 
-A área de aprendizado de máquina contribuiu com o método não supervisionado \textit{Self Organizing Maps} (SOM) para transformar conjuntos de dados em mapas bidimensionais.
+% Existem três principais abordagens para se reduzir a dimensionalidade dos conjuntos de dados a partir da combinação dos atributos. Análise de Componentes Principais (\textit{Principal Component Analysis)}~ ou simplesmente PCA, realiza combinações lineares sobre os atributos de modo que o novo espaço agregue a maior parte da variância dos dados. Para análises onde relações não lineares devem ser consideradas, \textit{Multimensional Scaling} (MDS) é uma alternativa interessante, pois trata-se de um algoritmo de otimização iterativo não linear, que busca minimizar as distâncias entre os elementos no espaço projetado e no espaço original. A área de aprendizado de máquina contribuiu com o método não supervisionado \textit{Self Organizing Maps} (SOM) para transformar conjuntos de dados em mapas bidimensionais.
 
 % Sem dúvida a técnica mais importante é PCA
+
+\subsection{Seleção de Características} 
+
+O objetivo dos métodos de seleção de características é encontrar o subconjunto  dos atributos de entrada mais adequado para a aplicação em estudo. 
+Assim, busca-se identificar e eliminar atributos redundantes~\cite{Kohavi1997} ou que não apresentem correlação com o fenómeno investigado~\cite{Nilsson2007}. 
+Por exemplo, em tarefas de classificação supervisionada, pode-se determinar a importância de um atributo de acordo com a sua correlação ao atributo classe. 
+
+O funcionamento desses métodos consiste em realizar uma busca sobre subconjuntos candidatos e tomar como resultado o subconjunto que apresenta menor custo de acordo com uma função pré estabelecida. 
+O caso completo trata-se da avaliação de $2^m$ subconjuntos (todas as combinações possíveis), onde $m$ corresponde ao número de atributos do conjunto de entrada. 
+Tal situação equivale a um problema $np$-completo, consequentemente para grandes conjuntos de dados a solução não pode ser obtida em tempo fazível, exigindo assim a adoção de alguma eurística. 
+
+As diferentes eurísticas que podem ser adotadas constituem a literatura em seleção de características. A Figura ilustra os principais métodos.
+Extração 
+Em comparação aos métodos de extração, os métodos de seleção apresentam a vantagem de que o resultado obtido é mais intuitivo ao usuário, pois se trata de um subconjunto do conjunto de entrada. 
+Assim, se o usuário tem certo conhecimento sobre o conjunto de entrada, então será capaz de compreender os resultados obtidos.
+No entanto, eles compartilham a mesma natureza caixa-preta que priva o usuário de qualquer interação durante o processo de redução, impedindo que o usuário  contribua com seu conhecimento sobre o domínio.
+Além disso, devido à esta natureza, o usuário pode ter dificuldades em compreender quais características dos seus dados foram responsáveis por aquele resultado.
 
 \section{Redução de Dimensionalidade Interativa}
 

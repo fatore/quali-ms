@@ -3,7 +3,16 @@
 %--------------------------------------------------------------------------------
 \section{Considerações Iniciais}
 
-A proposta deste trabalho gira em torno do conceito de \emph{projeções multidimensionais coordenadas entre itens e atributos}. 
+A proposta é muito semelhante a Unsupervised feature selection using feature similarity - 2002.
+
+Meu método é all-relevant (quando tem a classe) e minimal-optimal quando nao tem. É capaz de linear com interdependências sem cair em um np-completo (preciso testar com o exemplo do slide para verificar isso).
+
+\cite{Engel2012} no single method can be preferred over another. On the contrary, the effectiveness of state-of-the-art methods mainly depends on the data and application. 
+We believe that only through the incorporation of multiple concepts from different research fields, can methods for dimension reduction keep pace with future problems. two-dimensional target space is not sufficient for the embedding. visual verification that evaluate the error and ambiguity of a mapping.
+
+Graças à capacidade das projeções transmitirem relações de interdependia entre as os elementos ... 
+
+Naive Feature Selection: evaluate each feature separately and select those with the highest scores. It fails because it does not take into account the interaction between features.
 
 A metodologia proposta por este trabalho é inspirada em uma combinação entre as projeções de atributos de~\cite{Yang2004} e às visões duplamente coordenadas entre itens e atributos de~\cite{Turkay2011}. 
 
@@ -150,11 +159,24 @@ Além disso esta visualização serve como um ferramenta adicional aos resultado
 %--------------------------------------------------------------------------------
 \subsection{Mecanismos de Interação}
 
+\subsubsection{Seleção de Atributos}
+
+Em tarefas de seleção de característica basicamente deseja-se solucionar basicamente dois problemas. 
+Os métodos de seleção de características buscam basicamente resolver dois problemas. 
+O primeiro, chamado de mínimo-ótimo (\emph{minimal-optimal})~\cite{Kohavi1997}, consiste em construir um subconjunto dos atributos de entrada evitando ao máximo a redundância entre eles. 
+Um caso prático deste problema trata-se da construção de um classificador, onde evitar redundância entre os atributos de entrada pode fazer com que o método obtenha ganhos tanto no tempo de execução quanto na qualidade dos resultados obtidos. 
+Já o segundo, conhecido como todos-relevantes (\emph{all-relevant})~\cite{Nilsson2007}, equivale a encontrar todos os atributos que são de algum modo relevantes para a compreensão do fenómeno observado. 
+
 
 %--------------------------------------------------------------------------------
 \subsection{Forma de Avaliação}
 
 % Tenho que falar aqui que vou aplicar diferentes métodos de redução (eventualmente ter que explicar os que eu escolhi cada um, de preferência falar que cada um tem uma característica específica) e em seguida vou verificar a qualidade da classificação e o tempo de execução do classificador.
+
+\cite{Medeiros2011} apresenta três índices para se comparar diferentes técnicas de redução. Aponta que devido a heterogeneidade dos métodos, certas convenções devem ser estabelecidas para se obter uma comparação justa.
+
+Em alguns trabalhos~\cite{Joshi2007} a comparação é feita sobre a taxa de acertos da classificação com os dados originais e com os dados reduzidos com a técnica proposta. No entanto, esta validação pode ser questionada, pois a validação deveria considerar a aplicação de outras técnicas de redução de dimensionalidade. 
+
 
 A forma mais adotada na literatura para a avaliação de métodos de redução de dimensionalidade é a comparação dos erros obtidos em tarefas de classificação ao utilizar diferentes técnicas. 
 
