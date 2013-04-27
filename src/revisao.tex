@@ -26,7 +26,7 @@ Nas considerações finais deste capítulo, resume-se as principais limitações
 \section{Redução de Dimensionalidade Automática}
 
 A redução de dimensionalidade automática pode ser realizada seguindo duas abordagens. 
-A primeira parte da combinação entre atributos para criar um novo conjunto de dimensões que busca conservar certas propriedades ou relacionamentos do conjunto original. 
+A primeira transforma os atributos de entrada em um novo conjunto de dimensões que busca conservar certas propriedades ou relacionamentos do conjunto original. 
 Por extrair um novo conjunto de atributos a partir dos dados originais, esta abordagem recebe o nome de extração de características (\emph{feature extraction}).
 Já a segunda abordagem busca selecionar quais dos atributos do conjunto de dados são realmente relevantes para a análise segundo algum critério. 
 Como os dados não são modificados, esta segunda abordagem é chamada de seleção de características (\emph{feature selection}).
@@ -56,18 +56,17 @@ Como apresentado por~\citeauthor{Maaten2009}~\cite{Maaten2009} e ilustrado na Fi
 
 O objetivo dos métodos de seleção de características é encontrar o subconjunto  dos atributos de entrada mais adequado para a aplicação em estudo. 
 Assim, busca-se identificar e eliminar atributos redundantes~\cite{Kohavi1997} ou que não apresentem correlação com o fenómeno investigado~\cite{Nilsson2007}. 
-Por exemplo, em tarefas de classificação supervisionada, pode-se determinar a importância de um atributo de acordo com a sua correlação ao atributo classe. 
+Por exemplo, em tarefas de classificação supervisionada, pode-se determinar a importância de um atributo avaliando sua correlação com o atributo classe. 
 
-O funcionamento desses métodos consiste em realizar uma busca sobre subconjuntos candidatos e tomar como resultado o subconjunto que apresenta menor custo de acordo com uma função pré estabelecida. 
+O funcionamento desses métodos consiste em realizar uma busca sobre subconjuntos candidatos e tomar como resultado o subconjunto que apresenta melhor avaliação de acordo com uma função pré estabelecida. 
 O caso completo trata-se da avaliação de $2^m$ subconjuntos (todas as combinações possíveis), onde $m$ corresponde ao número de atributos do conjunto de entrada. 
-Tal situação equivale a um problema $np$-completo, consequentemente para grandes conjuntos de dados a solução não pode ser obtida em tempo fazível, exigindo assim a adoção de alguma eurística. 
+Tal situação equivale a um problema $np$-completo, consequentemente para grandes conjuntos de dados a solução ótima não pode ser obtida em tempo fazível, exigindo assim a adoção de alguma eurística. 
 
 As diferentes eurísticas que podem ser adotadas constituem a literatura em seleção de características. A Figura ilustra os principais métodos.
-Extração 
+
 Em comparação aos métodos de extração, os métodos de seleção apresentam a vantagem de que o resultado obtido é mais intuitivo ao usuário, pois se trata de um subconjunto do conjunto de entrada. 
 Assim, se o usuário tem certo conhecimento sobre o conjunto de entrada, então será capaz de compreender os resultados obtidos.
-No entanto, eles compartilham a mesma natureza caixa-preta que priva o usuário de qualquer interação durante o processo de redução, impedindo que o usuário  contribua com seu conhecimento sobre o domínio.
-Além disso, devido à esta natureza, o usuário pode ter dificuldades em compreender quais características dos seus dados foram responsáveis por aquele resultado.
+No entanto, eles compartilham a mesma natureza caixa-preta que priva o usuário de qualquer interação durante o processo de redução, impedindo que o usuário contribua com seu conhecimento sobre o domínio e compreenda quais características dos seus dados foram responsáveis por aquele resultado.
 
 \section{Redução de Dimensionalidade Interativa}
 

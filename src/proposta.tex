@@ -1,6 +1,5 @@
 \chapter{Proposta de Trabalho}\label{chap:proposta}
 
-%--------------------------------------------------------------------------------
 \section{Considerações Iniciais}
 
 A proposta é muito semelhante a Unsupervised feature selection using feature similarity - 2002.
@@ -39,7 +38,6 @@ Dentro do contexto apresentado anteriormente, o seguinte parágrafo representa a
 
 As seguir apresenta-se os passos necessários para atingir esses objetivos.
 
-%--------------------------------------------------------------------------------
 \section{Metodologia}
 
 A metodologia proposta por este trabalho é ilustrada pela Figura~\ref{fig:met}. O processo inicia pelo cálculo da similaridade entre as dimensões. Com base neste cálculo, cria-se uma matriz de distâncias entre os atributos que é utilizada para projetá-los em um espaço bidimensional.   
@@ -68,7 +66,6 @@ inicia pela escolha de uma medida para o cálculo da similaridade entre pares de
 \end{figure}
 
 
-%--------------------------------------------------------------------------------
 \subsection{Similaridade entre Dimensões}\label{ss:sim}
 
 Uma tarefa fundamental para a execução deste trabalho é maneira como define-se a            similaridade entre as dimensões. Este problema pode ser formulado da seguinte maneira~\cite{Ankerst1998}: Dado um conjunto de dados contendo $n$ elementos com $m-$dimensões, suas colunas podem ser descritas por $m$ vetores $A_i~(0 \leq i < m)$, cada uma contendo $n$ números reais $a_{i,k}, (0 \leq k < n)$. Deseja-se definir uma medida de similaridade $S$ que dado dois vetores retorne um número real ($S : \mathbb{R}^n \times \mathbb{R}^n \rightarrow \mathbb{R}$) que satisfaça as seguintes propriedades:
@@ -119,6 +116,8 @@ Uma medida de similaridade entre duas variáveis $x$ e $y$ muito utilizada é o 
     \label{tab:corrs}
 \end{table}
 
+% Falar de discretização? (Parzen windows, Torkkola, 2003)
+
 % Introduzo MI (ler Kraskov) 
 
 % Descrevo um estimador de MI, outros estimadores de MI: 12,13,14
@@ -162,13 +161,13 @@ Além disso esta visualização serve como um ferramenta adicional aos resultado
 \subsubsection{Seleção de Atributos}
 
 Em tarefas de seleção de característica basicamente deseja-se solucionar basicamente dois problemas. 
-Os métodos de seleção de características buscam basicamente resolver dois problemas. 
 O primeiro, chamado de mínimo-ótimo (\emph{minimal-optimal})~\cite{Kohavi1997}, consiste em construir um subconjunto dos atributos de entrada evitando ao máximo a redundância entre eles. 
-Um caso prático deste problema trata-se da construção de um classificador, onde evitar redundância entre os atributos de entrada pode fazer com que o método obtenha ganhos tanto no tempo de execução quanto na qualidade dos resultados obtidos. 
+Um caso prático deste problema trata-se da construção de um classificador, onde ao se evitar redundância entre os atributos de entrada pode fazer com que o método obtenha ganhos tanto no tempo de execução quanto na qualidade dos resultados obtidos. 
 Já o segundo, conhecido como todos-relevantes (\emph{all-relevant})~\cite{Nilsson2007}, equivale a encontrar todos os atributos que são de algum modo relevantes para a compreensão do fenómeno observado. 
+Uma aplicação real deste segundo problema pode ser encontrada no contexto de análise de expressões gênicas, onde pode-se, por exemplo, identificar quais genes apresentam maior relação com o diagnóstico de alguma doença. 
 
+O mecanismo de seleção aqui proposto viabiliza trabalhar sobre esses dois problemas.
 
-%--------------------------------------------------------------------------------
 \subsection{Forma de Avaliação}
 
 % Tenho que falar aqui que vou aplicar diferentes métodos de redução (eventualmente ter que explicar os que eu escolhi cada um, de preferência falar que cada um tem uma característica específica) e em seguida vou verificar a qualidade da classificação e o tempo de execução do classificador.
@@ -190,10 +189,8 @@ Ao reduzir o número de atributos irrelevantes ou redundantes, pode-se melhorar 
 %--------------------------------------------------------------------------------
 \section{Resultados Esperados}
 
-%--------------------------------------------------------------------------------
 \section{Resultados Preliminares}
 
-%--------------------------------------------------------------------------------
 \section{Plano de Atividades e Cronograma Previsto}\label{sec:cronograma}
 
 As principais atividades deste trabalho de mestrado são as seguintes:
