@@ -4,6 +4,7 @@
 
 A proposta é muito semelhante a Unsupervised feature selection using feature similarity - 2002.
 
+
 Meu método é all-relevant (quando tem a classe) e minimal-optimal quando nao tem. É capaz de linear com interdependências sem cair em um np-completo (preciso testar com o exemplo do slide para verificar isso).
 
 \cite{Engel2012} no single method can be preferred over another. On the contrary, the effectiveness of state-of-the-art methods mainly depends on the data and application. 
@@ -19,8 +20,21 @@ O processo de projeção dos atributos inicia pela criação de uma matriz de di
 
 A etapa de coordenação entre visões dos itens e atributos será realizada 
 
+Posso construir minha base teórica sobre exemplos do AND, OR e XOR> Para isso crio pequenas populações para cada valor (ex. a = cbind(rnorm(100,0),rnorm(100,0))).
 
-%--------------------------------------------------------------------------------
+A demonstração da seleção é feita pelo exemplo do AND, onde mostra-se que é possível evitar atributos irrelevantes e redundantes.
+Para a combinação usar o exemplo do XOR, onde unindo os atributos consegue-se um melhor resultado na classificação.
+
+A projeção faz com que a medida de correlação também capture interdependências?
+
+Noise reduction and consequently better class separation may be obtained by adding variables that are presumably redundant.
+
+Perfectly correlated variables are truly redundant in the sense that no additional information is gained by adding them.
+
+A variable that is completely useless by itself can provide a significant performance improvement when taken with others.
+
+Two variables that are useless by themselves can be useful together.
+
 \section{Objetivos}
 
 % Falo como vou resolver as limitações levantadas e assim cito as contribuições esperadas do trabalho:
@@ -128,8 +142,8 @@ Na literatura encontram-se diversos outros métodos que poderiam ser utilizados 
 
 A qualidade de uma medida de similaridade costuma variar de acordo com o domínio em que é aplicada. Normalmente, uma medida é dita adequada quando há uma concordância entre o valor obtido e a opinião de um especialista da área. No entanto, mesmo um especialista sobre um assunto pode ter dificuldade em determinar com precisão a semelhança entre dois objetos. Assim, é muito difícil definir um modelo matemático que meça a similaridade entre dois atributos com precisão para todas as aplicações de forma genérica. A MIC é uma medida que se propõe a executar esta difícil tarefa e por isso foi escolhida como a medida de similaridade entre dimensões a ser utilizada neste trabalho. 
 
-
-%--------------------------------------------------------------------------------
+\subsection{Mapeamento dos Itens no Espaço Bidimensional}
+\subsection{Mapeamento das Dimensões no Espaço Bidimensional}
 \subsection{Mapeamento no Espaço Bidimensional}
 
 O mapeamento dos elementos em um espaço bidimensional se baseia em algum método de redução de dimensionalidade. 
@@ -163,27 +177,34 @@ Além disso esta visualização serve como um ferramenta adicional aos resultado
 Em tarefas de seleção de característica basicamente deseja-se solucionar basicamente dois problemas. 
 O primeiro, chamado de mínimo-ótimo (\emph{minimal-optimal})~\cite{Kohavi1997}, consiste em construir um subconjunto dos atributos de entrada evitando ao máximo a redundância entre eles. 
 Um caso prático deste problema trata-se da construção de um classificador, onde ao se evitar redundância entre os atributos de entrada pode fazer com que o método obtenha ganhos tanto no tempo de execução quanto na qualidade dos resultados obtidos. 
-Já o segundo, conhecido como todos-relevantes (\emph{all-relevant})~\cite{Nilsson2007}, equivale a encontrar todos os atributos que são de algum modo relevantes para a compreensão do fenómeno observado. 
+Já o segundo, conhecido como todos-relevantes (\emph{all relevant})~\cite{Nilsson2007}, equivale a encontrar todos os atributos que são de algum modo relevantes para a compreensão do fenómeno observado. 
 Uma aplicação real deste segundo problema pode ser encontrada no contexto de análise de expressões gênicas, onde pode-se, por exemplo, identificar quais genes apresentam maior relação com o diagnóstico de alguma doença. 
 
 O mecanismo de seleção aqui proposto viabiliza trabalhar sobre esses dois problemas.
+
+\subsubsection{Combinação de Atributos}
+
+O resultado obtido pela combinação deve ser melhor do que a de seleção, porém é também menos intuitivo ao usuário. Mas de qualquer modo a abordagem é melhor aplicar PCA em todo o conjunto de dados (tirei isso de VHDR, se precisar citar: pelo o que pode ser observado no levantamento bibliográfico os métodos de combinação tendem a oferecer melhores resultados, no entanto...).  
 
 \subsection{Forma de Avaliação}
 
 % Tenho que falar aqui que vou aplicar diferentes métodos de redução (eventualmente ter que explicar os que eu escolhi cada um, de preferência falar que cada um tem uma característica específica) e em seguida vou verificar a qualidade da classificação e o tempo de execução do classificador.
 
+Vou comparar com outros métodos de redução.
+
+Em alguns trabalhos~\cite{Joshi2007} a comparação é feita sobre a taxa de acertos da classificação com os dados originais e com os dados reduzidos com a técnica proposta. No entanto, esta validação pode ser questionada, pois desconsidera a influencia que outras técnicas de redução poderiam ter nos resultados.
+
+Para se comprar com seleção de características, \cite{Guyon2003} diz para usar um classificador linear (linear SVM) e selecionar as variáveis de duas maneiras: por meio de um ranking a partir do coeficiente de correlação ou informação mútua; ou pelo uso de um método de forward (ou backward) selection.
+
 \cite{Medeiros2011} apresenta três índices para se comparar diferentes técnicas de redução. Aponta que devido a heterogeneidade dos métodos, certas convenções devem ser estabelecidas para se obter uma comparação justa.
-
-Em alguns trabalhos~\cite{Joshi2007} a comparação é feita sobre a taxa de acertos da classificação com os dados originais e com os dados reduzidos com a técnica proposta. No entanto, esta validação pode ser questionada, pois a validação deveria considerar a aplicação de outras técnicas de redução de dimensionalidade. 
-
 
 A forma mais adotada na literatura para a avaliação de métodos de redução de dimensionalidade é a comparação dos erros obtidos em tarefas de classificação ao utilizar diferentes técnicas. 
 
 Ao reduzir o número de atributos irrelevantes ou redundantes, pode-se melhorar o desempenho computacional e a precisão das técnicas operando sobre os dados, como agrupadores e classificadores de dados. Pretende-se avaliar as contribuições deste trabalho justamente pela quantificação do desempenho de tais métodos ao utilizar as técnicas desenvolvidas, seguida de uma comparação com técnicas já estabelecidas na literatura.
 
-% O popular método K-Means será utilizado neste trabalho para se avaliar Para se avaliar o resultado obtido por agrupadores de dados, frequentemente utiliza-se a medida da silhueta e o índice I. A silhueta mede a .... O índice I é utilizado para...
+% O popular método K Means será utilizado neste trabalho para se avaliar Para se avaliar o resultado obtido por agrupadores de dados, frequentemente utiliza-se a medida da silhueta e o índice I. A silhueta mede a .... O índice I é utilizado para...
 
-% Falo de SVM-Precisão, Recall (FN?) e sei la o que...
+% Falo de Sam Precisão, Recall (FAN?) e sei la o que...
 
 
 %--------------------------------------------------------------------------------

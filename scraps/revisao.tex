@@ -1,48 +1,60 @@
-% VHDR & DOSFA %%%%
 
-% Em busca de construir espaços de baixa dimensionalidade mais intuitivamente do que pelo uso de métodos automáticos, \citeauthor{Yang2003} desenvolveram um método de redução de dimensionalidade chamado VHDR (Visual Hierarchical Dimensions Reduction)~\cite{Yang2007}. Este método utiliza a similaridade entre pares de dimensões para construir uma organização hierárquica dos atributos. O processo é ortogonal ao agrupamento de itens, assim é possível identificar grupos de dimensões com características semelhantes. Porém, para conjuntos de dados com mais do que algumas dezenas de dimensões, as representações visuais utilizadas podem se tornar poluídas. Os autores mencionam que algoritmos adaptados da área de agrupamentos de dados poderiam ser utilizados para gerar a hierarquia de dimensões, no entanto eles adotaram uma abordagem mais simples para medir a similaridade entre dimensões: medem a diferença entre os valores normalizados dos atributos e verificam se esta diferença é menor do que um \textit{threshold} pré estabelecido. Este método para o cálculo da similaridade é a grande limitação do trabalho, pois não captura dependências entre os atributos. Além disso, não são apresentadas mecanismos interativos como alternativa para o método automático de identificação de dimensões representativas de um grupo. 
+\subsection{VaR: Value and Relation}\label{sec:var}
 
-% The Dimension Ordering Spacing and Filtering Approach (DOSFA) [26] has evolved from VHDR and provides di- mensionality reduction based on a combination of similarity and of a given importance measure, such as variance. DOSFA is also aiming at finding a visual layout that facilitate the detection of structures within the data.
+Uma etapa fundamental da técnica Var que merece uma maior atenção é o método utilizado para a criação da matriz de distâncias. Os autores desenvolveram um novo método para cálculo da correlação entre dimensões que busca encontrar a maior discriminação entre os atributos. A seguir apresenta-se uma breve  descrição deste método:
 
-Em busca de construir espaços de baixa dimensionalidade mais intuitivamente do que pelo uso de métodos automáticos, \cite{Yang2003} e \cite{Ward2003} constroem uma hierarquia com base na similaridade entre as dimensões para apresentar explicitamente os relacionamentos entre os atributos e permitem que os usuários interativamente selecionem as dimensões de interesse. 
+\begin{enumerate}
+   
+    \item Dado um conjunto de dados com $m$ dimensões; 
+    \item Normaliza-se os valores em respeito às colunas (invariância contra escala e translação);
+    \item Para cada par de dimensões $Par(i,j)$ com $1 \leq i \leq m$ e $i < j \leq m$, constrói-se um histograma da diferença entre os valores $Hist(i,j)$. O número de \emph{bins} (classes) do histograma $numBins$ é uma constante definida pelo usuário;
+    \item Para $k = 1$ até $numBins$ calcula-se $Var_k$:
+    \begin{enumerate}
+        \item Constrói-se a matriz $M_k$. A posição $M_k(i,j)$ da matriz será dada pelo valor $1$ subtraído da razão entre a população contida em $k-$classes mais frequentes de $Hist(i,j)$ e o total de elementos;
+        \item $Var_k$ corresponde à variância dos elementos não diagonais da matriz;
+    \end{enumerate}
+\item Retorna-se $M_k$ que apresenta maior $Var_k$.
 
-% O processo é ortogonal ao agrupamento de itens, assim é possível identificar grupos de dimensões com características semelhantes. Porém, para conjuntos de dados com mais do que algumas dezenas de dimensões, as representações visuais utilizadas podem se tornar poluídas. Os autores mencionam que algoritmos adaptados da área de agrupamentos de dados poderiam ser utilizados para gerar a hierarquia de dimensões, no entanto eles adotaram uma abordagem mais simples para medir a similaridade entre dimensões: medem a diferença entre os valores normalizados dos atributos e verificam se esta diferença é menor do que um \textit{threshold} pré estabelecido. Este método para o cálculo da similaridade é a grande limitação do trabalho, pois não captura dependências entre os atributos. Além disso, não são apresentadas mecanismos interativos como alternativa para o método automático de identificação de dimensões representativas de um grupo. 
+\end{enumerate}
 
-% Corrgram e  Coord %%%%
+Este método foi comparado à distância euclidiana entre os elementos e mostrou-se que o novo método apresenta um aumento na discriminação entre os atributos de $45\%$ a $95\%$ maior. Ou seja, utilizando este método, os autores conseguiram separar melhor dimensões diferentes e agrupar melhor as que apresentam certa semelhança. No entanto, não foram realizadas comparações com outras medidas de correlação entre variáveis bem estabelecidas na  literatura (para uma melhor discussão sobre essas medidas favor consultar a Subseção~\ref{ss:sim}). Apesar dos autores mencionarem que o cálculo de uma medida de correlação não está vinculado ao processo da técnica de visualização, trata-se de uma etapa diretamente relacionada com a projeção dos dados, consequentemente está fortemente atrelada à qualidade do \emph{layout} apresentado.
 
-% Coord aborda o problema de que subconjuntos dos dados podem apresentar características diferentes, assim em alguns casos é impossível encontrar um único conjunto de atributos que represente todos os subconjuntos adequadamente. 
+\subsection{Corrgram e  Coord}
+
+Coord aborda o problema de que subconjuntos dos dados podem apresentar características diferentes, assim em alguns casos é impossível encontrar um único conjunto de atributos que represente todos os subconjuntos adequadamente. 
 
 Quando o número de dimensões está na casa das centenas ou dezenas, não é possível inspecionar todas as dimensões exaustivamente. Assim, métodos estatísticos são utilizados para fornecer medidas de comparação entre os atributos. Entre essas medidas, as mais utilizadas são medidas de correlação estatística.
 
 Medidas de correlação são normalmente apresentadas com o auxílio de uma matriz de correlação~\cite{Friendly2002}. Este tipo de representação é útil para se ter uma visão geral das relações entre pares de elementos e permite que um grande número de itens seja analisado. No entanto, para análises mais detalhadas, ou que exijam uma comparação entre mais do que simplesmente pares de elementos, não é uma representação adequada.
 
-% RBF %%%%
+\subsection{RBF}
 
 \citeauthor{Shneiderman2004} desenvolveram o framework Rank-by-Feature~\cite{Shneiderman2004} com o intuito de auxiliar a descoberta de correlações entre atributos. Eles classificam os atributos com base em critérios estatísticos definidos pelo usuário e possibilitam a construção de projeções uni ou bidimensionais para a avaliação da classificação realizada. 
 
-% Certas análises podem exigir demasiado esforço do usuário, devido à necessidade de se explorar individualmente cada dimensão ou avaliar par a par as relações entre atributos. Com a ocorrência de dependências não lineares este problema torna-se ainda maior e o usuário pode facilmente se perder em suas análises e não extrair novos conhecimentos dos resultados.
+Certas análises podem exigir demasiado esforço do usuário, devido à necessidade de se explorar individualmente cada dimensão ou avaliar par a par as relações entre atributos. Com a ocorrência de dependências não lineares este problema torna-se ainda maior e o usuário pode facilmente se perder em suas análises e não extrair novos conhecimentos dos resultados.
 
-% Smart stripes e Guiding %%%%
+\subsection{Smart stripes e Guiding}
 
 \cite{May2011} parte da ideia introduzida em \cite{May2011ss} para propor uma técnica para avaliação e orientação do processo de feature selection com base em métodos interativos visuais. Trata o problema de que diferentes partições das entidades dos dados podem apresentar  importâncias distintas de features. Permite que o usuário participe do processo de seleção e a investigue as dependências e interdependências entre conjuntos de features e itens.
 
-% Um problema desta técnica é a necessidade de se estabelecer uma feature de referência, pois a representação visual apresenta apenas as relações de 1-n.
+Um problema desta técnica é a necessidade de se estabelecer uma feature de referência, pois a representação visual apresenta apenas as relações de 1-n.
 
-% PCA, MDS e SOM
+\subsection{PCA, MDS e SOM}
 
-% Existem três principais abordagens para se reduzir a dimensionalidade dos conjuntos de dados a partir da combinação dos atributos. Análise de Componentes Principais (\textit{Principal Component Analysis)}~ ou simplesmente PCA, realiza combinações lineares sobre os atributos de modo que o novo espaço agregue a maior parte da variância dos dados. Para análises onde relações não lineares devem ser consideradas, \textit{Multimensional Scaling} (MDS) é uma alternativa interessante, pois trata-se de um algoritmo de otimização iterativo não linear, que busca minimizar as distâncias entre os elementos no espaço projeto e no espaço original. A área de aprendizado de máquina contribuiu com o método não supervisionado \textit{Self Organizing Maps} (SOM) para transformar conjuntos de dados em mapas bidimensionais.
+
+Existem três principais abordagens para se reduzir a dimensionalidade dos conjuntos de dados a partir da combinação dos atributos. Análise de Componentes Principais (\textit{Principal Component Analysis)}~ ou simplesmente PCA, realiza combinações lineares sobre os atributos de modo que o novo espaço agregue a maior parte da variância dos dados. Para análises onde relações não lineares devem ser consideradas, \textit{Multimensional Scaling} (MDS) é uma alternativa interessante, pois trata-se de um algoritmo de otimização iterativo não linear, que busca minimizar as distâncias entre os elementos no espaço projeto e no espaço original. A área de aprendizado de máquina contribuiu com o método não supervisionado \textit{Self Organizing Maps} (SOM) para transformar conjuntos de dados em mapas bidimensionais.
 
 % PCA methods can only work well for linear relationships.
 
-% The impact of every original dimension is more or less still there.
+% MDS e SOM: The impact of every original dimension is more or less still there.
 
 % Scalability to high dimensionality. Although efficient algorithms for K-means or EM-based clustering have been developed repeatedly using such clustering algorithms to evaluate a large number of candidates (i.e., subsets of dimensions) can still cause computational efficiency problems, especially when both d and n are large.
 
 Ao lidar com dados de alta dimensionalidade, costuma-se preceder a visualização com métodos ``caixa-preta'' como \textit{Principal Component Analysis} (PCA)~\cite{Wold1987},  \textit{Multimensional Scaling} (MDS)~\cite{Mead1992} ou \textit{Self Organizing Maps} (SOM)~\cite{Kohonen1990}. Apesar de popular, esta abordagem não utiliza os conceitos da área de visualização ao seu favor, pois o usuário não participa na etapa crucial da geração dos resultados, a redução de dimensionalidade.
 
-% PCA is not effective in identifying relationships or patterns that reside in different subspaces. SOM uses measurements from all original dimensions to derive the projection to a 2-D space and therefore noisy or irrelevant dimensions have dramatic impacts on the projection result
+PCA is not effective in identifying relationships or patterns that reside in different subspaces. SOM uses measurements from all original dimensions to derive the projection to a 2-D space and therefore noisy or irrelevant dimensions have dramatic impacts on the projection result
 
-% IPCA
+\subsection{iPCA}
 
 Existem trabalhos que buscam contornar esse problema ao incluir a participação do usuário nesses métodos e tornar essas ``caixas pretas'' mais compreensivas. A técnica iPCA~\cite{Jeong2009}, por exemplo, provém meios para o usuário manipular os parâmetros da técnica PCA e, assim, ser capaz de entender mais facilmente as transformações realizadas sobre os dados. Similarmente, MDSteer [24] permite que o usuário guie o processo de MDS ao escolher regiões de interesse para se concentrar os esforços computacionais. No entanto, os mecanismos de interação propostos por esses trabalhos se baseiam em interfaces que são demasiadamente complexas ou que não contém todos os mecanismos necessários para lidar com um grande volume de dados.
 
