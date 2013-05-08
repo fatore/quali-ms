@@ -1,4 +1,4 @@
-\chapter{Revisão Bibliográfica}\label{chap:revisao}
+\chapter{Trabalhos Relacionados}\label{chap:revisao}
 
 \section{Considerações Iniciais}
 
@@ -74,6 +74,29 @@ Foi demonstrado que quando os dados são representados por alguma forma gráfica
 Mas a capacidade preemptiva de visão humana não é a única vantagem dos métodos interativos. Permitir que o usuário participe ativamente nos processos e na geração dos resultados também traz grandes benefícios em relação a métodos completamente automáticos.
 Deste modo, a seguir serão apresentados os trabalhos desta nova vertente que buscam executar redução de dimensionalidade de forma interativa. Trabalhos que não somente fazem uso da capacidade perceptiva dos usuários, mas que também permitem que o usuário participe ativamente na geração dos resultados com o seu conhecimento sobre o domínio.
 
+\subsection{Matrizes de Correlação}
+
+Uma das maneiras mais utilizadas para se inspecionar relações entre dimensões são as matrizes de correlação~\cite{Friendly2002} (observar Figura~\ref{fig:var1}). Este tipo de representação é útil para se ter uma visão geral das relações entre pares de dimensões e permite que um grande número de itens seja analisado. No entanto, para análises mais detalhadas, ou que exijam uma comparação entre mais do que simplesmente pares de elementos, não é uma representação adequada.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=12cm]{images/bs1.pdf}
+    \caption[Matrizes de Correlação]{Exemplo de matriz de correlação para dados de jogos de baseball. A cor azul indica correlação positiva entre as variáveis, enquanto a vermelha correlação negativa. A intensidade da cor é proporcional à magnitude da correlação. Com base em uma investigação visual é possível levantar certas hipóteses sobre os dados. Observa-se, por exemplo, uma relação direta entre os anos de carreira do jogador (Years) e o seu salário (logSal), ao mesmo tempo a experiência tem uma relação inversa com o número de erros.} 
+    \label{fig:bs1}
+\end{figure}
+
+Devido à sua simplicidade, este tipo de representação foi adotada por diversos métodos visuais que viabilizam a investigação de atributos de um conjuntos de dados. O \emph{framework}\footnote{Explicar o que é framework} RBF (\emph{Rank by Feature})~\cite{RBF2004}, por exemplo, utiliza matrizes de correlação para apresentar um \emph{ranking} entre pares de dimensões (observar Figura~\ref{fig:rbf1}). Este \emph{ranking} é definido com base em critérios estatísticos estabelecidos pelo usuário. 
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{images/rbf1.png}
+    \caption[Rank by Feature Framework]{Exemplo do \emph{framework Rank by Feature}. (1) matriz de correlação dos itens. (2) valores de correlação para os pares de dimensões. (3) projeção bidimensional das dimensões selecionadas \emph{(Extraído de \cite{RBF2004})}}.
+    \label{fig:rbf1}
+\end{figure}
+
+O objetivo da investigação da matriz de correlação não é propriamente reduzir a dimensionalidade do conjunto de dados, mas sim encontrar subconjuntos de atributos com características similares. Outros trabalhos~\cite{Guo2003,MacEachren2003,May2011,May2011ss} também adotam matrizes de correlação para atingir esse mesmo objetivo. Eles diferem na maneira de como é construída a matriz de correlação e de quais recursos são disponibilizados para o usuário interagir com os subconjuntos de dimensões.
+
+Um problema geral desses trabalhos é que certas análises podem exigir demasiado esforço do usuário, devido à necessidade de se explorar individualmente cada dimensão ou avaliar par a par as relações entre atributos. Com a ocorrência de dependências não lineares este problema torna-se ainda maior e o usuário pode se perder em suas análises e não extrair novos conhecimentos dos resultados. 
 \subsection{Hierarquias de Dimensões}
 
 Em busca de construir espaços de baixa dimensionalidade mais intuitivamente do que pelo uso de métodos automáticos, \citeauthor{Yang2003} desenvolveram o método de redução de dimensionalidade chamado VHDR (Visual Hierarchical Dimensions Reduction)~\cite{Yang2003}. O funcionamento deste método é ilustrado pela Figura~\ref{fig:vhdr1}. Inicialmente constrói-se uma organização hierárquica dos atributos com base na similaridade entre as dimensões. Em seguida, com base nesta hierarquia, o usuário define grupos de dimensões. Finalmente, o usuário por meio de um método automático ou de seu conhecimento sobre os dados, escolhe dimensões representativas para cada grupo, reduzindo assim a dimensionalidade dos dados. 
@@ -146,30 +169,6 @@ Não é especificamente um método para redução de dimensionalidade, mas serve
 
 A exploração das relações entre as dimensões não precisa estar vinculada somente a representações visuais dos atributos do conjunto de dados. \citeauthor{Turkay2011}~\cite{Turkay2011} propuseram um método de múltiplas visões que permite que o usuário interaja tanto com as dimensões quanto com os itens da base de dados. O principal mecanismo de interação é a seleção que se reflete em outras visões e permite que se visualize, por exemplo, as dimensões que melhor representam subconjuntos dos dados. Uma das limitações deste trabalho é falta de medidas que consideram pares de dimensões, como medidas de correlação, o que dificulta a observação de dependências entre os atributos.  
 
-\subsection{Matrizes de Correlação}
-
-Uma das maneiras mais utilizadas para se inspecionar relações entre dimensões são as matrizes de correlação~\cite{Friendly2002} (observar Figura~\ref{fig:var1}). Este tipo de representação é útil para se ter uma visão geral das relações entre pares de dimensões e permite que um grande número de itens seja analisado. No entanto, para análises mais detalhadas, ou que exijam uma comparação entre mais do que simplesmente pares de elementos, não é uma representação adequada.
-
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=12cm]{images/bs1.pdf}
-    \caption[Matrizes de Correlação]{Exemplo de matriz de correlação para dados de jogos de baseball. A cor azul indica correlação positiva entre as variáveis, enquanto a vermelha correlação negativa. A intensidade da cor é proporcional à magnitude da correlação. Com base em uma investigação visual é possível levantar certas hipóteses sobre os dados. Observa-se, por exemplo, uma relação direta entre os anos de carreira do jogador (Years) e o seu salário (logSal), ao mesmo tempo a experiência tem uma relação inversa com o número de erros.} 
-    \label{fig:bs1}
-\end{figure}
-
-Devido à sua simplicidade, este tipo de representação foi adotada por diversos métodos visuais que viabilizam a investigação de atributos de um conjuntos de dados. O \emph{framework}\footnote{Explicar o que é framework} RBF (\emph{Rank by Feature})~\cite{RBF2004}, por exemplo, utiliza matrizes de correlação para apresentar um \emph{ranking} entre pares de dimensões (observar Figura~\ref{fig:rbf1}). Este \emph{ranking} é definido com base em critérios estatísticos estabelecidos pelo usuário. 
-
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=\textwidth]{images/rbf1.png}
-    \caption[Rank by Feature Framework]{Exemplo do \emph{framework Rank by Feature}. (1) matriz de correlação dos itens. (2) valores de correlação para os pares de dimensões. (3) projeção bidimensional das dimensões selecionadas \emph{(Extraído de \cite{RBF2004})}}.
-    \label{fig:rbf1}
-\end{figure}
-
-O objetivo da investigação da matriz de correlação não é propriamente reduzir a dimensionalidade do conjunto de dados, mas sim encontrar subconjuntos de atributos com características similares. Outros trabalhos~\cite{Guo2003,MacEachren2003,May2011,May2011ss} adotam abordagens semelhantes ao do RBF para atingir este mesmo objetivo. Eles diferem na maneira de como é construída a matriz de correlação e de quais recursos são disponibilizados para o usuário interagir com os subconjuntos de dimensões.
-
-Um problema geral desses trabalhos é que certas análises podem exigir demasiado esforço do usuário, devido à necessidade de se explorar individualmente cada dimensão ou avaliar par a par as relações entre atributos. Com a ocorrência de dependências não lineares este problema torna-se ainda maior e o usuário pode se perder em suas análises e não extrair novos conhecimentos dos resultados.
-
 \subsection{Visualização de Métodos Automáticos}
 
 Existem certos métodos que não utilizam a visualização para realizar redução em si, mas sim para tornar os métodos automáticos mais compreensivos. Eles buscam incluir a participação do usuário nesses métodos para tornar essas ``caixas pretas'' mais compreensivas. 
@@ -185,18 +184,18 @@ A representação explícita das dimensões do conjunto de dados serve como insp
 \begin{table}
     \centering
     \caption {legenda}
-    \begin{tabular}{|c|C{2cm}|C{2cm}|C{2.5cm}|C{3cm}|}
+    \begin{tabular}{|c|C{2cm}|C{2.5cm}|C{3cm}|C{2cm}|}
         \hline
         \textbf{Técnica} & 
-        \textbf{Interação com Itens} & 
         \textbf{Seleção de Atributos} &
         \textbf{Extração de Atributos} &
-        \textbf{Transformação de Atributos}
+        \textbf{Transformação de Atributos} &
+        \textbf{Interação com Itens} 
         \\ \hline
-        VHDR    & N & S & N & N \\
-        DOSFA   & N & S & N & N \\
-        VaR     & N & S & N & N \\
-        \hline
+        RBF     & N & N & N & N \\ \hline
+        VHDR    & S & N & N & N \\ \hline
+        DOSFA   & S & N & N & N \\ \hline
+        VaR     & S & N & N & N \\ \hline
     \end{tabular}
 \end{table}
 
