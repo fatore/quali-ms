@@ -2,52 +2,33 @@
 
 \section{Considerações Iniciais}
 
-% A literatura em redução de dimensionalidade é extensa e os métodos desenvolvidos apresentam grande diversidade em relação a aspectos matemáticos e computacionais. Buscando uma melhor contextualização, esta seção aborda apenas trabalhos que buscam de alguma forma utilizar representações visuais para a execução desta tarefa.
+Os trabalhos que mais se relacionam ao o aqui proposto são aqueles que transformam os conjuntos de dados em busca de uma melhor representação do problema em estudo. Esses trabalhos se dividem basicamente em dois grupos: métodos de redução de dimensionalidade e métodos de transformação do espaço de atributos. 
 
-Os trabalhos do atual estado da arte que mais se assemelham ao o aqui proposto aparecem sobre o nome de métodos de redução de dimensionalidade. 
-A redução de dimensionalidade é o processo realizado para se representar dados de alta dimensionalidade em um espaço de menor dimensionalidade, onde, idealmente, o espaço reduzido corresponde à dimensionalidade intrínseca dos dados. 
-Por sua vez, a dimensionalidade intrínseca dos dados é o conjunto mínimo de variáveis necessário para descrever as propriedades dos dados~\cite{Fukunaga1990}.
+A seguir apresenta-se uma sucinta discussão sobre os métodos da extensa literatura em redução de dimensionalidade, com um enfoque especial para métodos interativos. Apresenta-se também um levantamento sobre pesquisas em transformação do espaço de atributos, um tema que não conta com uma literatura tão vasta quanto à dos métodos de redução, mas que tem ganhado popularidade nos últimos anos.
 
-Dentre os propósitos da redução de dimensionalidade, os principais são a melhoria na eficiência dos métodos que operam sobre os dados e a redução do custo computacional desses métodos.  
-\citeauthor{Konig2000}~\cite{Konig2000}, por exemplo, apresenta melhorias na precisão de sistemas de classificação e no desempenho de sistemas de reconhecimento automático ao preceder os procedimentos com o processo de redução de dimensionalidade. 
-Até mesmo outros benefícios não tão diretos podem ser alcançados por meio do uso de técnicas de redução. 
-Trata-se do caso do mesmo trabalho apresentado por \citeauthor{Konig2000}, onde métodos de redução de dimensionalidade são utilizados para reduzir a complexidade de designs de circuitos integrados, resultando em uma redução na área e no consumo de energia dos circuitos.
+\section{Redução de Dimensionalidade}
 
-Uma terceira utilidade para os métodos de redução de dimensionalidade é viabilizar a construção de representações visuais de dados multidimensionais~\footnote{No contexto de visualização computacional, conjuntos de dados multidimensionais são aqueles com mais do que três atributos.}, permitindo que sejam mapeados em um espaço bidimensional (tela computador).
-Representações visuais dos dados são cruciais para a análise exploratória de dados, principalmente para investigações iniciais dos dados, onde ainda não se conhece as propriedades dos dados~\cite{Kaski2011}. 
+O problema de se a reduzir a dimensionalidade de conjuntos de dados pode ser descrito da seguinte forma: Dado um conjunto de dados representado por uma matriz $\textbf{X}$ composta por $n$ vetores $\textbf{x}_i~(i \in \{1,2,...,n\})$ $m-$dimensionais, deseja-se encontrar uma transformação $t: \textbf{X} \rightarrow \textbf{Y}$, onde $\textbf{Y}$ trata-se de uma matriz composta por $n$ vetores $\textbf{y}_i~(i \in \{1,2,...n\}$ de dimensionalidade $p$ ($p < m$). Normalmente $p \ll m$ e, idealmente, $p$ equivale à dimensionalidade intrínseca dos dados~\footnote{A dimensionalidade intrínseca dos dados é o  conjunto mínimo de variáveis necessárias para descrever as propriedades dos dados~\cite{Fukunaga1990}.}, fazendo com que $t$ mantenha em $\textbf{Y}$ o máximo das propriedades de $\textbf{X}$ quanto for possível. 
 
-A literatura em redução de dimensionalidade é extensa e os métodos desenvolvidos apresentam grande diversidade em relação a aspectos matemáticos e computacionais. 
-Buscando uma melhor organização, este capítulo foi dividido em duas seções. 
-A primeira busca descrever sucintamente os métodos automáticos e apresentar suas limitações, principalmente evidenciar que a falta da participação do usuário no processo faz com que muitas vezes os resultados obtidos não sejam facilmente compreendidos. 
-A segunda seção apresenta os métodos que permitem que o usuário participe do processo de redução de dimensionalidade por meio da interação com representações visuais. 
-Ao longo da segunda seção discute-se que apesar dos métodos interativos se mostrarem como uma interessante alternativa, os mecanismos de interação propostos apresentam grandes limitações. 
-Nas considerações finais deste capítulo, resume-se as principais limitações dos métodos interativos. 
+Dentre os propósitos da redução de dimensionalidade, os principais são a melhoria na eficiência dos métodos que operam sobre os dados e a redução do custo computacional desses métodos. \citeauthor{Konig2000}~\cite{Konig2000}, por exemplo, apresenta melhorias na precisão de sistemas de classificação e no desempenho de sistemas de reconhecimento automático ao preceder os procedimentos com o processo de redução de dimensionalidade. Até mesmo outros benefícios não tão diretos podem ser alcançados por meio do uso de técnicas de redução. Trata-se do caso do mesmo trabalho apresentado por \citeauthor{Konig2000}, onde métodos de redução de dimensionalidade são utilizados para reduzir a complexidade de designs de circuitos integrados, resultando em uma redução na área e no consumo de energia dos circuitos.
 
-\section{Redução de Dimensionalidade Automática}
+Uma terceira utilidade para os métodos de redução de dimensionalidade é viabilizar a construção de representações visuais de dados multidimensionais~\footnote{No contexto de visualização computacional, conjuntos de dados multidimensionais são aqueles com mais do que três atributos.}, permitindo que sejam mapeados em um espaço bidimensional (tela computador). Representações visuais dos dados são cruciais para a análise exploratória de dados, principalmente para investigações iniciais dos dados, onde ainda não se conhece as propriedades dos dados~\cite{Kaski2011}. 
 
-A redução de dimensionalidade automática pode ser realizada seguindo duas abordagens. 
-A primeira transforma os atributos de entrada em um novo conjunto de dimensões que busca conservar certas propriedades ou relacionamentos do conjunto original. 
-Por extrair um novo conjunto de atributos a partir dos dados originais, esta abordagem recebe o nome de extração de características (\emph{feature extraction}).
-Já a segunda abordagem busca selecionar quais dos atributos do conjunto de dados são realmente relevantes para a análise segundo algum critério. 
-Como os dados não são modificados, esta segunda abordagem é chamada de seleção de características (\emph{feature selection}).
+\subsection{Métodos Automáticos}
 
-\subsection{Extração de Características}
+A redução de dimensionalidade automática pode ser realizada seguindo duas abordagens. A primeira transforma os atributos de entrada em um novo conjunto de dimensões que busca conservar certas propriedades ou relacionamentos do conjunto original. Por extrair um novo conjunto de atributos a partir dos dados originais, esta abordagem recebe o nome de extração de características (\emph{feature extraction}). Já a segunda abordagem busca selecionar quais dos atributos do conjunto de dados são realmente relevantes para a análise segundo algum critério. Como os dados não são modificados, esta segunda abordagem é chamada de seleção de características (\emph{feature selection}).
 
-O problema de extração de características pode ser descrito da seguinte forma: 
-Dado um conjunto de dados representado por uma matriz $\textbf{X}$ composta por $n$ vetores $\textbf{x}_i~(i \in \{1,2,...,n\})$ $m-$dimensionais, deseja-se encontrar uma transformação $t: \textbf{X} \rightarrow \textbf{Y}$, onde $\textbf{Y}$ trata-se de uma matriz composta por $n$ vetores $\textbf{y}_i~(i \in \{1,2,...n\}$ de dimensionalidade $p$ ($p < m$). 
-Normalmente $p \ll m$ e, idealmente, $p$ equivale à dimensionalidade intrínseca dos dados, fazendo com que $t$ mantenha em $\textbf{Y}$ o máximo das propriedades de $\textbf{X}$ quanto for possível. 
+\subsubsection{Extração de Características}
 
 Como apresentado por~\citeauthor{Maaten2009}~\cite{Maaten2009}, existe uma grande variedade de métodos de extração de características. Não é intuito desta subseção detalhar cada uma dessas técnicas e levantar suas limitações particulares, mas sim ilustrar a limitação que todas apresentam em comum de retornar resultados pouco intuitivos para o usuário e impedi-lo de interagir com os dados. Para este fim, o método de análise de componentes principais (PCA) será utilizado como base para os exemplos.
 
-Popular dimension reduction approaches, such as Principal Component Analysis [Jolliffe 1986], Multidimensional Scaling [Mead 1992], and Kohonen’s Self Organizing Maps [Kohonen1995; Flexer 1999], condense the hundreds or thousands of dimensions into a few dimensions. However, those generated dimensions have little intuitive meaning to users and allow little user interaction.
+% Popular dimension reduction approaches, such as Principal Component Analysis [Jolliffe 1986], Multidimensional Scaling [Mead 1992], and Kohonen’s Self Organizing Maps [Kohonen1995; Flexer 1999], condense the hundreds or thousands of dimensions into a few dimensions. However, those generated dimensions have little intuitive meaning to users and allow little user interaction.
 
 % LER OS PAPERS DE RED DIM PARA INSPIRAÇÃO E REFERÊNCIAS.
 
 % Existem três principais abordagens para se reduzir a dimensionalidade dos conjuntos de dados a partir da combinação dos atributos. Análise de Componentes Principais (\textit{Principal Component Analysis)}~ ou simplesmente PCA, realiza combinações lineares sobre os atributos de modo que o novo espaço agregue a maior parte da variância dos dados. Para análises onde relações não lineares devem ser consideradas, \textit{Multimensional Scaling} (MDS) é uma alternativa interessante, pois trata-se de um algoritmo de otimização iterativo não linear, que busca minimizar as distâncias entre os elementos no espaço projetado e no espaço original. A área de aprendizado de máquina contribuiu com o método não supervisionado \textit{Self Organizing Maps} (SOM) para transformar conjuntos de dados em mapas bidimensionais.
 
-% Sem dúvida a técnica mais importante é PAC
-
-\subsection{Seleção de Características} 
+\subsubsection{Seleção de Características} 
 
 O objetivo dos métodos de seleção de características é encontrar o subconjunto  dos atributos de entrada mais adequado para a aplicação em estudo. 
 Assim, busca-se identificar e eliminar atributos redundantes~\cite{Kohavi1997} ou que não apresentem correlação com o fenómeno investigado~\cite{Nilsson2007}. 
@@ -66,51 +47,50 @@ Em comparação aos métodos de extração, os métodos de seleção apresentam 
 Assim, se o usuário tem certo conhecimento sobre o conjunto de entrada, então será capaz de compreender os resultados obtidos.
 No entanto, eles compartilham a mesma natureza caixa-preta dos métodos de extração e privam o usuário de qualquer interação durante o processo de redução, impedindo que o usuário contribua com seu conhecimento sobre o domínio e compreenda quais características dos seus dados foram responsáveis por aquele resultado.
 
-\section{Redução de Dimensionalidade Interativa}
+\subsection{Métodos Interativos}
 
 Métodos visuais que permitem a interação do usuário ganharam grande popularidade nos últimos anos~\cite{State2012}. 
-Grande parte deste sucesso pode ser atribuído ao uso efetivo da capacidade preemptiva da visão humana.
-Foi demonstrado que quando os dados são representados por alguma forma gráfica, o ser humano é capaz de detectar e reconhecer padrões facilmente e rapidamente~\cite{Healey1995}, mesmo em grandes conjuntos de dados~\cite{Fodor2002}.
-Mas a capacidade preemptiva de visão humana não é a única vantagem dos métodos interativos. Permitir que o usuário participe ativamente nos processos e na geração dos resultados também traz grandes benefícios em relação a métodos completamente automáticos.
-Deste modo, a seguir serão apresentados os trabalhos desta nova vertente que buscam executar redução de dimensionalidade de forma interativa. Trabalhos que não somente fazem uso da capacidade perceptiva dos usuários, mas que também permitem que o usuário participe ativamente na geração dos resultados com o seu conhecimento sobre o domínio.
+Grande parte deste sucesso pode ser atribuído ao uso efetivo da capacidade preemptiva da visão humana.Foi demonstrado que quando os dados são representados por alguma forma gráfica, o ser humano é capaz de detectar e reconhecer padrões facilmente e rapidamente~\cite{Healey1995}, mesmo em grandes conjuntos de dados~\cite{Fodor2002}. Mas a capacidade preemptiva de visão humana não é a única vantagem dos métodos interativos. Permitir que o usuário participe ativamente nos processos e na geração dos resultados também traz grandes benefícios em relação a métodos completamente automáticos. Deste modo, a seguir serão apresentados os trabalhos desta nova vertente que buscam executar redução de dimensionalidade de forma interativa. Trabalhos que não somente fazem uso da capacidade perceptiva dos usuários, mas que também permitem que o usuário participe ativamente na geração dos resultados com o seu conhecimento sobre o domínio.
 
-\subsection{Matrizes de Correlação}
+\subsubsection{Matrizes de Correlação}
 
-Uma das maneiras mais utilizadas para se inspecionar relações entre dimensões são as matrizes de correlação~\cite{Friendly2002} (observar Figura~\ref{fig:var1}). Este tipo de representação é útil para se ter uma visão geral das relações entre pares de dimensões e permite que um grande número de itens seja analisado. No entanto, para análises mais detalhadas, ou que exijam uma comparação entre mais do que simplesmente pares de elementos, não é uma representação adequada.
+Uma das maneiras mais utilizadas para se inspecionar relações entre dimensões são as matrizes de correlação~\cite{Friendly2002} (observar Figura~\ref{fig:bs1}). Este tipo de representação é útil para se ter uma visão geral das relações entre pares de dimensões. No entanto, para análises mais detalhadas, ou que exijam uma comparação entre mais do que simplesmente pares de elementos, não é uma representação adequada.
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=12cm]{images/bs1.pdf}
-    \caption[Matrizes de Correlação]{Exemplo de matriz de correlação para dados de jogos de baseball. A cor azul indica correlação positiva entre as variáveis, enquanto a vermelha correlação negativa. A intensidade da cor é proporcional à magnitude da correlação. Com base em uma investigação visual é possível levantar certas hipóteses sobre os dados. Observa-se, por exemplo, uma relação direta entre os anos de carreira do jogador (Years) e o seu salário (logSal), ao mesmo tempo a experiência tem uma relação inversa com o número de erros.} 
+    \includegraphics[width=10cm]{images/bs1.pdf}
+    \caption[Matrizes de Correlação]{Exemplo de matriz de correlação para dados de baseball. A cor azul indica correlação positiva entre as variáveis, enquanto a vermelha correlação negativa. A intensidade da cor é proporcional à magnitude da correlação. Com base em uma investigação visual é possível levantar certas hipóteses sobre os dados. Observa-se, por exemplo, uma relação direta entre os anos de carreira do jogador (Years) e o seu salário (logSal), ao mesmo tempo a experiência tem uma relação inversa com o número de erros.} 
     \label{fig:bs1}
 \end{figure}
 
-Devido à sua simplicidade, este tipo de representação foi adotada por diversos métodos visuais que viabilizam a investigação de atributos de um conjuntos de dados. O \emph{framework}\footnote{Explicar o que é framework} RBF (\emph{Rank by Feature})~\cite{RBF2004}, por exemplo, utiliza matrizes de correlação para apresentar um \emph{ranking} entre pares de dimensões (observar Figura~\ref{fig:rbf1}). Este \emph{ranking} é definido com base em critérios estatísticos estabelecidos pelo usuário. 
+Devido à sua simplicidade, este tipo de representação foi adotada por diversos métodos visuais que viabilizam a investigação de atributos de um conjuntos de dados. O \emph{framework}\footnote{No contexto deste documento, um \emph{framework} trata-se de um conjunto de técnicas que são incorporadas em um ambiente interativo.} desenvolvido por \cite{Guo2003}, por exemplo, utiliza matrizes de correlação para apresentar as relações entre os atributos e utilizam um método de agrupamento para ordenar as colunas da matriz de modo a destacar grupos de dimensões.
+
+O objetivo da matriz de correlação não é propriamente reduzir a dimensionalidade do conjunto de dados, mas sim encontrar subconjuntos de atributos com características similares.
+Como é ilustrado na Figura~\ref{fig:coord}, uma vez identificados esses subconjuntos, o usuário investiga os grupos de interesse com outros recursos interativos. 
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=\textwidth]{images/rbf1.png}
-    \caption[Rank by Feature Framework]{Exemplo do \emph{framework Rank by Feature}. (1) matriz de correlação dos itens. (2) valores de correlação para os pares de dimensões. (3) projeção bidimensional das dimensões selecionadas \emph{(Extraído de \cite{RBF2004})}}.
-    \label{fig:rbf1}
+    \includegraphics[width=12cm]{images/coord.png}
+    \caption[\cite{Guo2003}]{Visão geral do \emph{framework} desenvolvido por \cite{Guo2003}. Na parte superior encontra-se a matriz de correlação. Nota-se que graças ao método de ordenação das colunas, os grupos de dimensões similares são mais facilmente identificados. O usuário então seleciona um subconjunto de atributos por meio da seleção dos elementos correspondentes na diagonal da matriz. As outras visualizações são coordenadas com a seleção do usuário e então análises mais detalhadas podem ser realizadas para uma melhor compreensão das estruturas presentes naquele subconjunto de atributos.} 
+    \label{fig:coord}
 \end{figure}
 
-O objetivo da investigação da matriz de correlação não é propriamente reduzir a dimensionalidade do conjunto de dados, mas sim encontrar subconjuntos de atributos com características similares. Outros trabalhos~\cite{Guo2003,MacEachren2003,May2011,May2011ss} também adotam matrizes de correlação para atingir esse mesmo objetivo. Eles diferem na maneira de como é construída a matriz de correlação e de quais recursos são disponibilizados para o usuário interagir com os subconjuntos de dimensões.
+Outros trabalhos~\cite{RFriendly2002,BF2004,MacEachren2003,May2011,May2011ss} também adotam matrizes de correlação para atingir esse mesmo objetivo. Eles diferem na maneira de como é construída a matriz de correlação e de quais recursos são disponibilizados para o usuário interagir com os subconjuntos de dimensões. Um problema geral desses trabalhos é que certas análises podem exigir demasiado esforço do usuário, devido à necessidade de se explorar individualmente cada dimensão ou avaliar par a par as relações entre atributos. Com a ocorrência de dependências não lineares este problema torna-se ainda maior e o usuário pode se perder em suas análises e não extrair novos conhecimentos dos resultados. 
 
-Um problema geral desses trabalhos é que certas análises podem exigir demasiado esforço do usuário, devido à necessidade de se explorar individualmente cada dimensão ou avaliar par a par as relações entre atributos. Com a ocorrência de dependências não lineares este problema torna-se ainda maior e o usuário pode se perder em suas análises e não extrair novos conhecimentos dos resultados. 
-\subsection{Hierarquias de Dimensões}
+\subsubsection{Hierarquias de Dimensões}
 
-Em busca de construir espaços de baixa dimensionalidade mais intuitivamente do que pelo uso de métodos automáticos, \citeauthor{Yang2003} desenvolveram o método de redução de dimensionalidade chamado VHDR (Visual Hierarchical Dimensions Reduction)~\cite{Yang2003}. O funcionamento deste método é ilustrado pela Figura~\ref{fig:vhdr1}. Inicialmente constrói-se uma organização hierárquica dos atributos com base na similaridade entre as dimensões. Em seguida, com base nesta hierarquia, o usuário define grupos de dimensões. Finalmente, o usuário por meio de um método automático ou de seu conhecimento sobre os dados, escolhe dimensões representativas para cada grupo, reduzindo assim a dimensionalidade dos dados. 
+Em busca de construir espaços de baixa dimensionalidade mais intuitivamente do que pelo uso de métodos automáticos, \cite{Yang2003} desenvolveram o método de redução de dimensionalidade chamado VHDR (Visual Hierarchical Dimensions Reduction). O funcionamento deste método é ilustrado pela Figura~\ref{fig:vhdr1}. Inicialmente constrói-se uma organização hierárquica dos atributos com base na similaridade entre as dimensões. Em seguida, com base nesta hierarquia, o usuário define grupos de dimensões. Finalmente, o usuário por meio de um método automático ou de seu conhecimento sobre os dados, escolhe dimensões representativas para cada grupo, reduzindo assim a dimensionalidade dos dados. 
 
 \begin{figure}[h!]
   \centering
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.35\textwidth}
     \centering
     \includegraphics[width=\textwidth]{images/vhdr1.png}
     \caption{}
     \label{fig:vhdr1}
   \end{subfigure}%
-  \qquad %add desired spacing between images, e. g. ~, \quad, \qquad etc.
-  \begin{subfigure}[b]{0.45\textwidth}
+  \hspace{1cm} %add desired spacing between images, e. g. ~, \quad, \qquad etc.
+  \begin{subfigure}[b]{0.5\textwidth}
     \centering
     \includegraphics[width=\textwidth]{images/vhdr2.png}
     \caption{}
@@ -123,13 +103,13 @@ O processo de construção da hierarquia é muito semelhante aos algoritmos de a
 
 Uma limitação do VHDR surge quando se inicia a etapa de seleção de dimensões representativas. A representação visual não é capaz de transmitir a magnitude da similaridade entre os atributos. Isto é, o usuário não é capaz de compreender, por exemplo, quanto um elemento dentro de um grupo é diferente de outro elemento pertencente a outro grupo. Essa limitação dificulta tanto a etapa de seleção de grupos quanto a de escolha de dimensões representativas.
 
-Os autores do VHDR desenvolveram uma extensão chamada DOSFA (Dimension Ordering Spacing and Filtering Approach)~\cite{DOSFA} que apresenta outros mecanismos para manipular os atributos de um conjunto de dados. Mais especificamente, eles propõem três abordagens para ordenação, espaçamento e filtragem de atributos. As duas primeiras, ordenação e espaçamento, não estão diretamente relacionadas com redução de dimensionalidade. Já a filtragem de atributos é análoga aos métodos de seleção de características. Este mecanismo consiste em remover dimensões pouco representativas ou redundantes. De modo que se certas dimensões apresentam alta similaridade entre si, então apenas uma delas é mantida. Ou se certas dimensões apresentam pouca relevância, então são descartadas. A grande complexidade do processo de filtragem é o modo como se define a redundância e a importância entre as dimensões. 
+Os autores do VHDR desenvolveram uma extensão chamada DOSFA (Dimension Ordering Spacing and Filtering Approach)~\cite{DOSFA} que apresenta outros mecanismos para manipular os atributos de um conjunto de dados. Mais especificamente, eles propõem abordagens para ordenação, espaçamento e filtragem de atributos. As duas primeiras, ordenação e espaçamento, não estão diretamente relacionadas com redução de dimensionalidade. Já a filtragem de atributos é análoga aos métodos de seleção de características. Este mecanismo consiste em remover dimensões pouco representativas ou redundantes. De modo que se certas dimensões apresentam alta similaridade entre si, então apenas uma delas é mantida, ou se certas dimensões apresentam pouca relevância, então são descartadas. A grande complexidade do processo de filtragem é o modo como se define a redundância e a importância entre as dimensões. 
 
 Tanto o VHDR quanto o DOSFA tratam todo o conjunto de dados de maneira uniforme. No entanto, podem existir subconjuntos nos dados com diferentes características que devem ser analisados separadamente~\cite{May2011}. Uma maneira de contornar este problema seria apresentar os itens simultaneamente com a representação das dimensões, assim o usuário poderia detectar grupos não somente nas dimensões mais também nos itens.
 
-\subsection{Mapeamento de Dimensões no Plano}
+\subsubsection{Mapeamento de Dimensões no Plano}
 
-Abordando justamente o problema de se apresentar itens simultaneamente com as dimensões de um conjunto de dados, \citeauthor{Yang2004} desenvolveram a técnica VaR (Value and Relation)~\cite{Yang2004}. A técnica une os conceitos de MDS e glifos para representar as dependências entre as dimensões de uma base de dados. 
+Abordando justamente o problema de se apresentar itens simultaneamente com as dimensões de um conjunto de dados, \cite{Yang2004} desenvolveram a técnica VaR (Value and Relation). A técnica une os conceitos de MDS e glifos para representar as dependências entre as dimensões de uma base de dados. 
 
 Como mostra a Figura~\ref{fig:var1}, cada glifo representa uma dimensão e de acordo com seus posicionamentos no plano o usuário pode compreender como as dimensões se relacionam entre si. 
 O usuário é capaz de construir espaços dimensionais reduzidos que conservam certas características dos dados por meio de seleções sobre os dados ou pelo uso de um método automático que a partir de uma dimensão de referência e um \emph{threshold} definido pelo usuário retorna as dimensões mais semelhantes.
@@ -169,21 +149,77 @@ Não é especificamente um método para redução de dimensionalidade, mas serve
 
 A exploração das relações entre as dimensões não precisa estar vinculada somente a representações visuais dos atributos do conjunto de dados. \citeauthor{Turkay2011}~\cite{Turkay2011} propuseram um método de múltiplas visões que permite que o usuário interaja tanto com as dimensões quanto com os itens da base de dados. O principal mecanismo de interação é a seleção que se reflete em outras visões e permite que se visualize, por exemplo, as dimensões que melhor representam subconjuntos dos dados. Uma das limitações deste trabalho é falta de medidas que consideram pares de dimensões, como medidas de correlação, o que dificulta a observação de dependências entre os atributos.  
 
-\subsection{Visualização de Métodos Automáticos}
+Os autores abordam a questão da exploração das relações entre dimensões de uma base de dados. Afirmam que este tipo de relação é no mínimo tão importante quanto à relação entre itens de uma base de dados. Eles propõem um método de múltiplas visões que permite que o usuário interaja tanto com os itens da base de dados quanto com as dimensões. Cada seleção, ou brushing, reflete nas outras visões de modo que é possível visualizar por exemplo os atributos que mais variam em determinados subconjuntos da base de dados. Segundo os autores esta é uma abordagem inédita na literatura. Acredito que a abordagem seja interessante, no entanto ao meu ver o usuário é restrito à análises de dimensões par a par, o que pode ser uma desvantagem para conjuntos de alta dimensionalidade. De  um modo geral a motivação do trabalho é muito boa e os trabalhos relacionados são uma rica fonte para futuros estudos.
+
+\subsubsection{Visualização de Métodos Automáticos}
 
 Existem certos métodos que não utilizam a visualização para realizar redução em si, mas sim para tornar os métodos automáticos mais compreensivos. Eles buscam incluir a participação do usuário nesses métodos para tornar essas ``caixas pretas'' mais compreensivas. 
+
+% Opening the Black Box of Feature Extraction Incorporating Visualization into High-Dimensional Data Mining Processes
+Alguns trabalhos mostram que o uso de um conjunto reduzido de features melhora a acurácia de classificadores. No entanto, poucos trabalhos conseguem explicar o motivo dessa melhora. Os autores sugerem que esta limitação é justificada principalmente pela falta de ferramentas visuais para a análises dos processos.Deste modo, o paper apresenta um método visual que permite que os usuários entendam melhor o processo do classificador J48. Os autores também apresentam um método de extração de feature que se baseia na construção de uma matriz de similaridade calculada sobre a correlação entre as dimensões e em seguida realiza-se um clustering hierárquico. Comparou-se o método proposto com a não utilização do método e observou-se um aumento de 2\% na acurácia do J48.
 
 A técnica iPCA~\cite{Jeong2009}, por exemplo, provém meios para o usuário manipular os parâmetros da técnica PCA e, assim, ser capaz de entender mais facilmente as transformações realizadas sobre os dados. 
 
 Similarmente, MDSteer [24] permite que o usuário guie o processo de MDS ao escolher regiões de interesse para se concentrar os esforços computacionais. No entanto, os mecanismos de interação propostos por esses trabalhos se baseiam em interfaces que são demasiadamente complexas ou que não contém todos os mecanismos necessários para lidar com um grande volume de dados.
 
+Este trabalho busca auxiliar o usuário em uma melhor compreensão e utilização de técnicas visuais baseadas em PCA.   Eles afirmam que a maioria dos usuários enxergam PCA como uma black-box e apresentam dificuldades para compreender seu funcionamento. Indicam que não é intuitivo perceber as relações entre os dados de entrada e os resultados obtidos. Como por exemplo, compreender o significado dos dados projetados no eigenspace e compreender como se dá a transformação de um espaço para outro.
+
+Para solucionar este problema os autores propõem o uso de 4 visões coordenadas que operam em conjunto sobre os dados. O método foi avaliado por 12 usuários e comparado com a ferramenta SAS/INSIGHT. De acordo com os resultados, o método proposto apresentou uma maior velocidade e precisão nos testes realizados e todos os 12 usuários tiveram preferência pela nova ferramenta.
+
+As quatro visões são descritas e criticadas da seguinte maneira:
+
+1: Uma projeção dos dois componentes principais da PCA. Um fator negativo é que o manifold pode pertencer a um espaço de maior dimensionalidade
+
+2: Uma visualização do eigenspace utilizando coordenadas paralelas. Trata-se de uma visão controversa ao objetivo do trabalho. A visão não é intuitiva e exige um conhecimento da técnica para ser interpretada.
+
+3: Trata-se de uma visualização dos items em coordenadas paralelas. Contém os pontos negativos da implementação clássica, difícil interpretação das relações entre atributos e baixa escalabilidade.
+
+4: Uma matrix da correlação entre pares de atributos. Apresenta baixa escalabilidade.
+
+\subsection{?????}
+
+% Semi-Supervised Dimensionality Reduction based on Partial Least Squares for Visual Analysis of High Dimensional Data
+O trabalho consiste em utilizar os métodos estatísticos pertencentes à classe PLS (Partial Least Squares) para desenvolver um novo processo de mapeamento de dados multidimensionais. Segundo os autores, o novo método atende aos requisitos de precisão e apresenta performance superior aos algoritmos comparados. No entanto, por se tratar de uma técnica supervisionada, o trabalho depende de certos parâmetros que não são facilmente definidos.
+
+Os autores buscaram na literatura trabalhos que buscaram realizar a redução de dimensionalidade utilizando técnicas semelhantes. No entanto, poderia ter sido realizado uma busca mais profunda por trabalhos semelhantes em outros aspectos, como por exemplo a aplicação de técnicas de aprendizado de máquina (além de PCA, LLE) para os objetivos desejados.
+
+Vejo este trabalho como mais uma iniciativa de agregar técnicas de diferentes áreas para objetivos específicos. A área de estatística tem métodos bem definidos para muitas das atividades que realizamos em visualização, trata-se de um dever ter conhecimento dessas técnicas para evitar que se reinvente a roda.
+
+% iVisClassifier: An interactive visual analytics system for classification based on supervised dimension reduction (2010)
+Este paper introduz um método de suporte para classificação automática. Os autores partem do princípio que os algoritmos de classificação são de difícil compreensão e meios interativos podem ajudar neste problema pois utilizariam o conhecimento do usuário na execução dos métodos.  Um dos objetivos do trabalho é compreender as características do classificador escolhido e como eles agem sobre os dados. Em relação aos trabalhos relacionados, os autores fazem uma colocação interessante: “as pessoas preferem métodos tradicionais como PCA, MDS e SOM porque os métodos novos tendem a não funcionar para uma gama universal de tipos de dados e também por serem pouco intuitivos.
+
+O trabalho tem como base a técnica LDA. Esta técnica projeta dados multidimenionais rotulados de modo a conservar a a classe dos elementos. Ela utiliza os centróides dos grupos como referência para o projeção. Dependendo dos parâmetros utilizados é possível, por exemplo, projetar todos os elementos de um grupo em um único ponto.
+
+Os autores utilizam heat maps para visualizar a distância entre os centroides dos cluster e assim perceber a qualidade dos grupos. Utilizam uma recomposição linear da LDA para reconstruir imagens com base nas dimensões escolhidas. O usuário pode interagir com scatterplots e coordenadas paralelas para entender melhor o resultado do LDA e inclusive classificar novos elementos com base nessas visões.
+
+\section{Transformação do Espaço de Atributos}
+
+Os métodos de transformação de espaços de atributos não contam com uma literatura tão vasta quanto a dos métodos de redução, sendo que as principais contribuições surgiram na última década.
+
+
+
+% Uncertainty-Aware Exploration of Continuous Parameter Spaces Using Multivariate Prediction
+A contribuição deste trabalho é um método para avaliar como os parâmetros de uma função afetam o seu resultado e também como os parâmetros podem ser definidos para se atingir um valor desejado. O método disponibliza diferentes métodos estatísticos para prever resultados da função, assim possibilita-se interações em tempo real, já que o calcula da função pode ser muito custoso. Um ponto interessante do trabalho é a constante atenção com a incerteza dos métodos realizados. Os autores provém métodos para avaliar tanto a incerteza da amostragem dos dados quanto a incerteza das predições realizadas. Este cuidado com a incerteza é essencial para o trabalho e me faz pensar se procedimentos similares não deveriam ser obrigatórios para todos trabalhos. A implementação da proposta utiliza visualizações tradicionais como scatterplots e coordenadas paralelas em múltiplos displays coordenados entre si, de modo que é possível interagir tanto com o espaço de parâmetros quanto com o espaço de valores. O trabalho foi avaliado dentro  de um domínio de aplicação de design de motores de carros e testados por 5 experts da área que se mostraram satisfeitos com a aplicação.
+
+% Pegar alguns do temático
+% User-driven
+
 \section{Considerações Finais}
 
-A representação explícita das dimensões do conjunto de dados serve como inspiração para este trabalho de mestrado. Já o uso de glifos orientado a pixels se mostrou inadequado para situações com um elevado número de elementos, causando indesejadas sobreposições entre elementos. Um outro aspecto importante que os próprios autores mencionam em relação ao uso deste tipo de  glifos é que os usuários têm dificuldade em comparar glifos que se encontram afastados entre si. 
+A falta da participação do usuário no processo de redução faz com que muitas vezes os resultados obtidos não sejam facilmente compreendidos. Apesar dos métodos interativos se mostrarem como uma interessante alternativa para o problema, os mecanismos de interação propostos apresentam grandes limitações. 
+
+% A representação explícita das dimensões do conjunto de dados serve como inspiração para este trabalho de mestrado. 
+
+% Tendo em vista que o objetivo das representações visuais é tornar as análises mais intuitivas, qualquer tipo de obstáculo, como a necessidade de treinamento do usuário, pode ser desfavorável ao se comparar com os métodos automáticos.
+
+% Métodos de coordenação tem sido muito utilizados, mas eles não se preocupam em manter a mesma metáfora visual.
+
+% Carência de certos mecanismos de interação (nenhum propõe "arrastar dimensões", somente  selecionar e no máximo combiná-las) 
+% Sobrecarga sistema cognitivo do usuário (density pixels, variedade de metáforas visuais)
 
 \begin{table}
     \centering
-    \caption {legenda}
+    \caption {Levantamento das limitações dos métodos interativos de manipulação do espaço de atributos.}
     \begin{tabular}{|c|C{2cm}|C{2.5cm}|C{3cm}|C{2cm}|}
         \hline
         \textbf{Técnica} & 
@@ -198,10 +234,3 @@ A representação explícita das dimensões do conjunto de dados serve como insp
         VaR     & S & N & N & N \\ \hline
     \end{tabular}
 \end{table}
-
-% Tendo em vista que o objetivo das representações visuais é tornar as análises mais intuitivas, qualquer tipo de obstáculo, como a necessidade de treinamento do usuário, pode ser desfavorável ao se comparar com os métodos automáticos.
-
-% Métodos de coordenação tem sido muito utilizados, mas eles não se preocupam em manter a mesma metáfora visual.
-
-% Carência de certos mecanismos de interação (nenhum propõe "arrastar dimensões", somente  selecionar e no máximo combiná-las) 
-% Sobrecarga sistema cognitivo do usuário (density pixels, variedade de metáforas visuais)
