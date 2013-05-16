@@ -2,9 +2,46 @@
 
 \section{Contextualização e Motivação}
 
-A exploração de conjuntos de dados é uma atividade que está presente em nosso cotidiano nos mais diferentes aspectos. De pesquisas que buscam estudar o genoma humano à análises de mercado, todas partem de observações do problema em estudo na busca por explicações.
+% A exploração de conjuntos de dados é uma atividade que está presente em nosso cotidiano nos mais diferentes aspectos. De pesquisas que buscam estudar o genoma humano à análises de mercado, todas partem de observações do problema em estudo na busca por explicações.
 
-Para melhor entendermos o processo de exploração de dados, tomemos como exemplo o seguinte problema: um pesquisador deseja definir qual é o melhor país em termos de qualidade de vida.
+% Para melhor entendermos o processo de exploração de dados, tomemos como exemplo o seguinte problema: um pesquisador deseja definir qual é o melhor país em termos de qualidade de vida.
+
+% Um método de redução retornaria por exemplo os atributos x e y.
+
+Introduzir transformação do espaço de atributos.
+
+% Ler introdução do temático
+
+\begin{table}[htbp]
+    \caption{Conjunto de dados fictício.}
+    \begin{center}
+        \begin{tabular}{|l|C{1.5cm}|C{1.5cm}|C{1.5cm}|C{1.5cm}|C{1.5cm}|C{1.5cm}|}
+            \cline{2-7}
+            \multicolumn{1}{c|}{\textbf{\textit{}}} & 
+            \textbf{\textit{padrão}} & 
+            \textbf{\textit{clima}} & 
+            \textbf{\textit{gastronomia}} & 
+            \textbf{\textit{segurança}} & 
+            \textbf{\textit{recepção}} & 
+            \textbf{\textit{infraestrutura}} \\ \hline
+            \textbf{Itália} & 7 & 8 & 9 & 5 & 7 & 7 \\ \hline
+            \textbf{Espanha} & 7 & 9 & 9 & 5 & 8 & 8 \\ \hline
+            \textbf{Croácia} & 5 & 6 & 6 & 6 & 5 & 6 \\ \hline
+            \textbf{Brasil} & 5 & 8 & 7 & 3 & 8 & 3 \\ \hline
+            \textbf{Rússia} & 6 & 2 & 2 & 3 & 3 & 6 \\ \hline
+            \textbf{Alemanha} & 8 & 3 & 2 & 8 & 3 & 9 \\ \hline
+            \textbf{Turquia} & 5 & 8 & 9 & 3 & 9 & 3 \\ \hline
+            \textbf{Marrocos} & 4 & 7 & 8 & 2 & 9 & 2 \\ \hline
+            \textbf{Peru} & 5 & 6 & 6 & 3 & 6 & 4 \\ \hline
+            \textbf{Nigéria} & 2 & 4 & 4 & 2 & 7 & 2 \\ \hline
+            \textbf{França} & 8 & 4 & 7 & 7 & 1 & 8 \\ \hline
+            \textbf{México} & 2 & 5 & 5 & 2 & 7 & 3 \\ \hline
+        \end{tabular}
+    \end{center}
+    \label{tab:at}
+\end{table}
+
+% DimStiller e Brushing podem ajudar.
 
 A exploração de conjuntos de dados é um problema abordado com frequência em computação, tanto na área acadêmica quanto na indústria~\cite{Ngai2009,Harding2006}. Tal exploração tem como objetivo uma melhor compreensão dos fenômenos que afetam a sociedade em determinados aspectos. Com base nos novos conhecimentos adquiridos, espera-se melhorar o processo de tomadas de decisões como por exemplo, previsão de condições climáticas, diagnósticos de doenças, detecções de fraude, análise de mercado, etc.
 
@@ -17,7 +54,7 @@ Quando o número de atributos utilizado nas análises é muito elevado, 50 vari�
 
 Ao enfrentar as dificuldades impostas pela alta dimensionalidade, uma abordagem adotada com frequência é o uso de métodos de redução de dimensionalidade. O objetivo desses métodos é encontrar o menor espaço dimensional que é capaz de descrever os dados mantendo informações que são relevantes segundo a um determinado critério. Tal abordagem é  viabilizada pelo fato de que a maioria dos conjuntos de dados possuem atributos que não são ``importantes'' para a compreensão do fenômeno observado.
 
-A maioria dos métodos de redução de dimensionalidade são ditos métodos caixa-preta, ou seja, o usuário inspeciona apenas os dados de entrada e saída, desconhecendo o processamento interno realizado. Deste modo, esses métodos restringem a interação do usuário, o que além de tornar o processo pouco intuitivo, impede que o usuário modifique os resultados de acordo com a sua experiência na área. 
+A maioria dos métodos de redução de dimensionalidade são ditos métodos caixa-preta, ou seja, o usuário inspeciona apenas os dados de entrada e saída, desconhecendo o processamento realizado internamente. Deste modo, esses métodos restringem a interação do usuário, o que além de tornar o processo pouco intuitivo, impede que o usuário modifique os resultados de acordo com a sua experiência na área. 
 
 Mas esqueça por um momento as limitações dos métodos de redução de dimensionalidade. Imagine uma situação onde todas as variáveis observadas apresentem igual e distinta importância para a compreensão do fenômeno em estudo. Ainda assim, esta situação pode não ser a ideal. Podem existir outros fatores que desempenhem papel fundamental para a compreensão do problema e que não tenham sido capturados na etapa de coleta e armazenamento dos dados. Em situações como esta, somente inserindo o conhecimento de um especialista da área no processamento dos dados será possível se compreender o fenômeno por completo. 
 
