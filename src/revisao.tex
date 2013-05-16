@@ -684,7 +684,7 @@ Figura~\ref{fig:ipca}). Similarmente, \cite{Williams2004}
 permite que o usuário guie o processo de redução de
 dimensionalidade a partir de métodos MDS ao escolher regiões
 de interesse para se concentrar os esforços computacionais.
-Mais recentemente, \cite{Schreck2008} desenvolveram uma
+Neste mesmo sentido, \cite{Schreck2008} desenvolveram uma
 ferramenta que permite ao usuário monitorar visualmente os
 recursos computacionais utilizados pelo método SOM e definir
 interativamente os parâmetros para sua execução.
@@ -700,19 +700,18 @@ usuário a definir os parâmetros dos métodos de seleção de
 características.
 
 Os trabalhos propostos por \cite{Choo2010}, \cite{Paiva2012}
-e \cite{Zhang2006} são abordagens que buscam não somente
-tornar o processo de redução de dimensionalidade mais
-intuitivo, mas que também são aplicáveis no contexto de
-classificação de dados. Nesses métodos a redução de
-dimensionalidade reflete diretamente a qualidade das
+e \cite{Zhang2006} são abordagens que buscam tornar o
+processo de redução de dimensionalidade mais intuitivo no
+contexto de classificação de dados. Nesses métodos a redução
+de dimensionalidade reflete diretamente na qualidade das
 classificações. 
 
 Um problema das ferramentas que criam visualizações de métodos
 automáticos é a necessidade do usuário ter um certo
-conhecimento do método por trás da visualização. Por
+conhecimento sobre o método por trás da visualização. Por
 exemplo, no caso da ferramenta iPCA, o usuário pode ver
 pouca utilidade na visualização da janela B apresentada na
-Figura~\ref{fig:ipca} se não souber o que significa um
+Figura~\ref{fig:ipca}, se não souber o que significa um
 componente principal. Para pesquisadores da área pode ser
 até pressuposto que o usuário tenha este tipo de
 conhecimento, no entanto, se o objetivo for criar uma
@@ -736,40 +735,37 @@ ferramenta proposta por \cite{Gladys2013} que possibilita ao
 usuário modificar os atributos de um conjunto de dados com
 base na manipulação sobre amostras dos itens. Os autores
 fazem uso de mapeamento de elementos no plano para permitir
-interações intuitivas sobre os dados.
-
-Como mostra a Figura~\ref{fig:ud}, o funcionamento dessa
-ferramenta parte de uma
-amostragem dos dados, a qual o usuário manipula
-para agrupar elementos que considera similares. Em seguida,
-as manipulações realizadas sobre a amostra são refletidas
-para o conjunto de dados original, fazendo com que este
-reflita a opinião do usuário em relação ao critério de
-similaridade entre os elementos.
+interações intuitivas sobre os dados. Como mostra a
+Figura~\ref{fig:ud}, o funcionamento dessa ferramenta parte
+de uma amostragem dos dados, a qual o usuário manipula para
+agrupar elementos que considera similares. As manipulações
+estabelecem novas relações de similaridade que são
+refletidas para todo o conjunto de dados. O processo pode
+ser repetido até que o usuário consiga modificar o conjunto
+de dados de modo a agregar seu conhecimento sobre o assunto.
 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=16cm]{images/ud.png}
     \caption[Ferramenta desenvolvida por \cite{Gladys2013}]
     {Ferramenta desenvolvida por \cite{Gladys2013}.
-    Inicialmente, o usuário manipula uma amostra dos dados
-    buscando  agrupar elementos que considera similares.
-    Em seguida, as manipulações realizadas sobre a
-    amostra são refletidas para o conjunto de dados
-    original, fazendo com que este reflita a opinião do
-    usuário em relação ao critério de similaridade entre
-    os elementos. Este processo pode ser repetido
-    iterativamente até que se atinja o
-    resultado esperado. Observa-se que para este
-    exemplo a transformação do espaço foi bem sucedida, pois
-    foram reveladas estruturas que até então não eram
-    identificáveis.}
+    Inicialmente, o usuário manipula uma amostra dos
+    dados buscando  agrupar elementos que considera
+    similares.  Em seguida, as manipulações realizadas
+    sobre a amostra são refletidas para o conjunto de
+    dados original, fazendo com que este reflita a
+    opinião do usuário em relação ao critério de
+    similaridade entre os elementos. Este processo pode
+    ser repetido até que se atinja o resultado esperado.
+    Observa-se que para este exemplo a transformação do
+    espaço foi bem sucedida, pois foram reveladas
+    estruturas que até então não eram identificáveis.}
     \label{fig:ud}
 \end{figure}
 
-Certos fatores afetam drasticamente o resultado obtido
-pelo UD-FST. Trata-se do caso da maneira que se
-escolhe a amostra dos dados. Utilizando, por exemplo, uma
+Certos fatores podem afetar drasticamente o resultado obtido
+por essa ferramenta. Trata-se do caso da maneira que é realizada 
+a amostragem dos dados. Utilizando, por exemplo, uma
 amostragem aleatória, não haveriam garantias de que
 elementos de cada estrutura seriam escolhidos.
 Consequentemente, o usuário precisaria de mais iterações
@@ -819,7 +815,7 @@ ferramenta que alie esses recursos em um único ambiente.
         \hline
         iPCA                    & \redc & \greenc & \redc \\ 
         \hline
-        UD-FST                  & \redc & \redc & \greenc\\ 
+        \cite{Gladys2013}       & \redc & \redc & \greenc\\ 
         \hline
     \end{tabular}
     \label{tab:tr}
