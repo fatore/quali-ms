@@ -1,260 +1,223 @@
 \chapter{Proposta de Trabalho}\label{chap:proposta}
 
-\section{Considerações Iniciais}
+\section{Motivação e Objetivo}
 
 No Capítulo~\ref{chap:revisao} foram apresentados os
 métodos que buscam modificar os conjuntos de dados para 
-torná-los mais representativos para o problema em estudo. No
-entanto, esses métodos possuem limitações que impedem que os
+torná-los mais representativos para o problema em estudo. 
+Discutiu-se que os métodos automáticos impedem que os
 usuários orientem essas modificações e ao mesmo tempo
-imponham seus conhecimento sobre os resultados.
+imponham seus conhecimentos sobre os resultados. 
+Buscando tratar este problema apresentou-se as ferramentas 
+visuais que surgem como uma interessante alternativa
+por permitirem a interação dos usuários, mas que ainda
+apresentam certas limitações em relação às interfaces
+utilizadas e aos mecanismos de interação propostos.
 
-Projeções multidimensionais são amplamente utilizadas em
-investigações de conjuntos de dados para extrair novos
-conhecimentos sobre os dados. Usuários que se
-deparam com um aglomerado de pontos sem aparente nenhum
-significado podem concluir que não existem estruturas de
-interesse nos seus dados. No entanto, a explicação mais
-provável para esta situação é que o espaço projetado é menor
-do que a dimensionalidade intrínseca dos dados. Assim,
-pontos que não são idênticos são posicionados na mesma
-posição no espaço projetados. 
+O uso de ferramentas visuais como alternativa aos métodos
+automáticos não é exclusivo aos trabalhos relacionados
+ao aqui proposto. Na verdade, toda a área de
+Mineração Visual de Dados~\cite{Wong1999} (MVD),
+\emph{Visual Data Mining}, tem como objetivo justamente
+envolver os usuários em tarefas que até em tão eram
+executadas de maneira totalmente automática. A principal
+motivação desta área parte do princípio de quando o usuário
+consegue compreender o resultado apresentado por uma
+representação visual, então ele confia neste resultado e
+consegue tirar melhor proveito das análises.
 
-Ter um mecanismo de seleção de itens é essencial para
-encontrar tendências nos dados, pois dificilmente existirão
-padrões presentes no conjunto de dados como um
-todo~\cite{Guo2009}.
+Uma característica fundamental para ferramentas MVD é manter
+a simplicidade em todos aspectos do sistema~\cite{Wong1999}.
+No entanto, foi visto no Capítulo~\ref{chap:revisao} que
+muitas das ferramentas propostas se baseiam em interfaces
+demasiadamente complexas, as quais exigem do usuário um
+certo período de treinamento para um uso efetivo. Tendo em
+vista que o objetivo das ferramentas visuais é tornar as
+análises mais intuitivas, qualquer tipo de obstáculo, como a
+necessidade de treinamento do usuário, pode ser desfavorável
+ao se comparar com os métodos automáticos.
 
-Visual data mining techniques suggest that a more
-efficient and powerful data mining strategy should involve
-users in the visual analytical processes rather than being
-carried out completely by machines.
+Um outro aspecto que deve ser levado em consideração para o
+desenvolvimento dessas ferramentas é permitir seu uso em
+diversos domínios~\cite{Wong1999}. Para isso, diferentes
+mecanismos de interação devem ser oferecidos, já que nenhum
+mecanismo será capaz de operar otimamente para todas as
+aplicações. No entanto, no capítulo anterior foi discutido
+que nenhuma das ferramentas apresentadas consegue unir em um
+único ambiente os principais mecanismos necessários para a
+modificação efetiva de conjuntos de dados.
 
-A falta da participação do usuário no processo de redução faz com que muitas vezes os resultados obtidos não sejam facilmente compreendidos. Apesar dos métodos interativos se mostrarem como uma interessante alternativa para o problema, os mecanismos de interação propostos apresentam grandes limitações. 
+Uma questão que deve ser considerada em ferramentas de
+exploração de dados, sejam elas visuais ou não, trata-se de
+possibilitar investigações em subconjuntos dos dados. Isto é
+importante pois dificilmente o conjunto de dados apresentará
+um comportamento global, sendo mais provável que existam
+subconjuntos com diferentes características que devem ser
+avaliadas localmente~\cite{May2011}.
 
-% A representação explícita das dimensões do conjunto de dados serve como inspiração para este trabalho de mestrado. 
+Levando em consideração os aspectos mencionados nos
+parágrafos acima: simplicidade da ferramenta, diversidade de
+mecanismos de interação e avaliação global e local dos
+dados, este projeto de mestrado se baseia no uso de
+\emph{Biplots} para desenvolver uma ferramenta que apresente
+essas características e ao mesmo tempo seja capaz de cobrir as limitações dos trabalhos do atual estado da arte.
 
-% Tendo em vista que o objetivo das representações visuais é tornar as análises mais intuitivas, qualquer tipo de obstáculo, como a necessidade de treinamento do usuário, pode ser desfavorável ao se comparar com os métodos automáticos.
+Apesar de biplot ser velho...
+Acredita-se que o emprego de \emph{Biplots} proporcionará 
 
-% Métodos de coordenação tem sido muito utilizados, mas eles não se preocupam em manter a mesma metáfora visual.
-
-% Carência de certos mecanismos de interação (nenhum propõe "arrastar dimensões", somente  selecionar e no máximo combiná-las) 
-% Sobrecarga sistema cognitivo do usuário (density pixels, variedade de metáforas visuais)
-
-Individualmente todas as abordagens apresentadas.
-
-
-
-
-
-Uma união entre os conceitos apresentados por VaR, BD e          DimStiller parece promissora. Pois, a representação explicita    das dimensões viabiliza uma série de análises
-
-Meu método é all-relevant (quando tem a classe) e minimal-optimal quando nao tem. É capaz de linear com interdependências sem cair em um np-completo (preciso testar com o exemplo do slide para verificar isso).
-
-\cite{Engel2012} no single method can be preferred over another. On the contrary, the effectiveness of state-of-the-art methods mainly depends on the data and application. 
-We believe that only through the incorporation of multiple concepts from different research fields, can methods for dimension reduction keep pace with future problems. two-dimensional target space is not sufficient for the embedding. visual verification that evaluate the error and ambiguity of a mapping.
-
-Graças à capacidade das projeções transmitirem relações de interdependia entre as os elementos ... 
-
-Naive Feature Selection: evaluate each feature separately and select those with the highest scores. It fails because it does not take into account the interaction between features.
-
-A metodologia proposta por este trabalho é inspirada em uma combinação entre as projeções de atributos de~\cite{Yang2004} e às visões duplamente coordenadas entre itens e atributos de~\cite{Turkay2011}. 
-
-O processo de projeção dos atributos inicia pela criação de uma matriz de distâncias que busca capturar os relacionamentos entre as dimensões. Em seguida, com base nessa matriz, aplica-se um método semelhante a MDS para posicionar os atributos em um plano bidimensional. Diferentemente de \cite{Yang2004}, aqui as dimensões não serão representadas por glifos, mas sim por pontos. Apesar de glifos serem capazes de fornecer informações adicionais sobre os dados, no caso de projeções eles acentuam o problema de sobreposição de elementos.
-
-A etapa de coordenação entre visões dos itens e atributos será realizada 
-
-Posso construir minha base teórica sobre exemplos do AND, OR e XOR> Para isso crio pequenas populações para cada valor (ex. a = cbind(rnorm(100,0),rnorm(100,0))).
-
-A demonstração da seleção é feita pelo exemplo do AND, onde mostra-se que é possível evitar atributos irrelevantes e redundantes.
-Para a combinação usar o exemplo do XOR, onde unindo os atributos consegue-se um melhor resultado na classificação.
-
-A projeção faz com que a medida de correlação também capture interdependências?
-
-Noise reduction and consequently better class separation may be obtained by adding variables that are presumably redundant.
-
-Perfectly correlated variables are truly redundant in the sense that no additional information is gained by adding them.
-
-A variable that is completely useless by itself can provide a significant performance improvement when taken with others.
-
-Two variables that are useless by themselves can be useful together.
-
-\section{Objetivos}
-
-% Falo como vou resolver as limitações levantadas e assim cito as contribuições esperadas do trabalho:
-
-% 1. Acompanhamento do estado da arte dos trabalhos em estatística
-% 2. Mecanismos intuitivos para seleção e combinação
-% 3. Um novo mecanismo que permite a transformação do espaço de atributos
-% 4. Uma única metáfora visual (projeções)
-
-Dentro do contexto apresentado anteriormente, o seguinte parágrafo representa a declaração dos objetivos deste trabalho de mestrado:
+Mais especificamente o objetivo deste trabalho pode ser
+declarado da seguinte maneira:
 
 \begin{quote}
-    \emph{``Este projeto de mestrado tem como objetivo desenvolver mecanismos interativos sobre projeções multidimensionais coordenadas entre atributos e itens que auxiliem o usuário na tarefa de redução de dimensionalidade. Os mecanismos devem permitir tanto a seleção quanto a combinação de atributos. Caso os resultados não reflitam o conhecimento do usuário, este poderá manipular as projeções para transformar o espaço de atributos de modo a criar um modelo mais representativo.''}
+    \emph{``Este projeto de mestrado tem como objetivo
+        desenvolver uma ferramenta visual interativa que
+        permita aos usuários modificarem conjuntos de dados
+        para torná-los mais representativos. As modificações
+        serão realizadas a partir de três principais
+        mecanismos de interação: seleção, construção e
+        transformação de atributos. Com dados melhor
+        representados, os métodos que operam sobre eles,
+        como classificadores e agrupadores de dados, devem
+        apresentar melhores resultados. Será por meio de uma
+        quantificação dessa melhoria que será feita a
+    validação da nova ferramenta desenvolvida.''}
 \end{quote}
 
-As seguir apresenta-se os passos necessários para atingir esses objetivos.
+A seguir apresenta-se a metodologia proposta para a criação
+das visualizações e para o desenvolvimento de cada um dos
+mecanismos interativos.
 
 \section{Metodologia}
 
-A metodologia proposta por este trabalho é ilustrada pela Figura~\ref{fig:met}. O processo inicia pelo cálculo da similaridade entre as dimensões. Com base neste cálculo, cria-se uma matriz de distâncias entre os atributos que é utilizada para projetá-los em um espaço bidimensional.   
+% A metodologia proposta por este trabalho é ilustrada pela
+% Figura~\ref{fig:met}.
 
-inicia pela escolha de uma medida para o cálculo da similaridade entre pares de dimensões. Com base nessas distâncias projeta-se as dimensões utilizando alguma técnica de projeção multidimensional, como MDS. Neste ponto permite-se que o usuário utilize os mecanismos interativos de redução de dimensionalidade e de transformação do espaço de atributos. Ele pode, por exemplo, construir um espaço dimensional reduzido que é prontamente apresentado em visualizações coordenadas. Finalmente, se o resultado obtido não for satisfatório, o usuário pode iniciar novamente o ciclo partindo do novo espaço dimensional construído, ou pode realizar novas manipulações sobre os dados.
+\subsection{Criação da Visualização}
 
-% Melhorar este parágrafo e colocar uma figura para ilustrar o processo.
-
-\begin{figure}[h!]
-    \centering
-    \begin{subfigure}[b]{0.5\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{images/var1.png}
-        \caption{}
-        \label{fig:var1}
-    \end{subfigure}%
-    ~ %add desired spacing between images, e. g. ~, \quad, \qquad etc.
-    \begin{subfigure}[b]{0.475\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{images/var2.png}
-        \caption{}
-        \label{fig:var2}
-    \end{subfigure}
-    \caption[VaR: Value and Relation]{asd}
-    \label{fig:met}
-\end{figure}
-
-
-\subsection{Similaridade entre Dimensões}\label{ss:sim}
-
-Uma tarefa fundamental para a execução deste trabalho é maneira como define-se a            similaridade entre as dimensões. Este problema pode ser formulado da seguinte maneira~\cite{Ankerst1998}: Dado um conjunto de dados contendo $n$ elementos com $m-$dimensões, suas colunas podem ser descritas por $m$ vetores $A_i~(0 \leq i < m)$, cada uma contendo $n$ números reais $a_{i,k}, (0 \leq k < n)$. Deseja-se definir uma medida de similaridade $S$ que dado dois vetores retorne um número real ($S : \mathbb{R}^n \times \mathbb{R}^n \rightarrow \mathbb{R}$) que satisfaça as seguintes propriedades:
-
-\begin{enumerate}
-
-    \item Positividade: $\forall A_i,A_j \in \mathbb{R}^n: S(A_i,A_j) \geq 0 $
-
-    \item Reflexividade: $\forall A_i,A_j \in \mathbb{R}^n: (A_i = A_j) \Leftrightarrow S(A_i,A_j) = 0 $
-
-    \item Simetria: $\forall A_i,A_j \in \mathbb{R}^n: S(A_i,A_j) = S(A_j,A_i)$, onde $(0 \leq i,j < d)$.
-
-\end{enumerate}
-
-Uma medida de similaridade entre duas variáveis $x$ e $y$ muito utilizada é o coeficiente de correlação linear de Pearson $p$, dado por:
-
-\begin{equation}
-    p(x,y) = \frac{cov(x,y)}{\sqrt{var(x)var(y)}},
-\end{equation}
-
-\noindent onde $var$ corresponde à variância e $cov$ à covariância. Quando $x$ e $y$ são completamente dependentes entre si, o valor de $p(x,y)$ é $1$ ou $-1$. Caso não exista nenhuma dependência linear entre as variáveis, o valor obtido é $0$. Porém, nos conjuntos de dados as relações entre as variáveis nem sempre são lineares e daí que surge a maior limitação deste coeficiente. Como pode ser observado pela Figura~\ref{fig:corrs} e pelos valores apresentados na Tabela~\ref{tab:corrs}, a medida não é capaz de capturar dependências não lineares entre as variáveis. 
-
-\begin{figure}[h!]
-    \centering
-    \begin{subfigure}[b]{0.5\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{images/var1.png}
-        \caption{}
-        \label{fig:var1}
-    \end{subfigure}%
-    ~ %add desired spacing between images, e. g. ~, \quad, \qquad etc.
-    \begin{subfigure}[b]{0.475\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{images/var2.png}
-        \caption{}
-        \label{fig:var2}
-    \end{subfigure}
-    \caption[VaR: Value and Relation]{asd}
-    \label{fig:corrs}
-\end{figure}
-
-\begin{table}
-    \caption[Cronograma de atividades]{Cronograma de Atividades. As marcações em preto        indicam atividades que são priorizadas no período.}
-    \begin{center}
-        \begin{tabular}{|c|c|c|c|c|c|c|}
-        \end{tabular}
-    \end{center}
-    \label{tab:corrs}
-\end{table}
-
-% Falar de discretização? (Parzen windows, Torkkola, 2003)
-
-% Introduzo MI (ler Kraskov) 
-
-% Descrevo um estimador de MI, outros estimadores de MI: 12,13,14
-
-% Apresento o problema de MI e MIC como a solução (apresentar complexidade computacional da MIC)
-
-Na literatura encontram-se diversos outros métodos que poderiam ser utilizados para o cálculo de similaridade. Métodos de regressão~\cite{Friedman2001, Cleveland1988, Stone1977} têm bom desempenho quando as relações podem ser descritas por uma função, mas além desta situação falham em encontrar até os mais simples relacionamentos. Os métodos baseados em curvas principais~\cite{Hastie1989, Tibshirani1992, Delicado2008} e outros de correlação~\cite{Reny1959, Breiman1985, Kosorok2009} são aplicáveis a um domínio mais abrangente de dados, porém não conseguem capturar os relacionamentos tão eficientemente quanto a medida MIC~\cite{Reshef2011} mesmo para casos simples, como pode ser observado pela Tabela~\ref{tab:corrs}.    
-
-A qualidade de uma medida de similaridade costuma variar de acordo com o domínio em que é aplicada. Normalmente, uma medida é dita adequada quando há uma concordância entre o valor obtido e a opinião de um especialista da área. No entanto, mesmo um especialista sobre um assunto pode ter dificuldade em determinar com precisão a semelhança entre dois objetos. Assim, é muito difícil definir um modelo matemático que meça a similaridade entre dois atributos com precisão para todas as aplicações de forma genérica. A MIC é uma medida que se propõe a executar esta difícil tarefa e por isso foi escolhida como a medida de similaridade entre dimensões a ser utilizada neste trabalho. 
-
-\subsection{Mapeamento dos Itens no Espaço Bidimensional}
-\subsection{Mapeamento das Dimensões no Espaço Bidimensional}
-\subsection{Mapeamento no Espaço Bidimensional}
-
-O mapeamento dos elementos em um espaço bidimensional se baseia em algum método de redução de dimensionalidade. 
-
-Um ponto fundamental para o mapeamento dos elementos no plano é compreender o erro embutido no processo. O resultado ótimo de qualquer método de redução é levar os dados de m em p, onde p equivale à dimensionalidade intrínseca dos dados. No entanto,  não há garantias de que p equivale à um espaço bidimensional, assim ao mapear os dados em um plano, a dimensionalidade dos dados será reduzida além da dimensionalidade intrínseca e consequentemente haverá perda de informação.
-
-Conclui-se que independentemente do método de redução adotado, a não ser que a dimensionalidade intrínseca dos dados seja equivalente a dois, haverá um erro ao mapear os dados em um plano. Dois tipos de erros podem ocorrer: pontos similares posicionados distantes entre si (falsos negativos), ou pontos diferentes posicionados próximos entre si (falsos positivos). 
-
-Em uma analogia à tarefa de recuperação de informação \emph{information retrieval}, esses erros podem ser associados respectivamente às medidas de precisão \emph{precision} e revocação \emph{recall} (citar 8 e 9 de Kaski).
-
+% Um ponto fundamental para o mapeamento dos elementos no
+% plano é compreender o erro embutido no processo. O resultado
+% ótimo de qualquer método de redução é levar os dados de m em
+% p, onde p equivale à dimensionalidade intrínseca dos dados.
+% No entanto,  não há garantias de que p equivale à um espaço
+% bidimensional, assim ao mapear os dados em um plano, a
+% dimensionalidade dos dados será reduzida além da
+% dimensionalidade intrínseca e consequentemente haverá perda
+% de informação.  Conclui-se que independentemente do método
+% de redução adotado, a não ser que a dimensionalidade
+% intrínseca dos dados seja equivalente a dois, haverá um erro
+% ao mapear os dados em um plano. Dois tipos de erros podem
+% ocorrer: pontos similares posicionados distantes entre si
+% (falsos negativos), ou pontos diferentes posicionados
+% próximos entre si (falsos positivos).  Em uma analogia à
+% tarefa de recuperação de informação \emph{information
+% retrieval}, esses erros podem ser associados respectivamente
+% às medidas de precisão \emph{precision} e revocação
+% \emph{recall} (citar 8 e 9 de Kasai).
 % Tenho que falar do erro embutido 
-Uma vez definido o cálculo de similaridade entre as dimensões, cria-se uma matriz de distâncias 
+% Uma vez definido o cálculo de similaridade entre as
+% dimensões, cria-se uma matriz de distâncias 
 
-Não é possível ter garantias de que a dimensionalidade intrínseca dos dados se encaixa no plano bi
-Ao mapear os dados em um plano bidimensional não é possível garantir que a dimensionalidade  
-
-\subsection{Projeção das Dimensões}
-
-\subsection{Projeção dos Itens}
-
-O propósito principal da visualização da projeção dos itens é possibilitar que o usuário crie subconjuntos dos dados, por exemplo, possibilitar a remoção de \emph{outliers} ou a inspeção de um grupo de interesse.
-
-Além disso esta visualização serve como um ferramenta adicional aos resultados dos classificadores para avaliar a separação entre os itens.
-
-
-%--------------------------------------------------------------------------------
 \subsection{Mecanismos de Interação}
 
-\subsubsection{Seleção de Atributos}
+\subsubsection{Seleção}
 
-Em tarefas de seleção de característica basicamente deseja-se solucionar basicamente dois problemas. 
-O primeiro, chamado de mínimo-ótimo (\emph{minimal-optimal})~\cite{Kohavi1997}, consiste em construir um subconjunto dos atributos de entrada evitando ao máximo a redundância entre eles. 
-Um caso prático deste problema trata-se da construção de um classificador, onde ao se evitar redundância entre os atributos de entrada pode fazer com que o método obtenha ganhos tanto no tempo de execução quanto na qualidade dos resultados obtidos. 
-Já o segundo, conhecido como todos-relevantes (\emph{all relevant})~\cite{Nilsson2007}, equivale a encontrar todos os atributos que são de algum modo relevantes para a compreensão do fenómeno observado. 
-Uma aplicação real deste segundo problema pode ser encontrada no contexto de análise de expressões gênicas, onde pode-se, por exemplo, identificar quais genes apresentam maior relação com o diagnóstico de alguma doença. 
+% Itens e dimensões.
+% O propósito principal da visualização da projeção dos
+% itens é possibilitar que o usuário crie subconjuntos dos
+% dados, por exemplo, possibilitar a remoção de
+% \emph{outliers} ou a inspeção de um grupo de interesse.
+% Além disso esta visualização serve como um ferramenta
+% adicional aos resultados dos classificadores para avaliar
+% a separação entre os itens.
 
-O mecanismo de seleção aqui proposto viabiliza trabalhar sobre esses dois problemas.
+% Em tarefas de seleção de característica basicamente
+% deseja-se solucionar basicamente dois problemas.  O
+% primeiro, chamado de mínimo ótimo (\emph{minimal
+% optimal})~\cite{Kohavi1997}, consiste em construir um
+% subconjunto dos atributos de entrada evitando ao máximo a
+% redundância entre eles.  Um caso prático deste problema
+% trata-se da construção de um classificador, onde ao se
+% evitar redundância entre os atributos de entrada pode fazer
+% com que o método obtenha ganhos tanto no tempo de execução
+% quanto na qualidade dos resultados obtidos.  Já o segundo,
+% conhecido como todos relevantes (\emph{all
+% relevant})~\cite{Nilsson2007}, equivale a encontrar todos os
+% atributos que são de algum modo relevantes para a
+% compreensão do fenómeno observado.  Uma aplicação real deste
+% segundo problema pode ser encontrada no contexto de análise
+% de expressões gênicas, onde pode-se, por exemplo,
+% identificar quais genes apresentam maior relação com o
+% diagnóstico de alguma doença. 
+% O mecanismo de seleção aqui proposto viabiliza trabalhar
+% sobre esses dois problemas.
 
-\subsubsection{Combinação de Atributos}
+\subsubsection{Construção}
 
-O resultado obtido pela combinação deve ser melhor do que a de seleção, porém é também menos intuitivo ao usuário. Mas de qualquer modo a abordagem é melhor aplicar PCA em todo o conjunto de dados (tirei isso de VHDR, se precisar citar: pelo o que pode ser observado no levantamento bibliográfico os métodos de combinação tendem a oferecer melhores resultados, no entanto...).  
+% O resultado obtido pela combinação deve ser melhor do que a
+% de seleção, porém é também menos intuitivo ao usuário. Mas
+% de qualquer modo a abordagem é melhor aplicar PAC em todo o
+% conjunto de dados (tirei isso de CHOR, se precisar citar:
+% pelo o que pode ser observado no levantamento bibliográfico
+% os métodos de combinação tendem a oferecer melhores
+% resultados, no entanto...).  
+
+\subsubsection{Transformação}
 
 \subsection{Forma de Avaliação}
+ 
+% Tenho que falar aqui que vou aplicar diferentes métodos de
+% redução (eventualmente ter que explicar os que eu escolhi
+% cada um, de preferência falar que cada um tem uma
+% característica específica) e em seguida vou verificar a
+% qualidade da classificação e o tempo de execução do
+% classificador.  Vou comparar com outros métodos de redução.
+% Em alguns trabalhos~\cite{Joshi2007} a comparação é feita
+% sobre a taxa de acertos da classificação com os dados
+% originais e com os dados reduzidos com a técnica proposta.
+% No entanto, esta validação pode ser questionada, pois
+% desconsidera a influencia que outras técnicas de redução
+% poderiam ter nos resultados.  Para se comprar com seleção de
+% características, \cite{Guyon2003} diz para usar um
+% classificador linear (linear SBM) e selecionar as variáveis
+% de duas maneiras: por meio de um ranking a partir do
+% coeficiente de correlação ou informação mútua; ou pelo uso
+% de um método de forward (ou backward) selection.
+% \cite{Medeiros2011} apresenta três índices para se comparar
+% diferentes técnicas de redução. Aponta que devido a
+% heterogeneidade dos métodos, certas convenções devem ser
+% estabelecidas para se obter uma comparação justa.  A forma
+% mais adotada na literatura para a avaliação de métodos de
+% redução de dimensionalidade é a comparação dos erros obtidos
+% em tarefas de classificação ao utilizar diferentes técnicas.
+% Ao reduzir o número de atributos irrelevantes ou
+% redundantes, pode-se melhorar o desempenho computacional e a
+% precisão das técnicas operando sobre os dados, como
+% agrupadores e classificadores de dados. Pretende-se avaliar
+% as contribuições deste trabalho justamente pela
+% quantificação do desempenho de tais métodos ao utilizar as
+% técnicas desenvolvidas, seguida de uma comparação com
+% técnicas já estabelecidas na literatura.  O popular método K
+% Means será utilizado neste trabalho para se avaliar Para se
+% avaliar o resultado obtido por agrupadores de dados,
+% frequentemente utiliza-se a medida da silhueta e o índice I.
+% A silhueta mede a .... O índice I é utilizado para...  Falo
+% de Sam Precisão, Recall (FAN?) e sei la o que...
 
-% Tenho que falar aqui que vou aplicar diferentes métodos de redução (eventualmente ter que explicar os que eu escolhi cada um, de preferência falar que cada um tem uma característica específica) e em seguida vou verificar a qualidade da classificação e o tempo de execução do classificador.
-
-Vou comparar com outros métodos de redução.
-
-Em alguns trabalhos~\cite{Joshi2007} a comparação é feita sobre a taxa de acertos da classificação com os dados originais e com os dados reduzidos com a técnica proposta. No entanto, esta validação pode ser questionada, pois desconsidera a influencia que outras técnicas de redução poderiam ter nos resultados.
-
-Para se comprar com seleção de características, \cite{Guyon2003} diz para usar um classificador linear (linear SVM) e selecionar as variáveis de duas maneiras: por meio de um ranking a partir do coeficiente de correlação ou informação mútua; ou pelo uso de um método de forward (ou backward) selection.
-
-\cite{Medeiros2011} apresenta três índices para se comparar diferentes técnicas de redução. Aponta que devido a heterogeneidade dos métodos, certas convenções devem ser estabelecidas para se obter uma comparação justa.
-
-A forma mais adotada na literatura para a avaliação de métodos de redução de dimensionalidade é a comparação dos erros obtidos em tarefas de classificação ao utilizar diferentes técnicas. 
-
-Ao reduzir o número de atributos irrelevantes ou redundantes, pode-se melhorar o desempenho computacional e a precisão das técnicas operando sobre os dados, como agrupadores e classificadores de dados. Pretende-se avaliar as contribuições deste trabalho justamente pela quantificação do desempenho de tais métodos ao utilizar as técnicas desenvolvidas, seguida de uma comparação com técnicas já estabelecidas na literatura.
-
-% O popular método K Means será utilizado neste trabalho para se avaliar Para se avaliar o resultado obtido por agrupadores de dados, frequentemente utiliza-se a medida da silhueta e o índice I. A silhueta mede a .... O índice I é utilizado para...
-
-% Falo de Sam Precisão, Recall (FAN?) e sei la o que...
-
-
-%--------------------------------------------------------------------------------
 \section{Resultados Esperados}
 
+Espera-se que ao término deste trabalho de mestrado,
+tenha-se desenvolvido:
+
+\begin{itemize}
+    \item Uma ferramenta para
+        transformação interativa do espaço de atributos que
+        permita seleção, construção e transformação de
+        atributos.
+\end{itemize}
+
 \section{Resultados Preliminares}
+
+% TODO
 
 \section{Plano de Atividades e Cronograma Previsto}\label{sec:cronograma}
 
