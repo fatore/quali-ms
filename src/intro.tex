@@ -2,66 +2,58 @@
 
 \section{Contextualização e Motivação}
 
-A nossa curiosidade em observar aliada à nossa capacidade de
-raciocínio lógico nos permitiram encontrar explicações para
-o meio que nos cerca e para compreendermos melhor nós
-mesmos. Hoje, os métodos de observação se encontram em um
-avançado estado de desenvolvimento, sistemas
-computadorizados são capazes de coletar um grande volume de
-\textbf{dados} em um piscar de olhos. Mas atente para o
-termo \textbf{dados}. Dados por si somente não conferem
-nenhum tipo de conhecimento. Tal riqueza só é obtida quando
-aplicamos sobre as observações o nosso raciocínio lógico. Este
-recurso, por sua vez, não acompanhou evolução tão acentuada
-quanto à dos métodos de observação, sendo que não há
-indícios que sejamos mais mentalmente capazes do que
-gerações passadas. Logo, o antigo método de aprendizado por meio da
-observação se depara com um grande desafio, pois agora 
-observamos muito mais rapidamente do que explicamos.
+A nossa curiosidade em observar os eventos que nos cercam
+aliada à nossa capacidade de raciocínio lógico nos
+permitiram encontrar explicações para o ambiente em que
+vivemos e para compreendermos melhor nós mesmos. Hoje, os
+métodos de observação se encontram em um avançado estado de
+desenvolvimento, sistemas computadorizados são capazes de
+coletar um grande volume de dados em um piscar de
+olhos. Mas atente para o termo dados. Dados por si somente
+não conferem nenhum tipo de conhecimento. Tal riqueza só é
+obtida quando aplicamos sobre as observações o nosso
+raciocínio lógico.  Este recurso, por sua vez, não
+acompanhou a evolução acentuada dos métodos de
+observação, sendo que não há indícios que sejamos mais
+mentalmente capazes do que gerações passadas. Logo, o antigo
+método de aprendizado por meio da observação se depara com
+um grande desafio, pois agora observamos muito mais
+rapidamente do que explicamos.
 
-,no entanto não há
-indçicios de que nossa capacidade de racicionio tem
-evoluido. Deste modo, os mesmos 
+Uma abordagem utilizada para amenizar este problema se
+baseia em verificar se é realmente necessário analisar todos
+os dados coletados para se obter novos conhecimentos. Como
+muitas vezes os sistemas de observação não são capazes de
+decernir se um dado é relevante ou não, então esta abordagem
+normalmente reduz com sucesso o volume de dados a ser
+investigado.  
 
-dados por si não significam nada
+Para ilustrar essa abordagem vamos imaginar a seguinte
+situação: um geógrafo realizou um levantamento sobre um
+conjunto de países onde notas de $0$ a $10$ foram atribuídas
+em diferentes quesitos, de modo que quanto maior a nota
+atribuída, melhor o país é naquele quesito\footnote{É
+importante notar que este exemplo refere-se a uma
+situação fictícia com propósito apenas ilustrativo.}. Com
+base nessas notas ele deseja descobrir como esses países se
+relacionam entre si. Deseja, por exemplo, definir grupos
+de países similares e ser capaz de explicar porque esses
+grupos foram formados. A Tabela~\ref{tab:at} apresenta o
+resultado deste levantamento. Cada linha da tabela se
+refere a uma observação, as colunas indicam características
+dos países e a tabela como um todo é considerada um conjunto
+de dados\footnote{No contexto deste documento, os termos
+observação, instância, item e elemento podem ser
+utilizados com o mesmo significado. O mesmo ocorre para
+os termos característica, variável, dimensão e atributo.}.
 
-de buscar explicações para esses, 
-
-A exploração não é algo necessariamente ligado à análises
-corporativistas ou governamentais, pode se tratar de algo
-muito mais casual como um trabalho escolar de geografia. 
-
-A experimentação e a investigação são atividades que se
-encontram intrínsecas ao instinto humano. Foi justamente a
-nossa curiosidade em observar fenômenos e buscar explicações
-para essas observações que 
-
-% Exploração de dados.
-
-% Inicia na coleta dos dados.
-
-% Problema da coleta.
-
-
-
-A investigação de conjuntos 
-
-% A literatura classifica esse métodos em extração, mas por
-% uma questão de clareza, ao longo deste documento serão
-% classificados como combinação.
-
-% A exploração de conjuntos de dados é uma atividade que está presente em nosso cotidiano nos mais diferentes aspectos. De pesquisas que buscam estudar o genoma humano à análises de mercado, todas partem de observações do problema em estudo na busca por explicações.
-
-% Para melhor entendermos o processo de exploração de dados, tomemos como exemplo o seguinte problema: um pesquisador deseja definir qual é o melhor país em termos de qualidade de vida.
-
-% Um método de redução retornaria por exemplo os atributos x e y.
-
-Introduzir transformação do espaço de atributos.
-
-% Ler introdução do temático
+Uma análise sobre a tabela não revela muito sobre as
+relações entre os países. 
 
 \begin{table}[htbp]
-    \caption{Conjunto de dados fictício.}
+    \caption{Conjunto de dados fictício. Os dados foram
+    gerados arbitrariamente e não apresentam necessariamente
+    alguma relação com índices oficiais.}
     \begin{center}
         \begin{tabular}{|l|C{1.5cm}|C{1.5cm}|C{1.5cm}|C{1.5cm}|C{1.5cm}|C{1.5cm}|}
             \cline{2-7}
@@ -89,42 +81,37 @@ Introduzir transformação do espaço de atributos.
     \label{tab:at}
 \end{table}
 
-% DimStiller e Brushing podem ajudar.
+% Falar de redução é de boa.
+% Mas como eu introduzo a tal modificação.
+% Como eu junto as duas coisas?
+% Eu sei dar exemplos: arrastar um país que ele sabe que é
+% parecido para perto de outro.
+% Mas como isso melhora o dataset? 
 
-A exploração de conjuntos de dados é um problema abordado com frequência em computação, tanto na área acadêmica quanto na indústria~\cite{Ngai2009,Harding2006}. Tal exploração tem como objetivo uma melhor compreensão dos fenômenos que afetam a sociedade em determinados aspectos. Com base nos novos conhecimentos adquiridos, espera-se melhorar o processo de tomadas de decisões como por exemplo, previsão de condições climáticas, diagnósticos de doenças, detecções de fraude, análise de mercado, etc.
 
-A etapa inicial da exploração consiste nas tarefas de coleta e armazenamento dos dados e pode ser realizada por sensores, sistemas de monitoramento, simulações ou aplicações diversas que utilizam banco de dados. A meta desta etapa é coletar o máximo de informação sobre um domínio e espera-se, posteriormente, extrair novos conhecimentos a partir dos dados coletados~\cite{Keim2002}. 
+Do mesmo modo que métodos computacionais são utilizados para
+desenvolver sistemas de observação que coletam dados
+automaticamente, métodos computacionais têm sido utilizados para
+ensinar sistemas a pensar como o ser humano e serem capazes
+de extrair conhecimento dos dados de forma automatizada.
+Devido ao fato desses sistemas exigirem um certo tipo de
+treinamento, eles são ditos métodos de aprendizado de
+máquina. No entanto, mesmo esses métodos tem
+dificuldade em processar grandes volumes de dados, fazendo
+com que o resultado obtido seja impreciso.
 
-% Falar mais de dados redundantes e irrelevantes
-Uma consequência direta de se coletar o máximo de informação é que dificilmente se conhecerá a dimensionalidade intrínseca dos dados, isto é, o conjunto de dimensões\footnote{No contexto deste documento, os termos dimensões (terminologia de mineração de dados), variáveis (terminologia estatística) e atributos (terminologia de banco de dados) são utilizados com o mesmo significado.} observadas que realmente são relevantes para a compreensão do fenômeno em estudo. Isso faz com que, em muitas vezes, se utilize todos os atributos coletados nas investigações, elevando o custo computacional e dificultando as análises. 
+Assim, uma forma de avaliar as contribuições deste trabalho
+é justamente comparar o resultado obtido pelos métodos de
+aprendizado de máquina antes e após a transformação
+interativa do espaço de atributos. Para se realizar uma
+avaliação justa, outros métodos de transformação do espaço,
+não necessariamente interativa, podem ser comparados.
 
-Quando o número de atributos utilizado nas análises é muito elevado, 50 variáveis por exemplo, há a ocorrência do problema conhecido como a  ``Maldição da Dimensionalidade''~\cite{Beyer1999}. Esta ``maldição'' refere-se ao fato de que algumas das propriedades geométricas de espaços bi ou tridimensionais não se mantém para espaços de maior dimensionalidade. Uma consequência prática de tal fato é que conforme o número de  dimensões aumenta, a distância entre um ponto e seu vizinho mais próximo tende a mesma distância deste ponto ao seu vizinho mais distante~\citet{Beyer1999}.
-
-Ao enfrentar as dificuldades impostas pela alta dimensionalidade, uma abordagem adotada com frequência é o uso de métodos de redução de dimensionalidade. O objetivo desses métodos é encontrar o menor espaço dimensional que é capaz de descrever os dados mantendo informações que são relevantes segundo a um determinado critério. Tal abordagem é  viabilizada pelo fato de que a maioria dos conjuntos de dados possuem atributos que não são ``importantes'' para a compreensão do fenômeno observado.
-
-A maioria dos métodos de redução de dimensionalidade são ditos métodos caixa-preta, ou seja, o usuário inspeciona apenas os dados de entrada e saída, desconhecendo o processamento realizado internamente. Deste modo, esses métodos restringem a interação do usuário, o que além de tornar o processo pouco intuitivo, impede que o usuário modifique os resultados de acordo com a sua experiência na área. 
-
-Mas esqueça por um momento as limitações dos métodos de redução de dimensionalidade. Imagine uma situação onde todas as variáveis observadas apresentem igual e distinta importância para a compreensão do fenômeno em estudo. Ainda assim, esta situação pode não ser a ideal. Podem existir outros fatores que desempenhem papel fundamental para a compreensão do problema e que não tenham sido capturados na etapa de coleta e armazenamento dos dados. Em situações como esta, somente inserindo o conhecimento de um especialista da área no processamento dos dados será possível se compreender o fenômeno por completo. 
-
-Deste modo, este trabalho de mestrado tem como objetivo não somente criar um método em que o usuário seja capaz de reduzir a dimensionalidade dos conjuntos de dados de forma mais intuitiva, mas também um método que permita ao usuário inserir seu conhecimento no processo. De modo que dimensões redundantes ou irrelevantes sejam descartadas e novas dimensões sejam construídas para representar o conhecimento do usuário. 
-
-Métodos visuais que permitem a interação do usuário ganharam     grande popularidade nos últimos anos~\cite{State2012}.
-Grande parte deste sucesso pode ser atribuído ao uso efetivo da  capacidade preemptiva da visão humana.
-Foi demonstrado que quando os dados são representados por alguma forma gráfica, o ser humano é capaz de detectar e reconhecer     padrões facilmente e rapidamente~\cite{Healey1995}, mesmo em     grandes conjuntos de dados~\cite{Fodor2002}.
-Mas a capacidade preemptiva de visão humana não é a única        vantagem dos métodos interativos. Permitir que o usuário         participe ativamente nos processos e na geração dos resultados   também traz grandes benefícios em relação a métodos              completamente automáticos.
-
-% A área de visualização computacional é uma alternativa interessante em relação aos métodos automáticos para a  exploração de conjuntos de dados, pois permite que o usuário utilize sua percepção visual para detectar padrões e seu conhecimento sobre o domínio para orientar as análises. 
-
-% A obtenção de conjuntos de dados concisos, ou seja, conjuntos que não contém atributos irrelevantes ou redundantes, proporcionará  uma análise mais efetiva dos dados. Por exemplo, pode se melhorar o desempenho de agrupadores e classificadores de dados. Pretende-se avaliar as contribuições deste trabalho justamente pela quantificação do desempenho de tais métodos ao utilizar as técnicas desenvolvidas, seguida de uma comparação com técnicas já estabelecidas na literatura.
-
-\section{Organização da Monografia}
-
-O restante desta monografia está estruturado da seguinte maneira:
-
-\begin{itemize}
-        
-  \item No Capítulo~\ref{chap:revisao} apresenta-se um levantamento sobre os trabalhos que buscam de algum modo fazer uso de representações visuais para a transformação do espaço de atributos. 
-
-  \item No Capítulo~\ref{chap:proposta} discute-se com mais detalhes a proposta de trabalho e a metodologia adotada. Apresenta-se também o cronograma das atividades necessárias para a conclusão do trabalho.
-
-\end{itemize}
+Este capítulo teve como objetivo apresentar uma abstração do
+trabalho de mestrado aqui proposto e introduzir o conceito
+de transformação do espaço de atributos. No próximo capítulo
+apresenta-se um levantamento sobre outros trabalhos que
+realizam este tipo de transformação, seja ela interativa ou
+não. No terceiro e último capítulo discute-se com mais
+detalhes a proposta deste trabalho, a metodologia a ser
+adotada e um cronograma de atividades.
