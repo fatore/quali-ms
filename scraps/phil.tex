@@ -1,0 +1,115 @@
+\chapter{Introdução}
+
+A nossa curiosidade em observar os eventos que nos cercam
+aliada à nossa capacidade de raciocínio lógico nos
+permitiram encontrar explicações para o ambiente em que
+vivemos e para compreendermos melhor nós mesmos. Hoje, os
+métodos de observação se encontram em um avançado estado de
+desenvolvimento, sistemas computadorizados são capazes de
+coletar um grande volume de dados em um piscar de
+olhos. Mas atente para o termo dados. Dados por si somente
+não conferem nenhum tipo de conhecimento. Tal riqueza só é
+obtida quando aplicamos sobre as observações o nosso
+raciocínio lógico. Este recurso, por sua vez, não
+acompanhou a evolução acentuada dos métodos de
+observação, sendo que não há indícios que sejamos mais
+mentalmente capazes do que gerações passadas. Logo, o antigo
+método de aprendizado por meio da observação não é adequado
+para os problemas atuais, pois agora observamos muito mais
+rapidamente do que explicamos.
+
+Uma abordagem utilizada para amenizar este problema se
+baseia em verificar se é realmente necessário analisar todos
+os dados coletados para se obter novos conhecimentos. Como
+muitas vezes os sistemas de observação não são capazes de
+decernir se um dado é relevante ou não, então esta abordagem
+normalmente reduz com sucesso o volume de dados a ser
+investigado.  
+
+Para ilustrar essa abordagem vamos imaginar a seguinte
+situação: um geógrafo realizou um levantamento sobre um
+conjunto de países onde notas de $0$ a $10$ foram atribuídas
+em diferentes quesitos, de modo que quanto maior a nota
+atribuída, melhor o país é naquele quesito\footnote{É
+importante notar que este exemplo refere-se a uma
+situação fictícia com propósito apenas ilustrativo.}. Com
+base nessas notas ele deseja descobrir como esses países se
+relacionam entre si. Deseja, por exemplo, definir grupos
+de países similares e ser capaz de explicar porque esses
+grupos foram formados. A Tabela~\ref{tab:at} apresenta o
+resultado deste levantamento. Cada linha da tabela se
+refere a uma observação, as colunas indicam características
+dos países e a tabela como um todo é considerada um conjunto
+de dados\footnote{No contexto deste documento, os termos
+observação, instância, item e elemento podem ser
+utilizados com o mesmo significado. O mesmo ocorre para
+os termos característica, variável, dimensão e atributo.}.
+
+Uma análise sobre a tabela não revela muito sobre as
+relações entre os países. 
+
+\begin{table}[htbp]
+    \caption{Conjunto de dados fictício. Os dados foram
+    gerados arbitrariamente e não apresentam necessariamente
+    alguma relação com índices oficiais.}
+    \begin{center}
+        \begin{tabular}{|l|C{1.5cm}|C{1.5cm}|C{1.5cm}|C{1.5cm}|C{1.5cm}|C{1.5cm}|}
+            \cline{2-7}
+            \multicolumn{1}{c|}{\textbf{\textit{}}} & 
+            \textbf{\textit{padrão}} & 
+            \textbf{\textit{clima}} & 
+            \textbf{\textit{gastronomia}} & 
+            \textbf{\textit{segurança}} & 
+            \textbf{\textit{recepção}} & 
+            \textbf{\textit{infraestrutura}} \\ \hline
+            \textbf{Itália} & 7 & 8 & 9 & 5 & 7 & 7 \\ \hline
+            \textbf{Espanha} & 7 & 9 & 9 & 5 & 8 & 8 \\ \hline
+            \textbf{Croácia} & 5 & 6 & 6 & 6 & 5 & 6 \\ \hline
+            \textbf{Brasil} & 5 & 8 & 7 & 3 & 8 & 3 \\ \hline
+            \textbf{Rússia} & 6 & 2 & 2 & 3 & 3 & 6 \\ \hline
+            \textbf{Alemanha} & 8 & 3 & 2 & 8 & 3 & 9 \\ \hline
+            \textbf{Turquia} & 5 & 8 & 9 & 3 & 9 & 3 \\ \hline
+            \textbf{Marrocos} & 4 & 7 & 8 & 2 & 9 & 2 \\ \hline
+            \textbf{Peru} & 5 & 6 & 6 & 3 & 6 & 4 \\ \hline
+            \textbf{Nigéria} & 2 & 4 & 4 & 2 & 7 & 2 \\ \hline
+            \textbf{França} & 8 & 4 & 7 & 7 & 1 & 8 \\ \hline
+            \textbf{México} & 2 & 5 & 5 & 2 & 7 & 3 \\ \hline
+        \end{tabular}
+    \end{center}
+    \label{tab:at}
+\end{table}
+
+% Falar de redução é de boa.
+% Mas como eu introduzo a tal modificação.
+% Como eu junto as duas coisas?
+% Eu sei dar exemplos: arrastar um país que ele sabe que é
+% parecido para perto de outro.
+% Mas como isso melhora o dataset? 
+
+
+Do mesmo modo que métodos computacionais são utilizados para
+desenvolver sistemas de observação que coletam dados
+automaticamente, métodos computacionais têm sido utilizados
+para ensinar sistemas a pensar como o ser humano e serem
+capazes de extrair conhecimento dos dados de forma
+automatizada. Devido ao fato desses sistemas exigirem um
+certo tipo de treinamento, eles são ditos métodos de
+aprendizado de máquina. No entanto, mesmo esses métodos tem
+dificuldade em processar grandes volumes de dados, fazendo
+com que o resultado obtido seja impreciso.
+
+Assim, uma forma de avaliar as contribuições deste trabalho
+é justamente comparar o resultado obtido pelos métodos de
+aprendizado de máquina antes e após a transformação
+interativa do espaço de atributos. Para se realizar uma
+avaliação justa, outros métodos de transformação do espaço,
+não necessariamente interativa, podem ser comparados.
+
+Este capítulo teve como objetivo apresentar uma abstração do
+trabalho de mestrado aqui proposto e introduzir o conceito
+de transformação do espaço de atributos. No próximo capítulo
+apresenta-se um levantamento sobre outros trabalhos que
+realizam este tipo de transformação, seja ela interativa ou
+não. No terceiro e último capítulo discute-se com mais
+detalhes a proposta deste trabalho, a metodologia a ser
+adotada e um cronograma de atividades.

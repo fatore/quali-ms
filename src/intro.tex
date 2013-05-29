@@ -1,117 +1,157 @@
 \chapter{Introdução}
 
-\section{Contextualização e Motivação}
+% Exploração dos dados
+A exploração de conjuntos de dados é um problema abordado
+com frequência em computação, tanto na área acadêmica quanto
+na indústria~\cite{Ngai2009,Harding2006}. Tal exploração tem
+como objetivo uma melhor compreensão dos fenômenos que
+afetam a sociedade nos mais variados aspectos. Com base nos
+conhecimentos adquiridos durante a exploração é possível 
+melhorar o processo de tomadas de decisões, como
+previsão de condições climáticas, diagnósticos de doenças,
+detecções de fraude, análise de mercado, etc.
 
-A nossa curiosidade em observar os eventos que nos cercam
-aliada à nossa capacidade de raciocínio lógico nos
-permitiram encontrar explicações para o ambiente em que
-vivemos e para compreendermos melhor nós mesmos. Hoje, os
-métodos de observação se encontram em um avançado estado de
-desenvolvimento, sistemas computadorizados são capazes de
-coletar um grande volume de dados em um piscar de
-olhos. Mas atente para o termo dados. Dados por si somente
-não conferem nenhum tipo de conhecimento. Tal riqueza só é
-obtida quando aplicamos sobre as observações o nosso
-raciocínio lógico.  Este recurso, por sua vez, não
-acompanhou a evolução acentuada dos métodos de
-observação, sendo que não há indícios que sejamos mais
-mentalmente capazes do que gerações passadas. Logo, o antigo
-método de aprendizado por meio da observação se depara com
-um grande desafio, pois agora observamos muito mais
-rapidamente do que explicamos.
+% Dados multidimensionais 
+As investigações sobre os dados são precedidas pelas etapas
+de coleta e armazenamento dos dados, as quais podem ser
+realizadas por sensores, sistemas de monitoramento,
+simulações computacionais ou aplicações diversas que
+utilizam banco de dados. Nessas etapas, busca-se registrar o
+máximo de detalhes sobre o fenômeno observado. No caso de
+análises climáticas, por exemplo, poderiam ser observadas
+variáveis como temperatura, velocidade do vento, umidade do
+ar, etc. As observações poderiam ser realizadas em
+diferentes posições geográficas, onde para cada posição
+teria-se uma coleção de variáveis. Comumente, denomina-se
+cada uma dessas coleções como uma instância de dados.
+Assim, sabendo que cada variável observada também pode ser
+chamada de dimensão, quando diversas instâncias de dados são
+coletadas obtém-se um conjunto de dados multidimensional. 
 
-Uma abordagem utilizada para amenizar este problema se
-baseia em verificar se é realmente necessário analisar todos
-os dados coletados para se obter novos conhecimentos. Como
-muitas vezes os sistemas de observação não são capazes de
-decernir se um dado é relevante ou não, então esta abordagem
-normalmente reduz com sucesso o volume de dados a ser
-investigado.  
+% Problema de dados multidimensionais
+Explorar conjuntos de dados multidimensionais envolve uma
+série de desafios. Um deles é a dificuldade em se
+identificar quais dos dados coletados são realmente
+relevantes para as análises. Isso faz com que, muitas vezes,
+se utilize todas as variáveis observadas nas investigações,
+sejam elas relevantes ou não. Nessas condições, eleva-se a
+complexidade das análises e também o custo computacional dos
+métodos que são aplicados sobre os dados~\cite{Beyer1999}.
+Um outro problema é a falta de garantias de que os fatores
+fundamentais para a compreensão do problema tenham sido
+coletados. A maioria das aplicações está sujeita a essa
+situação, pois os sistemas de coleta de dados são
+suscetíveis a falhas e não reconhecem facilmente fatores
+subjetivos. 
 
-Para ilustrar essa abordagem vamos imaginar a seguinte
-situação: um geógrafo realizou um levantamento sobre um
-conjunto de países onde notas de $0$ a $10$ foram atribuídas
-em diferentes quesitos, de modo que quanto maior a nota
-atribuída, melhor o país é naquele quesito\footnote{É
-importante notar que este exemplo refere-se a uma
-situação fictícia com propósito apenas ilustrativo.}. Com
-base nessas notas ele deseja descobrir como esses países se
-relacionam entre si. Deseja, por exemplo, definir grupos
-de países similares e ser capaz de explicar porque esses
-grupos foram formados. A Tabela~\ref{tab:at} apresenta o
-resultado deste levantamento. Cada linha da tabela se
-refere a uma observação, as colunas indicam características
-dos países e a tabela como um todo é considerada um conjunto
-de dados\footnote{No contexto deste documento, os termos
-observação, instância, item e elemento podem ser
-utilizados com o mesmo significado. O mesmo ocorre para
-os termos característica, variável, dimensão e atributo.}.
+% Solução para o problema: transformar os dados Primeira
+Um modo de contornar esses problemas é transformar os dados
+para torná-los mais representativos para a execução das
+tarefas seguintes. A transformação mais comumente aplicada
+sobre os dados é a redução de dimensionalidade. Esta tem
+como objetivo encontrar o menor espaço dimensional que é
+capaz de descrever os dados mantendo informações que são
+relevantes segundo algum critério. O processo de redução
+pode ser realizado tanto pela eliminação de dimensões
+irrelevantes ou redundantes quanto pela combinação entre
+dimensões. 
 
-Uma análise sobre a tabela não revela muito sobre as
-relações entre os países. 
+% Problema dos métodos clássicos de redução 
+Um dos problemas dos métodos de redução de dimensionalidade
+é que o conceito de relevância é subjetivo e pode variar de
+acordo com a aplicação. Além disso, os métodos tradicionais
+de redução apresentam uma natureza dita ``caixa-preta'',
+pois o usuário inspeciona apenas os dados de entrada e
+saída, desconhecendo o processamento realizado internamente.
+Esta natureza torna esses métodos pouco compreensivos e,
+além disso, proíbe que o usuário contribua com a sua
+experiência na área. Buscando tratar essa limitação novos
+métodos têm sido propostos. Eles permitem que o usuário
+guie o processo de redução por meio da interação com
+representações gráficas dos dados.
 
-\begin{table}[htbp]
-    \caption{Conjunto de dados fictício. Os dados foram
-    gerados arbitrariamente e não apresentam necessariamente
-    alguma relação com índices oficiais.}
-    \begin{center}
-        \begin{tabular}{|l|C{1.5cm}|C{1.5cm}|C{1.5cm}|C{1.5cm}|C{1.5cm}|C{1.5cm}|}
-            \cline{2-7}
-            \multicolumn{1}{c|}{\textbf{\textit{}}} & 
-            \textbf{\textit{padrão}} & 
-            \textbf{\textit{clima}} & 
-            \textbf{\textit{gastronomia}} & 
-            \textbf{\textit{segurança}} & 
-            \textbf{\textit{recepção}} & 
-            \textbf{\textit{infraestrutura}} \\ \hline
-            \textbf{Itália} & 7 & 8 & 9 & 5 & 7 & 7 \\ \hline
-            \textbf{Espanha} & 7 & 9 & 9 & 5 & 8 & 8 \\ \hline
-            \textbf{Croácia} & 5 & 6 & 6 & 6 & 5 & 6 \\ \hline
-            \textbf{Brasil} & 5 & 8 & 7 & 3 & 8 & 3 \\ \hline
-            \textbf{Rússia} & 6 & 2 & 2 & 3 & 3 & 6 \\ \hline
-            \textbf{Alemanha} & 8 & 3 & 2 & 8 & 3 & 9 \\ \hline
-            \textbf{Turquia} & 5 & 8 & 9 & 3 & 9 & 3 \\ \hline
-            \textbf{Marrocos} & 4 & 7 & 8 & 2 & 9 & 2 \\ \hline
-            \textbf{Peru} & 5 & 6 & 6 & 3 & 6 & 4 \\ \hline
-            \textbf{Nigéria} & 2 & 4 & 4 & 2 & 7 & 2 \\ \hline
-            \textbf{França} & 8 & 4 & 7 & 7 & 1 & 8 \\ \hline
-            \textbf{México} & 2 & 5 & 5 & 2 & 7 & 3 \\ \hline
-        \end{tabular}
-    \end{center}
-    \label{tab:at}
-\end{table}
+% Vantagens métodos visuais
+Técnicas baseadas em visualizações que permitem a
+interação do usuário têm sido aplicadas não somente em
+tarefas de redução de dimensionalidade, mas em diversas
+áreas de exploração de dados. Elas ganharam grande
+popularidade nos últimos anos~\cite{State2012} e propiciaram
+a firmação da área de visualização de
+informação~\cite{Keim2002}. Grande parte do sucesso desta
+recente área pode ser atribuído ao uso efetivo da capacidade
+preemptiva da visão humana na exploração dos dados. Foi
+demonstrado que quando os dados são representados por 
+gráficos, o ser humano é capaz de detectar e reconhecer
+padrões de forma mais fácil e rápida~\cite{Healey1995},
+mesmo em grandes conjuntos de dados~\cite{Fodor2002}. 
 
-% Falar de redução é de boa.
-% Mas como eu introduzo a tal modificação.
-% Como eu junto as duas coisas?
-% Eu sei dar exemplos: arrastar um país que ele sabe que é
-% parecido para perto de outro.
-% Mas como isso melhora o dataset? 
+% Métodos visuais viabilizam a segunda abordagem
+No entanto, utilizar a capacidade preemptiva da visão humana
+não é a única vantagem das técnicas de visualização de
+informação. Ao permitirem que o usuário participe ativamente
+na geração dos resultados, essas técnicas viabilizam novas
+abordagens para se explorar e transformar os dados. A
+construção interativa de dimensões é uma dessas novas
+abordagens e refere-se justamente a uma alternativa à
+redução de dimensionalidade para se transformar os conjuntos
+de dados.
 
+% Motivação construção 
+A necessidade de se construir novas dimensões surge em
+situações em que a redução de dimensionalidade, seja ela
+automática ou interativa, não é suficiente para tornar os
+dados mais representativos.  Isso ocorre quando fatores
+fundamentais para a compreensão do problema não foram
+capturados na etapa de coleta dos dados. Em situações como
+essa, o problema só poderá ser descrito por completo ao se
+agregar o conhecimento do usuário nos dados.
 
-Do mesmo modo que métodos computacionais são utilizados para
-desenvolver sistemas de observação que coletam dados
-automaticamente, métodos computacionais têm sido utilizados para
-ensinar sistemas a pensar como o ser humano e serem capazes
-de extrair conhecimento dos dados de forma automatizada.
-Devido ao fato desses sistemas exigirem um certo tipo de
-treinamento, eles são ditos métodos de aprendizado de
-máquina. No entanto, mesmo esses métodos tem
-dificuldade em processar grandes volumes de dados, fazendo
-com que o resultado obtido seja impreciso.
+% Limitações trabalhos relacionados - gancho para objetivo
+A pesquisa em construção interativa de dimensões é muito
+recente, sendo que a principal contribuição data neste mesmo
+ano~\cite{Gladys2013}. As técnicas propostas ainda
+apresentam diversas limitações, o que abre espaço para
+trabalhos futuros. As técnicas de redução de
+dimensionalidade têm sido discutidas há mais de um
+século~\cite{Pearson1901} e apresentam as limitações
+discutidas anteriormente. Os métodos de redução interativa
+não são tão recentes quanto os de construção de dimensões.
+Porém, apresentam limitações tanto em relação às
+visualizações em que se baseiam quanto aos mecanismos de
+interação propostos.
 
-Assim, uma forma de avaliar as contribuições deste trabalho
-é justamente comparar o resultado obtido pelos métodos de
-aprendizado de máquina antes e após a transformação
-interativa do espaço de atributos. Para se realizar uma
-avaliação justa, outros métodos de transformação do espaço,
-não necessariamente interativa, podem ser comparados.
+% Objetivo do trabalho
+Deste modo, este trabalho de mestrado tem como objetivo
+desenvolver uma técnica para transformação de dados
+multidimensionais que atenda às duas situações descritas
+acima.  A primeira, em que é necessário reduzir a
+dimensionalidade dos dados para se eliminar variáveis
+irrelevantes ou redundantes. E a segunda, em que novas
+dimensões devem ser construídas com base no conhecimento do
+usuário para representar informações ausentes nos dados. A
+abordagem proposta leva em consideração as limitações dos
+trabalhos do atual estado da arte e se baseia na
+simplicidade das visualizações e dos mecanismos de interação
+para superá-las. 
 
-Este capítulo teve como objetivo apresentar uma abstração do
-trabalho de mestrado aqui proposto e introduzir o conceito
-de transformação do espaço de atributos. No próximo capítulo
-apresenta-se um levantamento sobre outros trabalhos que
-realizam este tipo de transformação, seja ela interativa ou
-não. No terceiro e último capítulo discute-se com mais
-detalhes a proposta deste trabalho, a metodologia a ser
-adotada e um cronograma de atividades.
+% Resultados esperados e forma de avaliação 
+A obtenção de conjuntos de dados representativos, isto é,
+conjuntos que não contém atributos irrelevantes ou
+redundantes e que refletem a opinião do usuário,
+proporcionará uma análise mais efetiva dos dados. Será
+possível, por exemplo, melhorar o desempenho de agrupadores
+e classificadores de dados. Pretende-se avaliar as
+contribuições deste trabalho justamente pela quantificação
+do desempenho de tais métodos ao precedê-los pela técnica
+desenvolvida, seguida de uma comparação com técnicas já
+estabelecidas na literatura.
+
+% Organização monografia
+O restante deste documento está organizado da seguinte
+maneira. No Capítulo~\ref{chap:revisao}, apresenta-se um
+levantamento sobre outros trabalhos que também buscam
+transformar conjuntos de dados para torná-los mais
+representativos para o problema em estudo. Por fim, no
+Capítulo~\ref{chap:proposta}, discute-se com mais detalhes a
+proposta deste trabalho e a metodologia a ser adotada. 
+
