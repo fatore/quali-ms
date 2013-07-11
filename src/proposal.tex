@@ -1,0 +1,445 @@
+\section{Proposta de Projeto}\label{sec:proposal}
+
+Nesta seção, a proposta deste projeto é detalhada, apresentando a motivação, objetivos, metodologia e forma de análise dos resultados.
+
+\subsection{Motivação e Objetivos}
+
+O uso de ferramentas visuais que operam sobre grandes
+volumes de dados não é exclusivo aos trabalhos relacionados
+ao aqui proposto. Na verdade, toda a área de
+Mineração Visual de Dados~\cite{Wong1999} (MVD),
+\emph{Visual Data Mining}, tem como objetivo justamente
+envolver os usuários em tarefas que até em tão eram
+executadas de maneira totalmente automática. A principal
+motivação desta área parte do princípio de quando o usuário
+consegue compreender o resultado apresentado por uma
+representação visual, então ele confia neste resultado e
+consegue tirar melhor proveito das análises~\cite{Wong1999}.
+
+Uma característica fundamental para ferramentas MVD é manter
+a simplicidade em todos aspectos do sistema~\cite{Wong1999}.
+No entanto, muitas das ferramentas discutidas anteriormente
+se baseiam em interfaces demasiadamente complexas, as quais
+exigem do usuário um certo período de treinamento para um
+uso efetivo. Tendo em vista que o objetivo das ferramentas
+visuais é tornar as análises mais intuitivas, qualquer tipo
+de obstáculo, como a necessidade de treinamento do usuário,
+pode ser desfavorável ao se comparar com os métodos
+automáticos.
+
+Um outro aspecto que deve ser levado em consideração para o
+desenvolvimento dessas ferramentas é permitir seu uso em
+diversos domínios~\cite{Wong1999}. Para isso, diferentes
+mecanismos de interação devem ser oferecidos, já que nenhum
+mecanismo será capaz de operar otimamente para todas as
+aplicações. Porém, unir em um único ambiente os principais
+mecanismos necessários para a modificação efetiva dos dados
+não é tarefa trivial e nenhum dos trabalhos estudados provê
+tal funcionalidade.
+
+Uma questão que deve ser considerada em ferramentas de
+exploração de dados, sejam elas visuais ou não, é
+possibilitar investigações em subconjuntos dos dados. Isto é
+importante pois dificilmente o conjunto de dados apresentará
+um comportamento global, sendo mais provável que existam
+subconjuntos com diferentes características que devem ser
+avaliadas localmente~\cite{May2011}. Porém, poucos dos
+trabalhos estudados atentam para esta questão.
+
+Levando em consideração os aspectos mencionados nos
+parágrafos acima: simplicidade da ferramenta, diversidade
+dos mecanismos de interação e avaliação global e local dos
+dados, este projeto de mestrado se baseia no uso de
+\emph{Biplots}~\cite{Gabriel1971} para desenvolver uma
+abordagem que apresente essas características e que seja
+capaz de superar as limitações dos trabalhos do atual estado
+da arte.
+
+O estabelecimento de biplots como base para este trabalho é
+adequado, pois biplots oferecem uma representação simultânea
+entre itens e dimensões de forma simples. A
+Figura~\ref{fig:biplot} apresenta um exemplo de biplot para
+um levantamento de certas características de alguns países.
+Neste exemplo, os pontos representam os países e as setas
+representam os aspectos avaliados no levantamento. A
+distância entre os pontos é relacionada com a similaridade
+entre os países, de modo que pontos que se encontram
+próximos indicam países com características em comum. O
+mesmo pode ser dito em relação às setas, de modo que setas
+com mesma direção simbolizam atributos correlacionados. Além
+disso, o comprimento das setas é proporcional ao desvio
+padrão das variáveis que representam.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=10cm]{images/biplot.pdf}
+    \caption{Exemplo de biplot.}
+    \label{fig:biplot}
+\end{figure}
+
+Poucas técnicas visuais são capazes de apresentar
+simultaneamente informações sobre itens e dimensões em uma
+única representação. Mesmo entre a minoria que apresenta
+essa característica, nenhuma é capaz de estabelecer uma
+coerência entre as duas representações e essa é uma
+propriedade de biplots que os tornam ferramentas únicas. Tal
+propriedade pode ser observada na Figura~\ref{fig:biplot},
+onde nota-se, por exemplo, que o Brasil se encontra naquela
+posição do espaço, pois é um país acolhedor, com clima
+agradável e boa comida. 
+
+Essas características de biplots fazem com que seu uso seja
+propício para a construção de ferramentas interativas de
+transformação de dados multidimensionais. No entanto,
+desconhece-se qualquer trabalho na literatura que faça uso
+de tal representação gráfica para se transformar
+interativamente conjuntos de dados. Assim, acredita-se que
+mesmo os mecanismos interativos que já foram utilizados em
+outros trabalhos, como os de redução de dimensionalidade
+interativa, apresentarão características únicas na
+metodologia aqui proposta.
+
+De um modo geral, o objetivo deste trabalho pode ser
+declarado da seguinte maneira:
+
+\begin{quote} \emph{``Este projeto de mestrado tem como
+        objetivo desenvolver em um ambiente integrado novas
+        técnicas visuais interativas para a transformação de
+        dados multidimensionais. A metodologia proposta se
+        baseia no uso de biplots e na ação conjunta de três
+        principais mecanismos de interação para superar as
+        limitações do estado da arte. Os dois primeiros,
+        seleção e combinação, possibilitam a redução da
+        dimensionalidade dos dados em busca de eliminar
+        variáveis irrelevantes e redundantes. O terceiro
+        mecanismo, construção, permite que o usuário crie
+        novas dimensões com base em seu conhecimento para
+        representar informações ausentes nos dados.''}
+\end{quote}
+
+A seguir apresenta-se a metodologia proposta por este
+trabalho para alcançar esse objetivo. 
+
+\subsection{Metodologia}
+
+Aqui descrevemos o modo de construção de biplots e os três
+principais mecanismos de interação propostos sobre tal
+representação. 
+
+\subsubsection{Construção de Biplots}
+
+A construção de um \emph{biplot} parte do princípio de que qualquer
+matriz $S$ de tamanho $n \times m$ e posto $r$  pode
+ser representada por:
+
+\begin{equation}\label{eq:bp}
+    S = XY^T
+\end{equation}
+
+onde $X$ é uma matriz $n \times r$ e $Y$ uma matriz $m
+\times r$, ambas de posto $r$~\cite{Gabriel1971}. Os valores
+internos da matriz $S$ são o produto escalar entre os
+vetores correspondentes de $X$ e $Y$. Por exemplo, em:
+
+\begin{equation}
+    \left( \begin{array}{rrrr}
+        8 &  2 &  2 & -6 \\
+        5 &  0 &  3 & -4 \\
+       -2 & -3 &  3 &  1 \\
+            2 &  3 & -3 & -1 \\
+        4 &  6 & -6 & -2\end{array}
+\right) = \left( \begin{array}{rr}
+         2 & 2 \\
+         1 & 2 \\
+        -1 & 1 \\
+         1 & -1 \\
+         2 & -2\end{array} 
+\right) \left( \begin{array}{rrrr}
+        3 &  2 &-1 & -2 \\
+    1 & -1 & 2 & -1 \end{array} 
+\right)
+\end{equation}
+
+o elemento $S_{2,3}$, 3, da matriz é o
+produto escalar entre $X_2$ e $Y^T_3$, $1 \times \left( -1
+\right) + 2 \times 2$. Em casos como o deste
+exemplo, onde o posto da matriz é dois, é possível desenhar os
+pontos de $X$ e $Y$ no plano. Os pontos referentes a $X$ são
+os \emph{pontos do biplot}, enquanto os referentes a $Y$ são
+as \emph{eixos do biplot}.
+
+Na prática, o posto de uma matriz equivale ao menor valor
+entre $n$ e $m$~\cite{Greenacre2010}. Assim, ao lidar com
+grandes conjuntos de dados multidimensionais esse valor será
+maior que dois e consequentemente não será possível mapear
+os elementos das matrizes $X$ e $Y$ no plano. Para contornar
+tal situação é comum aproximar a matriz de dados original a
+uma matriz de posto igual a dois e utilizar essa aproximação
+para criar a representação visual.
+
+Uma das maneiras mais adotadas para encontrar essa
+aproximação é por meio da decomposição em valores
+singulares, ou simplesmente SVD (\emph{Singular value
+decomposition})~\cite{Kalman1996}. O uso do método SVD é
+adequado para a construção de biplots, pois além de
+resolver o problema da aproximação, seu resultado possui
+um formato muito similar ao exigido pela formulação de biplots,
+apresentada na Equação~\ref{eq:bp}.
+
+% Basicamente, o método SVD declara que qualquer matriz $Y$
+% de tamanho $n \times m$ e posto $r$ pode ser expressa como o
+% produto de três matrizes:
+% 
+% \begin{equation}
+%     Y = UD_{\alpha}V^T
+% \end{equation}
+% 
+% onde $U$ é uma matriz $n \times r$, $V$ é uma matriz $m
+% \times r$ e $D_\alpha$ é uma matriz diagonal $r \times r$
+% com números positivos $\alpha_1,\alpha_2,\ldots,\alpha_r$ em
+% uma ordem decrescente. 
+% 
+% Para se obter o formato estabelecido na Equação~\ref{eq:bp}
+% basta distribuir a matriz $D$ às outras matrizes. Dependendo
+% do modo que essa distribuição é realizada diferentes
+% resultados visuais são obtidos. Ao se atribuir $D$ a $U$
+% destaca-se as relações entre as instâncias de dados. Quando
+% isso é feito em relação a $V$ destaca-se as relações entre
+% os atributos. E quando se atribui parcialmente $D$ a ambas
+% matrizes $U$ e $V$ obtém-se um biplot simétrico que não
+% prioriza nenhuma característica dos dados.
+% 
+% Independentemente do posto da matriz ser igual a dois,
+% utiliza-se apenas os dois primeiros vetores de $U$ e $V$
+% para a criação da representação visual. Assim, a qualidade
+% do resultado dependerá do erro da aproximação e da
+% dimensionalidade intrínseca dos dados. Uma vez construída
+% a representação gráfica dos dados deve-se desenvolver os
+% três mecanismos interativos de transformação: seleção,
+% combinação e construção.
+
+Uma vez construída a base das visualizações, então
+prosseguiremos para a etapa de desenvolvimento dos
+mecanismos de interação que são detalhados a seguir.
+
+\subsubsection{Mecanismos de Interação}
+
+As transformações sobre dados serão realizadas
+por meio de três principais mecanismos de interação:
+seleção, combinação e construção de atributos. A seguir
+descrevemos esses mecanismos e ilustramos seus
+funcionamentos por meio de esboços.
+
+O mecanismo de seleção age tanto sobre os itens quanto
+dimensões. Do ponto de vista de itens seu propósito é
+viabilizar analises locais por meio da criação de
+subconjuntos dos dados. Pode ser utilizado também para a
+remoção de \emph{outliers}. A Figura~\ref{fig:item-sel}
+ilustra uma seleção sobre itens. Em (a) o usuário seleciona
+um grupo de países de interesse (círculo azul) e em (b)
+investiga esse subconjunto com mais detalhes. 
+
+\begin{figure}[h!]
+  \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/item-sel-orig.pdf}
+    \caption{Interação do usuário.}
+  \end{subfigure}%
+  ~
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/item-sel.pdf}
+    \caption{Resultado esperado.}
+  \end{subfigure} 
+  \caption{Exemplo de seleção sobre itens.}
+  \label{fig:item-sel}
+\end{figure}
+
+Nas seleções sobre dimensões pretende-se solucionar
+basicamente dois problemas. O primeiro, chamado de mínimo
+ótimo (\emph{minimal optimal})~\cite{Kohavi1997}, consiste
+em construir um subconjunto dos atributos de entrada
+evitando ao máximo a redundância entre eles. Um caso prático
+deste problema está na construção de um classificador, onde
+ao se evitar redundância entre os atributos de entrada
+pode-se fazer com que o método obtenha ganhos tanto no tempo
+de execução quanto na qualidade dos resultados obtidos. Já o
+segundo problema, conhecido como todos relevantes (\emph{all
+relevant})~\cite{Nilsson2007}, equivale a encontrar todos os
+atributos que são de algum modo relevantes para a
+compreensão do fenómeno observado. Uma aplicação real deste
+problema pode ser encontrada no contexto de análise de
+expressões gênicas, onde deseja-se identificar quais genes
+apresentam maior relação com o diagnóstico de alguma doença. 
+
+O uso de biplots permite que o usuário lide prontamente com
+os dois problemas da seleção sobre dimensões. Em relação ao
+primeiro problema, o usuário pode definir quais atributos
+são redundantes ao observar as direções dos eixos. Assim,
+quanto menor o ângulo entre dois eixos, maior é a correlação
+entre eles e consequentemente maior a redundância. No
+exemplo apresentado na Figura~\ref{fig:biplot} observa-se
+que os eixos correspondentes às variáveis infraestrutura e
+segurança se encontram praticamente sobrepostos. Logo, o
+usuário poderia descartar uma delas. Para lidar com o
+segundo problema, o usuário deve tomar algum eixo como
+referência. Como é exemplificado na
+Figura~\ref{fig:item-sel}, o usuário poderia estar
+interessado em investigar principalmente a infraestrutura
+dos países. Assim, observaria que as variáveis gastronomia,
+clima e hospitalidade não são muito relacionadas com esse
+aspecto e poderia descartá-las. Ao realizar essa seleção o
+usuário observaria uma nítida separação dos países europeus
+e os restantes.
+
+\begin{figure}[h!]
+  \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/dim-sel-orig.pdf}
+    \caption{Interação do usuário.}
+  \end{subfigure}%
+  ~
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/dim-sel.pdf}
+    \caption{Resultado esperado.}
+  \end{subfigure} 
+  \caption{Exemplo de seleção sobre atributos.}
+  \label{fig:item-sel}
+\end{figure}
+
+Existem situações onde somente o mecanismo de seleção sobre
+dimensões não é suficiente para reduzir a redundância nos
+dados. É o caso dos atributos gastronomia e clima do exemplo
+apresentado. Nota-se que as duas variáveis apresentam certa
+correlação. No entanto, o usuário pode ter dificuldade em
+escolher qual das duas deve ser descartada. Para situações
+como essa, propomos o uso do mecanismo de combinação de
+atributos.
+
+O mecanismo de combinação parte de um subconjunto de atributos
+definido pelo usuário e retorna um único atributo que busca
+representar o máximo da informação contida nesse subconjunto. A
+Figura~\ref{fig:comb} ilustra uma combinação entre os atributos
+gastronomia e clima. Espera-se que o eixo resultante tenha
+direção semelhante aos dos que o originaram e que as
+características dos dados sejam preservadas.
+
+\begin{figure}[h!]
+  \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/comb-orig.pdf}
+    \caption{Interação do usuário.}
+  \end{subfigure}%
+  ~
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/comb.pdf}
+    \caption{Resultado esperado.}
+  \end{subfigure} 
+  \caption{Exemplo de combinação de atributos.}
+  \label{fig:comb}
+\end{figure}
+
+Como o processo de combinação depende de métodos automáticos
+como PCA, em certas situações esse mecanismo pode ser menos
+intuitivo ao usuário do que o de seleção de atributos. No
+entanto, em casos onde as dimensões dos dados não apresentam
+um significado para o usuário, então o mecanismo de
+combinação pode ser preferível, pois não exige que o usuário
+decida quais atributos devem ser descartados.
+
+Acreditamos que o uso concomitante dos mecanismos de seleção
+e combinação deve ser suficiente para se reduzir
+eficientemente a dimensionalidade dos conjuntos de dados.
+Entretanto, este projeto se propõe ir além do processo de
+redução ao permitir que o usuário agregue mais incisivamente
+seu conhecimento nos dados por meio do mecanismo de
+construção de atributos.
+
+Existem trabalhos na literatura que são capazes de agregar
+o conhecimento do usuário nos dados. No entanto, esses
+trabalhos modificam todo o conjunto de dados original para
+isso. O mecanismo que propomos busca conservar as dimensões
+originais e utilizar atributos ``fantasmas'' para
+representar o conhecimento do usuário.
+
+A Figura~\ref{fig:constr} ilustra o mecanismo de construção.
+Inicialmente, cria-se um atributo ``fantasma'' com valores
+arbitrários. O usuário então modifica o posicionamento dos
+itens, no caso os países, conforme julga pertinente. As
+novas posições dos pontos são utilizadas para transformar o
+atributo ``fantasma'' em uma nova dimensão. Essa nova
+dimensão têm o papel de representar aspectos subjetivos do
+problema em estudo que não são facilmente medidos ou
+capturados nas etapas de coleta e armazenamento dos dados.
+Com isso, espera-se que tarefas subjacentes sobre os dados
+obtenham melhores resultados. 
+
+\begin{figure}[h!]
+  \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/constr-orig.pdf}
+    \caption{Interação do usuário.}
+  \end{subfigure}%
+  ~
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/constr.pdf}
+    \caption{Resultado esperado.}
+  \end{subfigure} 
+  \caption{Exemplo de construção de atributos.}
+  \label{fig:constr}
+\end{figure}
+
+Como mencionado anteriormente, um aspecto importante de
+ferramentas de visualização é a avaliação da incerteza dos
+resultados. Como um biplot é também um mapeamento de
+elementos no plano, ferramentas voltadas para esse tipo de
+representação podem ser reaproveitadas, como
+\emph{stress}~\cite{Kruskal1964}, \emph{Neighborhood
+Hit}~\cite{Paulovich2008} e \emph{Neighborhood
+Preservation}~\cite{Paulovich2008a}. Tais medidas
+podem ser transmitidas nas representações visuais por meio
+do uso de cores. Assim, durante todo o processo de
+investigação e transformação dos dados, o usuário está
+ciente da qualidade dos resultados apresentados. 
+
+Dentre as possíveis aplicações para a ferramenta
+desenvolvida, considera-se de grande relevância as
+engajadas no contexto de recuperação de informação
+(\emph{Information Retrieval})~\cite{Manning2008}.
+Cogita-se, inclusive, o desenvolvimento de um protótipo de um
+sistema de recomendação. O sistema levaria em consideração
+as interações do usuário para retornar recomendações mais
+pertinentes. Acredita-se que as transformações serão de
+grande valia, pois os interesses e preferências dos usuários
+podem ser fatores subjetivos de difícil aquisição em etapas
+de coleta de dados.
+
+A seguir apresenta-se como será feita a análise e avaliação
+dos resultados.
+
+\subsection{Forma de Análise dos Resultados}
+
+Com dados melhor representados, os métodos que operam sobre
+eles, como classificadores e agrupadores de dados, devem
+apresentar melhores resultados. Será justamente por meio de uma
+quantificação dessa melhoria que será feita a validação 
+deste trabalho. A referência para se definir a qualidade dos
+resultados será estabelecida com base em uma comparação com
+métodos automáticos.
+
+Normalmente essas comparações são feitas com base na taxa de
+acerto da classificação com os dados originais e com os
+dados transformados~\cite{Guyon2003,Joshi2007}. No entanto,
+devido a heterogeneidade dos métodos de redução não é
+trivial definir uma métrica única para as
+avaliações~\cite{Medeiros2011}. Assim, considera-se também o
+uso de medidas de avaliação de agrupadores de dados, como a
+medida da Silhueta~\cite{Rousseeuw1987} e o Índice
+Rand~\cite{Rand1971}.

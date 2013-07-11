@@ -3,6 +3,7 @@
 
 \usepackage[top=30mm,bottom=35mm,left=25mm,right=25mm,twoside]{geometry}
 \usepackage{syntax}
+\usepackage{pdflscape}
 \usepackage[utf8]{inputenc}
 \usepackage{ae}
 \usepackage{amsmath}
@@ -12,8 +13,8 @@
 \usepackage{ifthen}
 \usepackage{indentfirst}
 \usepackage{longtable}
+\usepackage{rotating}
 \usepackage{tabularx}
-\usepackage[dvips]{graphicx}
 \usepackage{subcaption}
 %\usepackage[natbib=true,sorting=none, firstinits=true]{biblatex}
 %\usepackage[maxcitenames=1,backend=bibtex,firstinits=true]{biblatex}
@@ -121,9 +122,9 @@ de Ciências Matemáticas e de Computação -- ICMC/USP, para o Exame de Qualifi
 \renewcommand{\sectionmark}[1]{%
  \markright{\thesection.\ #1}}
 
-% \input src/intro.tex
+\input src/intro.tex
 \input src/revisao.tex
-% \input src/proposta.tex
+\input src/proposta.tex
 
 \printbibliography
 

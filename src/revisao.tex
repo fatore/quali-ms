@@ -7,14 +7,16 @@ aqueles que buscam transformar conjuntos de dados para
 torná-los mais representativos para execução de uma
 determinada tarefa. Esses trabalhos dividem-se basicamente
 em dois grupos: métodos de redução de dimensionalidade e
-métodos de construção interativa de atributos. A seguir, na
-Seção~\ref{sec:rd}, apresenta-se uma discussão sobre os
-métodos de redução de dimensionalidade, com um enfoque
-especial para métodos interativos. Na Seção~\ref{sec:tr},
-apresenta-se um levantamento sobre pesquisas em construção
-interativa de atributos, um tema que não conta com uma
-literatura tão vasta quanto à dos métodos de redução, mas
-que tem ganhado popularidade nos últimos anos. 
+métodos de construção interativa de atributos. 
+
+A seguir, na Seção~\ref{sec:rd}, apresenta-se uma discussão
+sobre os métodos de redução de dimensionalidade, com um
+enfoque especial para métodos interativos. Na
+Seção~\ref{sec:tr}, apresenta-se um levantamento sobre
+pesquisas em construção interativa de atributos, um tema que
+não conta com uma literatura tão vasta quanto à dos métodos
+de redução, mas que tem ganhado popularidade nos últimos
+anos. 
 
 \section{Redução de Dimensionalidade}\label{sec:rd}
 
@@ -306,7 +308,7 @@ capacidade preemptiva de visão humana não é a única vantagem
 dos métodos visuais. Permitir que o usuário participe
 ativamente nos processos e na geração dos resultados é um
 dos grandes benefícios desses métodos. Deste
-modo, a seguir serão apresentados os trabalhos desta nova
+modo, a seguir serão apresentados os trabalhos desta 
 vertente que buscam executar redução de dimensionalidade de
 forma interativa. Trabalhos que não somente fazem uso da
 capacidade perceptiva humana, mas que também permitem
@@ -465,7 +467,7 @@ representativas ou redundantes, de modo que se certas
 dimensões apresentam alta similaridade entre si, então
 apenas uma delas é mantida, ou se certas dimensões
 apresentam pouca relevância, então são descartadas. A grande
-complexidade do processo de filtragem esta no modo como se
+complexidade do processo de filtragem está no modo como se
 define a redundância e a importância entre as dimensões. Um
 método semelhante para filtragem de atributos irrelevantes
 foi proposto por \citet{Artero2006}.
@@ -477,10 +479,14 @@ analisados separadamente~\cite{May2011}. Uma maneira de
 contornar este problema seria apresentar os itens
 simultaneamente com a representação das dimensões, assim o
 usuário poderia detectar grupos não somente nas dimensões
-mais também nos itens. Criar tal representação é o objetivo
-dos trabalhos discutidos a seguir.
+mas também nos itens. Os trabalhos discutidos a seguir
+utilizam tal representação para reduzir a dimensionalidade
+dos conjuntos de dados. Esses trabalhos servem como
+inspiração para a construção das visualizações que
+utilizaremos na proposta.  
 
 \subsubsection{Mapeamento de Elementos no Plano}
+
 Abordando justamente o problema de se apresentar itens
 simultaneamente com as dimensões de um conjunto de dados,
 \citet{Yang2004} desenvolveram a ferramenta VaR (\emph{Value and
@@ -545,7 +551,7 @@ algum elemento importante.
 Buscando tratar o problema de sobreposição de elementos,
 \citet{Yang2007} desenvolveram a extensão ilustrada na
 Figura~\ref{fig:var2}, onde apresentaram alternativas para o
-mapeamento dos glifos no plano. No entanto, a alternativa
+mapeamento dos glifos no plano. Porém, a alternativa
 proposta estabelece uma distância fixa entre os elementos,
 consequentemente perde-se a informação de quanto duas
 dimensões são similares entre si. Assim, o resultado obtido
@@ -594,15 +600,15 @@ itens são construídas com base em métodos automáticos, como
 PCA, e as das dimensões por medidas estatísticas, como média
 e variância. Este modo de posicionamento das dimensões é uma
 das limitações da ferramenta, pois ao desconsiderar medidas
-par-a-par, como correlação, a visualização não apresentará 
-dependências entre os atributos. O principal
-mecanismo de interação da ferramenta BD é a seleção que se
-reflete em outras visões e permite que se visualize, por
-exemplo, variações na importância de um atributo em
-diferentes subconjuntos dos dados. Uma das limitações de
-ambos os métodos, VaR e BD, é não permitir que o
-usuário construa novas dimensões com base nas originais ou
-com base no seu conhecimento.
+par-a-par, como correlação, a visualização não apresentará
+dependências entre os atributos. O principal mecanismo de
+interação da ferramenta BD é a seleção que se reflete em
+outras visões e permite que se visualize, por exemplo,
+variações na importância de um atributo em diferentes
+subconjuntos dos dados. Uma das limitações de ambos os
+métodos, VaR e BD, é não permitir que o usuário construa
+novas dimensões com base nas originais ou com base no seu
+conhecimento.
 
 \begin{figure}[h!]
     \centering
@@ -679,8 +685,8 @@ intuitivas.
 \end{figure}
 
 A ferramenta iPCA~\cite{Jeong2009}, por exemplo, provê meios
-para o usuário manipular os parâmetros da técnica PCA e,
-assim, ser capaz de entender mais facilmente as
+para o usuário manipular a importância de cada atributo na
+técnica PCA e, assim, ser capaz de entender mais facilmente as 
 transformações realizadas sobre os dados. O funcionamento
 dessa ferramenta é ilustrado na Figura~\ref{fig:ipca}. Em
 (A) apresenta-se o mapeamento dos elementos no plano
@@ -729,20 +735,21 @@ conhecimento, no entanto, se o objetivo for criar uma
 ferramenta para o público em geral, então tal suposição pode
 restringir o seu uso.
 
-\section{Transformação Interativa de
-Atributos}\label{sec:tr}
+\section{Construção Interativa de Atributos}\label{sec:tr}
 
 Os métodos de redução de dimensionalidade realizam
 transformações sobre os dados, porém, mesmo as ferramentas
 interativas de redução não permitem que o usuário modifique
-os atributos livremente. Transformar interativamente os
-atributos significa mais do que permitir que o usuário
-guie as transformações sobre os dados, trata-se de permitir
-que o usuário modifique os atributos diretamente. 
+os atributos livremente. A construção interativa de
+atributos significa mais do que permitir que o usuário guie
+as transformações sobre os dados, trata-se de permitir que o
+usuário agregue seu conhecimento sobre os dados
+incisivamente.
+
 
 Esse tipo de abordagem ainda não conta com uma literatura
 tão vasta quanto a dos métodos de redução de
-dimensionalidade.  Sendo que a principal contribuição é a
+dimensionalidade. Sendo que a contribuição mais relevante é a
 ferramenta proposta por \citet{Gladys2013} que possibilita ao
 usuário modificar os atributos de um conjunto de dados com
 base na manipulação sobre amostras dos itens. Os autores
@@ -768,13 +775,15 @@ eram identificáveis.
     \label{fig:ud}
 \end{figure}
 
-Certos fatores podem afetar drasticamente o resultado obtido
-por essa ferramenta. Por exemplo, a forma como a amostragem
-é realizada. Utilizando uma amostragem aleatória, não
-existem garantias de que elementos de cada estrutura
-presente nos dados são escolhidos.  Consequentemente, o
-usuário precisaria de mais iterações para agregar aos dados
-o seu conhecimento.
+No entanto, essa ferramenta não realiza propriamente dita a
+construção de novas dimensões, mas sim modifica as
+existentes para agregar o conhecimento do usuário. Ao se
+transformar os dados originais o usuário pode ter
+dificuldade em interpretar o resultado obtido,
+semelhantemente ao que acontece com os métodos automáticos
+de redução de dimensionalidade.  Na abordagem aqui proposta
+pretendemos mapear o conhecimento do usuário em novas
+dimensões e conservar ao máximo as dimensões originais.
 
 \section{Considerações Finais}
 
@@ -786,44 +795,86 @@ automáticos faz com que muitas vezes os resultados não sejam
 facilmente compreendidos pelos usuários. Foi dito também que
 apesar dos métodos interativos se mostrarem como uma
 interessante alternativa aos métodos automáticos, eles ainda
-apresentam limitações. Essas limitações assim como as
-principais características dos métodos interativos foram
-elencadas na Tabela~\ref{tab:tr}, a qual servirá como base
-para a descrição da proposta deste trabalho de mestrado.
+apresentam limitações. As principais características dos
+métodos interativos foram elencadas na Tabela~\ref{tab:tr}.
+
+Nota-se por essa tabela que nenhum dos trabalhos consegue
+unir em único ambiente os três principais mecanismos de
+interação para a transformação dos dados. Essa é uma das
+maiores limitações do estado da arte, pois um único
+mecanismo não é capaz de operar otimamente para todas
+possíveis aplicações. 
+
+Observa-se também que nem todas as ferramentas conseguem
+apresentar itens e dimensões simultaneamente. Dentre as que
+conseguem, uma parcela ainda menor permite ao usuário
+interagir sobre ambas representações. Esse tipo de interação
+é importante para permitir que o usuário realize avaliações
+locais nos dados. Este é um recurso fundamental, pois
+dificilmente o conjunto de dados apresentará um
+comportamento uniforme globalmente, sendo mais provável que
+existam subconjuntos com diferentes características que
+devem ser avaliadas localmente.
+
+Apesar da avaliação de incerteza ser um aspecto importante 
+de ferramentas visuais, nota-se que poucas ferramentas
+atentam para essa questão. Além disso, algumas ferramentas se
+baseiam em interfaces demasiadamente complexas, as quais
+exigem do usuário um certo período de treinamento para um
+uso efetivo. Tendo em vista que o objetivo das ferramentas
+visuais é tornar as análises mais intuitivas, qualquer tipo
+de obstáculo, como a necessidade de treinamento do usuário,
+pode ser desfavorável ao se comparar com os métodos
+automáticos.
 
 \newcommand{\redc}{\cellcolor{red!25}Não}
 \newcommand{\greenc}{\cellcolor{green!25}Sim}
 
-\begin{table}
+\begin{landscape}
+\vspace*{\fill}
+\begin{table}[htbp]
+    \footnotesize
     \centering
-    \caption[Mecanismos interativos dos trabalhos relacionados.]
-    {Principais mecanismos de interação dos trabalhos
-    relacionados. Observa-se que nenhum dos métodos
-    consegue unir os três um único ambiente.}
-    \begin{tabular}{|C{4cm}|C{3cm}|C{3cm}|C{3cm}|}
+    \caption{Características de interesse dos principais
+    trabalhos estudados.}    
+   \begin{tabular}{|C{3.6cm}|C{2.1cm}|
+       C{2.1cm}|C{2.1cm}|C{1.9cm}|C{1.7cm}|C{1.7cm}|C{1.7cm}|C{1.7cm}|}
         \hline
-        \textbf{Técnica} &
+        &
+        \multicolumn{3}{c|}{\textbf{Mecanismos de
+        Interação}} & & & & & \\ \cline{2-4}
+        \textbf{Ferramenta} &
         \textbf{Seleção} &
+        \textbf{Extração} &
         \textbf{Construção} &
-        \textbf{Transformação} \\
+        \textbf{Representação das Dimensões} &
+        \textbf{Representação dos Itens} &
+        \textbf{Interação sobre Itens} &
+        \textbf{Avalia Incerteza} &
+        \textbf{Complexidade de uso} \\ \hline 
+        \citet{Guo2003} & \redc & \redc & \redc &
+        \greenc & \redc & \redc & \redc & \cellcolor{green!25}Baixa \\  \hline
+        VHDR & \greenc & \redc & \redc & \greenc & \redc &
+        \redc & \redc & \cellcolor{green!25}Baixa \\  \hline
+        VaR & \greenc & \redc & \redc & \greenc & \greenc &
+        \redc & \redc & \cellcolor{green!25}Baixa \\  \hline
+        BD & \greenc & \redc & \redc & \greenc & \greenc &
+        \greenc & \redc & \cellcolor{red!25}Alta \\ \hline
+        DimStiller & \greenc & \greenc & \redc & \greenc &
+        \greenc & \redc & \greenc & \cellcolor{red!25}Alta \\ \hline
+        \citet{Johansson2009} & \greenc & \greenc &
+        \redc & \greenc & \greenc & \redc & \greenc & \cellcolor{green!25}Baixa \\  \hline
+        iPCA & \redc & \greenc & \redc & \greenc & \greenc &
+        \greenc & \redc & \cellcolor{red!25}Alta \\  \hline
+        \citet{Gladys2013} & \redc & \redc & \greenc &
+        \redc & \greenc & \greenc & \redc & \cellcolor{green!25}Baixa \\
         \hline
-        Matrizes de Correlação  & \greenc & \redc & \redc \\    
-        \hline
-        VHDR                    & \greenc & \redc & \redc \\ 
-        \hline
-        DOSFA                   & \greenc & \redc & \redc \\ 
-        \hline
-        Value and Relation      & \greenc & \redc & \redc \\ 
-        \hline
-        Brushing Dimensions     & \greenc & \redc & \redc \\ 
-        \hline
-        DimStiller              & \greenc & \greenc & \redc \\ 
-        \hline
-        iPCA                    & \redc & \greenc & \redc \\ 
-        \hline
-        \cite{Gladys2013}       & \redc & \redc & \greenc\\ 
-        \hline
-    \end{tabular}
-    \label{tab:tr}
+    \end{tabular}%
+    \label{tab:tr}%
 \end{table}
+\vspace*{\fill}
+\end{landscape}
+
+
+
 

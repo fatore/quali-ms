@@ -221,7 +221,115 @@ tenha-se desenvolvido:
 
 \section{Resultados Preliminares}
 
-% TODO
+O estabelecimento de biplots como a visualização básica para
+este projeto não foi uma decisão imediata. Inicialmente,
+cogitamos o uso de visões duplas entre itens e dimensões,
+algo como o apresentado na Figura X. Em (a) temos a
+representação dos itens que pode ser construída com base em
+qualquer técnica de redução de dimensionalidade como PCA ou
+MDS. E em (b) apresenta-se a representação das dimensões que
+demanda um processo de construção mais elaborado.
+
+O procedimento para a construção da representação das
+dimensões inicia pelo cálculo da similaridade entre as
+dimensões. Com base neste cálculo, cria-se uma matriz de
+distâncias entre todos as dimensões que é utilizada como
+entrada para um método como MDS. Este método retorna 
+posições no plano bidimensional para cada atributo de modo
+que a proximidade entre os elementos elementos é diretamente
+proporcional a similaridade entre as dimensões que
+representam. 
+
+O modo como se define a similaridade entre as dimensões
+afeta diretamente no resultado obtido. Essa tarefa pode ser
+descrita da seguinte maneira~\cite{Ankerst1998}: dado um
+conjunto de dados contendo $n$ elementos com $m-$dimensões,
+suas colunas podem ser descritas por $m$ vetores $A_i~(0
+\leq i < m)$, cada uma contendo $n$ números reais $a_{i,k},
+(0 \leq k < n)$.  Deseja-se definir uma medida de
+similaridade $S$ que dado dois vetores retorne um número
+real ($S : \mathbb{R}^n \times \mathbb{R}^n \rightarrow
+\mathbb{R}$) que satisfaça as seguintes propriedades:
+
+\begin{enumerate}
+
+    \item Positividade: $\forall A_i,A_j \in \mathbb{R}^n:
+        S(A_i,A_j) \geq 0 $
+
+    \item Reflexividade: $\forall A_i,A_j \in
+        \mathbb{R}^n: (A_i = A_j) \Leftrightarrow
+        S(A_i,A_j) = 0 $
+
+    \item Simetria: $\forall A_i,A_j \in
+        \mathbb{R}^n: S(A_i,A_j) =
+        S(A_j,A_i)$, onde $(0 \leq i,j <
+        d)$.
+
+\end{enumerate}
+
+Uma medida de similaridade entre duas variáveis $x$ e $y$
+muito utilizada é o coeficiente de correlação linear de
+Pearson $p$, dado por:
+
+\begin{equation}
+    p(x,y) =
+    \frac{cov(x,y)}{\sqrt{var(x)var(y)}},
+\end{equation}
+
+\noindent onde $var$ corresponde à variância e $cov$ à
+covariância. Quando $x$ e $y$ são completamente dependentes
+entre si, o valor de $p(x,y)$ é $1$ ou $-1$. Caso não exista
+nenhuma dependência linear entre as variáveis, o valor
+obtido é $0$. Porém, nos conjuntos de dados as relações
+entre as variáveis nem sempre são lineares e daí que surge a
+maior limitação deste coeficiente.  Como pode ser observado
+pela Figura~\ref{fig:corrs} e pelos valores apresentados na
+Tabela~\ref{tab:corrs}, a medida não é capaz de capturar
+dependências não lineares entre as variáveis. 
+
+
+% Falar de discretização? (Parzen windows, Torkkola, 2003)
+
+% Introduzo MI (ler Kraskov) 
+
+% Descrevo um estimador de MI, outros estimadores de MI:
+% 12,13,14
+
+% Apresento o problema de MI e MIC como a solução
+% (apresentar complexidade computacional da MIC)
+
+Na literatura encontram-se diversos outros métodos que
+poderiam ser utilizados para o cálculo de similaridade.
+Métodos de regressão~\cite{Friedman2001, Cleveland1988,
+Stone1977} têm bom desempenho quando as relações podem ser
+descritas por uma função, mas além desta situação falham em
+encontrar até os mais simples relacionamentos. Os métodos
+baseados em curvas principais~\cite{Hastie1989,
+Tibshirani1992, Delicado2008} e outros de
+correlação~\cite{Reny1959, Breiman1985, Kosorok2009} são
+aplicáveis a um domínio mais abrangente de dados, porém não
+conseguem capturar os relacionamentos tão eficientemente
+quanto a medida MIC~\cite{Reshef2011} mesmo para casos
+simples, como pode ser observado pela
+Tabela~\ref{tab:corrs}.    
+
+A qualidade de uma medida de similaridade costuma variar de
+acordo com o domínio em que é aplicada. Normalmente, uma
+medida é dita adequada quando há uma concordância entre o
+valor obtido e a opinião de um especialista da área. No
+entanto, mesmo um especialista sobre um assunto pode ter
+dificuldade em determinar com precisão a semelhança entre
+dois objetos. Assim, é muito difícil definir um modelo
+matemático que meça a similaridade entre dois atributos com
+precisão para todas as aplicações de forma genérica. A MIC é
+uma medida que se propõe a executar esta difícil tarefa e
+por isso foi escolhida como a medida de similaridade entre
+dimensões a ser utilizada neste trabalho. 
+
+
+% Porém além da falta de uma relação entre as duas
+% representações é uma abordagem computacionalmente mais
+% custosa 
 
 \section{Plano de Atividades e Cronograma Previsto}\label{sec:cronograma}
 
