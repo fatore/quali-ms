@@ -3,6 +3,7 @@
 
 \usepackage[top=30mm,bottom=35mm,left=25mm,right=25mm,twoside]{geometry}
 \usepackage{syntax}
+\usepackage{framed}
 \usepackage{pdflscape}
 \usepackage[utf8]{inputenc}
 \usepackage{ae}
@@ -69,6 +70,8 @@
 \newtheorem{definicao}{Definição}[chapter]
 \newtheorem{teorema}{Teorema}[chapter]
 
+\hyphenation{cons-ci-en-te}
+
 \bibliography{referencias}
 
 \begin{document}
@@ -106,7 +109,7 @@ de Ciências Matemáticas e de Computação -- ICMC/USP, para o Exame de Qualifi
 
 \tableofcontents
 \listoffigures
-\listoftables
+% \listoftables
 \input src/siglas.tex
 \clearpage{\pagestyle{plain}\clearpage}
 

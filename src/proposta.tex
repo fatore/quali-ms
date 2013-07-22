@@ -19,11 +19,11 @@ volumes de dados não é exclusivo aos trabalhos relacionados
 ao aqui proposto. Na verdade, toda a área de
 Mineração Visual de Dados~\cite{Wong1999} (MVD),
 \emph{Visual Data Mining}, tem como objetivo justamente
-envolver os usuários em tarefas que até em tão eram
+envolver os usuários em tarefas que até então eram
 executadas de maneira totalmente automática. A principal
 motivação desta área parte do princípio de quando o usuário
 consegue compreender o resultado apresentado por uma
-representação visual, então ele confia neste resultado e
+representação visual, ele confia neste resultado e
 consegue tirar melhor proveito das análises~\cite{Wong1999}.
 
 Uma característica fundamental para ferramentas MVD é manter
@@ -196,39 +196,35 @@ resolver o problema da aproximação, seu resultado possui
 um formato muito similar ao exigido pela formulação de biplots,
 apresentada na Equação~\ref{eq:bp}.
 
-% Basicamente, o método SVD declara que qualquer matriz $Y$
-% de tamanho $n \times m$ e posto $r$ pode ser expressa como o
-% produto de três matrizes:
-% 
-% \begin{equation}
-%     Y = UD_{\alpha}V^T
-% \end{equation}
-% 
-% onde $U$ é uma matriz $n \times r$, $V$ é uma matriz $m
-% \times r$ e $D_\alpha$ é uma matriz diagonal $r \times r$
-% com números positivos $\alpha_1,\alpha_2,\ldots,\alpha_r$ em
-% uma ordem decrescente. 
-% 
-% Para se obter o formato estabelecido na Equação~\ref{eq:bp}
-% basta distribuir a matriz $D$ às outras matrizes. Dependendo
-% do modo que essa distribuição é realizada diferentes
-% resultados visuais são obtidos. Ao se atribuir $D$ a $U$
-% destaca-se as relações entre as instâncias de dados. Quando
-% isso é feito em relação a $V$ destaca-se as relações entre
-% os atributos. E quando se atribui parcialmente $D$ a ambas
-% matrizes $U$ e $V$ obtém-se um biplot simétrico que não
-% prioriza nenhuma característica dos dados.
-% 
-% Independentemente do posto da matriz ser igual a dois,
-% utiliza-se apenas os dois primeiros vetores de $U$ e $V$
-% para a criação da representação visual. Assim, a qualidade
-% do resultado dependerá do erro da aproximação e da
-% dimensionalidade intrínseca dos dados. Uma vez construída
-% a representação gráfica dos dados deve-se desenvolver os
-% três mecanismos interativos de transformação: seleção,
-% combinação e construção.
+Basicamente, o método SVD declara que qualquer matriz $Y$
+de tamanho $n \times m$ e posto $r$ pode ser expressa como o
+produto de três matrizes:
 
-Uma vez construída a base das visualizações, então
+\begin{equation}
+    Y = UD_{\alpha}V^T
+\end{equation}
+
+onde $U$ é uma matriz $n \times r$, $V$ é uma matriz $m
+\times r$ e $D_\alpha$ é uma matriz diagonal $r \times r$
+com números positivos $\alpha_1,\alpha_2,\ldots,\alpha_r$ em
+uma ordem decrescente. 
+
+Para se obter o formato estabelecido na Equação~\ref{eq:bp}
+basta distribuir a matriz $D$ às outras matrizes. Dependendo
+do modo que essa distribuição é realizada diferentes
+resultados visuais são obtidos. Ao se atribuir $D$ a $U$
+destaca-se as relações entre as instâncias de dados. Quando
+isso é feito em relação a $V$ destaca-se as relações entre
+os atributos. E quando se atribui parcialmente $D$ a ambas
+matrizes $U$ e $V$ obtém-se um biplot simétrico que não
+prioriza características específicas dos dados.
+Independentemente do posto da matriz ser igual a dois,
+utiliza-se apenas os dois primeiros vetores de $U$ e $V$
+para a criação da representação visual. Assim, a qualidade
+do resultado dependerá do erro da aproximação e da
+dimensionalidade intrínseca dos dados. 
+
+Uma vez construída a base das visualizações, 
 prosseguiremos para a etapa de desenvolvimento dos
 mecanismos de interação que são detalhados a seguir.
 
@@ -239,6 +235,8 @@ por meio de três principais mecanismos de interação:
 seleção, combinação e construção de atributos. A seguir
 descrevemos esses mecanismos e ilustramos seus
 funcionamentos por meio de esboços.
+
+\subsubsection{Mecanismo de Seleção de Itens e Atributos}
 
 O mecanismo de seleção age tanto sobre os itens quanto
 dimensões. Do ponto de vista de itens seu propósito é
@@ -274,14 +272,16 @@ evitando ao máximo a redundância entre eles. Um caso prático
 deste problema está na construção de um classificador, onde
 ao se evitar redundância entre os atributos de entrada
 pode-se fazer com que o método obtenha ganhos tanto no tempo
-de execução quanto na qualidade dos resultados obtidos. Já o
-segundo problema, conhecido como todos relevantes (\emph{all
-relevant})~\cite{Nilsson2007}, equivale a encontrar todos os
-atributos que são de algum modo relevantes para a
-compreensão do fenómeno observado. Uma aplicação real deste
-problema pode ser encontrada no contexto de análise de
-expressões gênicas, onde deseja-se identificar quais genes
-apresentam maior relação com o diagnóstico de alguma doença. 
+de execução quanto na qualidade dos resultados obtidos. 
+
+Já o segundo problema, conhecido como todos relevantes
+(\emph{all relevant})~\cite{Nilsson2007}, equivale a
+encontrar todos os atributos que são de algum modo
+relevantes para a compreensão do fenómeno observado. Uma
+aplicação real deste problema pode ser encontrada no
+contexto de análise de expressões gênicas, onde deseja-se
+identificar quais genes apresentam maior relação com o
+diagnóstico de alguma doença. 
 
 O uso de biplots permite que o usuário lide prontamente com
 os dois problemas da seleção sobre dimensões. Em relação ao
@@ -292,9 +292,10 @@ entre eles e consequentemente maior a redundância. No
 exemplo apresentado na Figura~\ref{fig:biplot} observa-se
 que os eixos correspondentes às variáveis infraestrutura e
 segurança se encontram praticamente sobrepostos. Logo, o
-usuário poderia descartar uma delas. Para lidar com o
-segundo problema, o usuário deve tomar algum eixo como
-referência. Como é exemplificado na
+usuário poderia descartar uma delas. 
+
+Para lidar com o segundo problema, o usuário deve tomar
+algum eixo como referência. Como é exemplificado na
 Figura~\ref{fig:item-sel}, o usuário poderia estar
 interessado em investigar principalmente a infraestrutura
 dos países. Assim, observaria que as variáveis gastronomia,
@@ -327,7 +328,9 @@ apresentado. Nota-se que as duas variáveis apresentam certa
 correlação. No entanto, o usuário pode ter dificuldade em
 escolher qual das duas deve ser descartada. Para situações
 como essa, propomos o uso do mecanismo de combinação de
-atributos.
+atributos que é descrito a seguir.
+
+\subsubsection{Mecanismo de Combinação de Atributos}
 
 O mecanismo de combinação parte de um subconjunto de atributos
 definido pelo usuário e retorna um único atributo que busca
@@ -358,7 +361,7 @@ Como o processo de combinação depende de métodos automáticos
 como PCA, em certas situações esse mecanismo pode ser menos
 intuitivo ao usuário do que o de seleção de atributos. No
 entanto, em casos onde as dimensões dos dados não apresentam
-um significado para o usuário, então o mecanismo de
+um significado para o usuário, o mecanismo de
 combinação pode ser preferível, pois não exige que o usuário
 decida quais atributos devem ser descartados.
 
@@ -368,7 +371,9 @@ eficientemente a dimensionalidade dos conjuntos de dados.
 Entretanto, este projeto se propõe ir além do processo de
 redução ao permitir que o usuário agregue mais incisivamente
 seu conhecimento nos dados por meio do mecanismo de
-construção de atributos.
+construção de atributos que é detalhado a seguir.
+
+\subsubsection{Mecanismo de Combinação de Atributos}
 
 Existem trabalhos na literatura que são capazes de agregar
 o conhecimento do usuário nos dados. No entanto, esses
@@ -383,7 +388,7 @@ arbitrários. O usuário então modifica o posicionamento dos
 itens, no caso os países, conforme julga pertinente. As
 novas posições dos pontos são utilizadas para transformar o
 atributo ``fantasma'' em uma nova dimensão. Essa nova
-dimensão têm o papel de representar aspectos subjetivos do
+dimensão tem o papel de representar aspectos subjetivos do
 problema em estudo que não são facilmente medidos ou
 capturados nas etapas de coleta e armazenamento dos dados.
 Com isso, espera-se que tarefas subjacentes sobre os dados
@@ -454,49 +459,59 @@ uso de medidas de avaliação de agrupadores de dados, como a
 medida da Silhueta~\cite{Rousseeuw1987} e o Índice
 Rand~\cite{Rand1971}.
 
-\section{Resultados Esperados}
-
-Espera-se que ao término deste trabalho de mestrado,
-tenha-se desenvolvido:
-
-\begin{itemize}
-    \item Uma ferramenta para
-        transformação interativa do espaço de atributos que
-        permita seleção, construção e transformação de
-        atributos.
-\end{itemize}
-
 \section{Resultados Preliminares}
 
-O estabelecimento de biplots como a visualização básica para
-este projeto não foi uma decisão imediata. Inicialmente,
-cogitamos o uso de visões duplas entre itens e dimensões,
-algo como o apresentado na Figura X. Em (a) temos a
-representação dos itens que pode ser construída com base em
-qualquer técnica de redução de dimensionalidade como PCA ou
-MDS. E em (b) apresenta-se a representação das dimensões que
-demanda um processo de construção mais elaborado.
+A escolha de biplots como a visualização básica para este
+projeto não foi uma decisão imediata. Inicialmente,
+cogitamos o uso de visões coordenadas entre itens e
+dimensões, algo como o apresentado na Figura~\ref{fig:dual}.
+Para este exemplo utilizamos o conjunto de dados
+Iris~\cite{Fisher1936} que possui 150 elementos e 5
+atributos, sendo que um deles é a espécie das flores. Em
+(a) temos a representação dos itens que pode ser construída
+com base em qualquer técnica de redução de dimensionalidade
+como PCA ou MDS. Enquanto em (b) apresenta-se a representação das
+dimensões que demanda um processo de construção mais
+elaborado. Em ambos casos a proximidade entre os
+pontos é diretamente proporcional à similaridade dos
+elementos que representam.
+
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+        \begin{framed}
+            \centering
+            \includegraphics[width=\textwidth]{images/dual1.png}
+        \end{framed}
+        \caption{}
+    \end{subfigure}%
+    ~
+    \begin{subfigure}[b]{0.45\textwidth}
+        \begin{framed}
+            \centering
+            \includegraphics[width=\textwidth]{images/dual2.png}
+        \end{framed}
+        \caption{}
+    \end{subfigure} 
+    \caption{Exemplo da abordagem adotada inicialmente. Em
+        (a) apresenta-se os itens com diferentes cores para
+        flores de diferentes espécies. Em (b) apresenta-se
+        as dimensões e destaca-se o atributo referente à
+        espécie.}
+    \label{fig:dual}
+\end{figure}
 
 O procedimento para a construção da representação das
-dimensões inicia pelo cálculo da similaridade entre as
-dimensões. Com base neste cálculo, cria-se uma matriz de
-distâncias entre todos as dimensões que é utilizada como
-entrada para um método como MDS. Este método retorna 
-posições no plano bidimensional para cada atributo de modo
-que a proximidade entre os elementos elementos é diretamente
-proporcional a similaridade entre as dimensões que
-representam. 
-
-O modo como se define a similaridade entre as dimensões
-afeta diretamente no resultado obtido. Essa tarefa pode ser
-descrita da seguinte maneira~\cite{Ankerst1998}: dado um
-conjunto de dados contendo $n$ elementos com $m-$dimensões,
-suas colunas podem ser descritas por $m$ vetores $A_i~(0
-\leq i < m)$, cada uma contendo $n$ números reais $a_{i,k},
-(0 \leq k < n)$.  Deseja-se definir uma medida de
-similaridade $S$ que dado dois vetores retorne um número
-real ($S : \mathbb{R}^n \times \mathbb{R}^n \rightarrow
-\mathbb{R}$) que satisfaça as seguintes propriedades:
+dimensões é mais elaborado, pois envolve a difícil tarefa de
+escolha de uma medida de similaridade entre atributos. De um
+modo geral, uma medida de similaridade pode ser definida da
+seguinte maneira: dado um conjunto de dados contendo $n$
+elementos com $m-$dimensões, suas colunas podem ser
+descritas por $m$ vetores $A_i(0\leq~i<m)$, cada uma
+contendo $n$ números reais $a_{i,k},(0\leq~k<~n)$, uma
+medida de similaridade $S$ deve retornar um número real
+($S:\mathbb{R}^n\times \mathbb{R}^n\rightarrow\mathbb{R}$)
+satisfazendo as seguintes condições:
 
 \begin{enumerate}
 
@@ -514,53 +529,7 @@ real ($S : \mathbb{R}^n \times \mathbb{R}^n \rightarrow
 
 \end{enumerate}
 
-Uma medida de similaridade entre duas variáveis $x$ e $y$
-muito utilizada é o coeficiente de correlação linear de
-Pearson $p$, dado por:
-
-\begin{equation}
-    p(x,y) =
-    \frac{cov(x,y)}{\sqrt{var(x)var(y)}},
-\end{equation}
-
-\noindent onde $var$ corresponde à variância e $cov$ à
-covariância. Quando $x$ e $y$ são completamente dependentes
-entre si, o valor de $p(x,y)$ é $1$ ou $-1$. Caso não exista
-nenhuma dependência linear entre as variáveis, o valor
-obtido é $0$. Porém, nos conjuntos de dados as relações
-entre as variáveis nem sempre são lineares e daí que surge a
-maior limitação deste coeficiente.  Como pode ser observado
-pela Figura~\ref{fig:corrs} e pelos valores apresentados na
-Tabela~\ref{tab:corrs}, a medida não é capaz de capturar
-dependências não lineares entre as variáveis. 
-
-
-% Falar de discretização? (Parzen windows, Torkkola, 2003)
-
-% Introduzo MI (ler Kraskov) 
-
-% Descrevo um estimador de MI, outros estimadores de MI:
-% 12,13,14
-
-% Apresento o problema de MI e MIC como a solução
-% (apresentar complexidade computacional da MIC)
-
-Na literatura encontram-se diversos outros métodos que
-poderiam ser utilizados para o cálculo de similaridade.
-Métodos de regressão~\cite{Friedman2001, Cleveland1988,
-Stone1977} têm bom desempenho quando as relações podem ser
-descritas por uma função, mas além desta situação falham em
-encontrar até os mais simples relacionamentos. Os métodos
-baseados em curvas principais~\cite{Hastie1989,
-Tibshirani1992, Delicado2008} e outros de
-correlação~\cite{Reny1959, Breiman1985, Kosorok2009} são
-aplicáveis a um domínio mais abrangente de dados, porém não
-conseguem capturar os relacionamentos tão eficientemente
-quanto a medida MIC~\cite{Reshef2011} mesmo para casos
-simples, como pode ser observado pela
-Tabela~\ref{tab:corrs}.    
-
-A qualidade de uma medida de similaridade costuma variar de
+A qualidade de uma medida de similaridade varia de
 acordo com o domínio em que é aplicada. Normalmente, uma
 medida é dita adequada quando há uma concordância entre o
 valor obtido e a opinião de um especialista da área. No
@@ -568,15 +537,59 @@ entanto, mesmo um especialista sobre um assunto pode ter
 dificuldade em determinar com precisão a semelhança entre
 dois objetos. Assim, é muito difícil definir um modelo
 matemático que meça a similaridade entre dois atributos com
-precisão para todas as aplicações de forma genérica. A MIC é
-uma medida que se propõe a executar esta difícil tarefa e
-por isso foi escolhida como a medida de similaridade entre
-dimensões a ser utilizada neste trabalho. 
+precisão para todas as aplicações de forma genérica. 
 
+A dificuldade em se definir uma medida de similaridade é
+somente um dos problemas dessa abordagem inicial.
+Diferentemente do que acontece com biplots, a construção da
+visualização apresentada na Figura~\ref{fig:dual} (b) exige
+um processamento distinto do realizado para a
+Figura~\ref{fig:dual} (a). Isso faz com que o custo
+computacional seja praticamente duas vezes maior do que
+utilizando-se biplots. Além disso, tal abordagem não
+apresenta a coerência espacial entre o posicionamento dos
+itens e das dimensões que os biplots oferecem.
 
-% Porém além da falta de uma relação entre as duas
-% representações é uma abordagem computacionalmente mais
-% custosa 
+Apesar de termos descartado essa abordagem inicial, grande
+parte do que foi desenvolvido nessa etapa poderá ser
+reaproveitado. Isso inclui a base da interface gráfica e
+alguns dos mecanismos de interação. A
+Figura~\ref{fig:dual-main} apresenta uma visão do geral do
+protótipo desenvolvido. As janelas indicadas por (a) e (b)
+correspondem às visualizações discutidas anteriormente.
+Sobre essas visualizações já é possível selecionar
+subconjuntos dos dados, tanto itens quanto dimensões. 
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=16cm]{images/dual-main.png}
+    \caption{Visão geral do protótipo desenvolvido.}
+    \label{fig:dual-main}
+\end{figure}
+
+Ao interagir com os dados o usuário acaba modificando as
+visualizações e pode perder o foco das análises. Buscando
+amenizar esse problema, criamos a janela indicada por
+(c), onde mantemos um histórico de todas as interações
+realizadas pelo usuário. Exibimos esse histórico em uma
+estrutura hierárquica e permitimos que o usuário interaja
+com essa visualização para navegar em diferentes etapas das
+investigações. 
+
+Quando informações de classe são fornecidas, como por
+exemplo o atributo espécie no caso do conjunto Iris, algumas
+medidas para avaliação dos resultados são calculadas e
+apresentadas na janela (d). Nesse protótipo inicial,
+calculamos apenas a acurácia e o tempo de execução de um
+classificador de dados. Porém, como já foi dito
+anteriormente, adotaremos outras medidas, assim como outras
+técnicas de transformação de dados multidimensionais para
+realizar comparações. 
+
+Tendo em vista o que já foi desenvolvido até o momento, a
+seguir apresentamos as atividades que deverão ser executadas
+para a conclusão deste trabalho de mestrado e o cronograma
+no qual se encaixam.
 
 \section{Plano de Atividades e Cronograma Previsto}\label{sec:cronograma}
 

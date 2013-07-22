@@ -54,7 +54,7 @@ automático ao preceder os procedimentos com um processo de
 redução de dimensionalidade. Até mesmo outras melhorias não
 tão diretas podem ser alcançadas por meio do uso de técnicas
 de redução.  Trata-se do caso do mesmo trabalho apresentado
-por \citeauthor{Konig2000}, onde métodos de redução de
+por \citet{Konig2000}, onde métodos de redução de
 dimensionalidade são utilizados para reduzir a complexidade
 de projetos de circuitos integrados, resultando em uma
 redução na área e no consumo de energia dos circuitos. 
@@ -111,11 +111,12 @@ fictício apresentado na Tabela~\ref{tab:at} será utilizado como
 exemplo.
 
 \begin{table}[htbp] 
+    \footnotesize
 \caption{Conjunto de dados fictício. Os
     dados foram gerados arbitrariamente e não apresentam
         necessariamente alguma relação com índices oficiais.}
     \begin{center}
-    \begin{tabular}{|l|C{1.8cm}|C{1.8cm}|C{1.8cm}|C{1.8cm}|C{1.8cm}|C{1.8cm}|}
+    \begin{tabular}{|l|C{1.3cm}|C{1.2cm}|C{2.2cm}|C{1.8cm}|C{1.5cm}|C{2.5cm}|}
         \cline{2-7} \multicolumn{1}{c|}{\textbf{\textit{}}} &
         \textbf{\textit{padrão}} & \textbf{\textit{clima}} &
         \textbf{\textit{gastronomia}} & \textbf{\textit{segurança}}
@@ -156,6 +157,7 @@ quais atributos foram combinados para a obtenção de tais
 componentes.
 
 \begin{table}[!h]
+    \footnotesize
     \caption[Resultado de PCA]
     {Resultado obtido pela técnica PCA para os dados da
     Tabela~\ref{tab:at}.}
@@ -244,15 +246,15 @@ com o fenômeno investigado~\cite{Nilsson2007}.  Por exemplo,
 em tarefas de classificação supervisionada, pode-se
 determinar a importância de um atributo ao se avaliar sua
 correlação em respeito ao atributo classe, de modo que
-atributos com alto valores de correlação são de maior
+atributos com altos valores de correlação são de maior
 importância. Os métodos de seleção dividem-se basicamente
 em filtros, \emph{wrappers} e métodos
 embutidos~\cite{Guyon2003}. 
 
 Filtros utilizam um atributo alvo como referência e
-determinam, por meio de alguma medida de correlação, quanto
+determinam, a partir de alguma medida de correlação, quanto
 cada atributo se relaciona com esta referência. A filtragem
-é realizada descartando os atributos que apresentam relação
+é realizada por meio da eliminação de atributos que apresentam relação
 menor do que um valor fixado. Uma das desvantagens de
 filtros é que pelo fato de considerarem somente relações
 par-a-par, não são capazes de detectar dependências
@@ -307,13 +309,13 @@ grandes conjuntos de dados~\cite{Fodor2002}. Mas utilizar a
 capacidade preemptiva de visão humana não é a única vantagem
 dos métodos visuais. Permitir que o usuário participe
 ativamente nos processos e na geração dos resultados é um
-dos grandes benefícios desses métodos. Deste
-modo, a seguir serão apresentados os trabalhos desta 
-vertente que buscam executar redução de dimensionalidade de
-forma interativa. Trabalhos que não somente fazem uso da
-capacidade perceptiva humana, mas que também permitem
-que o usuário participe ativamente na geração dos resultados
-com o seu conhecimento sobre o domínio.
+dos grandes benefícios desses métodos. A seguir serão
+apresentados os trabalhos desta vertente que buscam executar
+redução de dimensionalidade de forma interativa. São trabalhos
+que não somente fazem uso da capacidade perceptiva humana,
+mas que também permitem que o usuário participe ativamente
+na geração dos resultados com o seu conhecimento sobre o
+domínio.
 
 \subsubsection{Matrizes de Correlação}\label{sss:cormat}
 
@@ -321,7 +323,7 @@ Uma das maneiras mais utilizadas para se inspecionar
 relações entre dimensões são as matrizes de
 correlação~\cite{Friendly2002}. A Figura~\ref{fig:bs1}
 apresenta um exemplo deste tipo de representação para um
-conjunto de dados de \emph{baseball}. Com base em uma
+conjunto de dados de \emph{baseball}~\cite{Friendly2002}. Com base em uma
 investigação visual sobre essa figura é possível levantar
 certas hipóteses sobre os dados. Observa-se, por exemplo,
 uma relação direta entre os anos de carreira do jogador
@@ -369,7 +371,7 @@ ferramenta proposta por \citet{Guo2003}. Na parte superior
 da figura encontra-se a matriz de correlação, onde o usuário
 seleciona subconjuntos de atributos de interesse por meio da
 seleção dos elementos correspondentes na diagonal da matriz.
-Nota-se que devido ao método de ordenação das colunas,
+Nota-se que, devido ao método de ordenação das colunas,
 os grupos de dimensões similares podem ser identificados
 mais facilmente. As outras visualizações são coordenadas com
 as seleções do usuário e então análises mais detalhadas podem
@@ -411,7 +413,7 @@ constrói-se uma organização hierárquica dos atributos com
 base na similaridade entre as dimensões. Em seguida (2), o
 usuário define os níveis da hierarquia que devem ser
 considerados pela última etapa do processo. Finalmente (3), o
-usuário por meio de um método automático ou de seu
+usuário, por meio de um método automático ou de seu
 conhecimento sobre os dados, escolhe dimensões
 representativas para os níveis definidos, reduzindo assim a
 dimensionalidade dos dados. 
@@ -530,8 +532,8 @@ Este método automático parte de uma dimensão de referência e
 de um limiar definido pelo usuário e retorna as dimensões
 mais semelhantes à esta referência.
 
-O procedimento para o mapeamento das dimensões inicia
-pela construção de uma matriz de distâncias que é
+O procedimento para o mapeamento das dimensões tem início
+com a construção de uma matriz de distâncias que é
 responsável por capturar os relacionamentos entre pares de
 dimensões do conjunto de dados. Sobre esta matriz de
 distâncias aplica-se uma técnica de MDS para mapear cada
@@ -540,7 +542,7 @@ Finalmente, cria-se um glifo orientado a pixels para cada
 dimensão que é utilizado para representar as dimensões
 no plano.
 
-Observando a Figura~\ref{fig:var1} é possível notar que o
+Observando a Figura~\ref{fig:var1} nota-se que o
 uso de glifos faz com que ocorram sobreposições, pois cada
 glifo requer um espaço relativamente grande para que seja
 observado adequadamente.  As sobreposições dificultam as
@@ -551,14 +553,14 @@ algum elemento importante.
 Buscando tratar o problema de sobreposição de elementos,
 \citet{Yang2007} desenvolveram a extensão ilustrada na
 Figura~\ref{fig:var2}, onde apresentaram alternativas para o
-mapeamento dos glifos no plano. Porém, a alternativa
-proposta estabelece uma distância fixa entre os elementos,
+mapeamento dos glifos no plano. Porém, a abordagem 
+proposta estabelece uma distância fixa entre os elementos e
 consequentemente perde-se a informação de quanto duas
 dimensões são similares entre si. Assim, o resultado obtido
 pela versão original transmite melhor os relacionamentos entre
 as dimensões do que a abordagem proposta na extensão. 
 
-Apesar da ferramenta VaR apresentar informações sobre itens
+Apesar de a ferramenta VaR apresentar informações sobre itens
 e dimensões simultaneamente, não é permitido ao usuário
 interagir com os itens. Consequentemente, esta abordagem
 sofre das mesmas limitações das ferramentas apresentadas
@@ -719,7 +721,7 @@ características.
 Os trabalhos propostos por \citet{Zhang2006}, \citet{Choo2010}
 e \citet{Paiva2012} são abordagens que buscam tornar o
 processo de redução de dimensionalidade mais intuitivo no
-contexto de classificação de dados. Nesses métodos a redução
+contexto de classificação de dados. Nesses métodos, a redução
 de dimensionalidade reflete diretamente na qualidade das
 classificações. 
 
@@ -817,7 +819,7 @@ existam subconjuntos com diferentes características que
 devem ser avaliadas localmente.
 
 Apesar da avaliação de incerteza ser um aspecto importante 
-de ferramentas visuais, nota-se que poucas ferramentas
+de ferramentas visuais, nota-se que poucos trabalhos 
 atentam para essa questão. Além disso, algumas ferramentas se
 baseiam em interfaces demasiadamente complexas, as quais
 exigem do usuário um certo período de treinamento para um
