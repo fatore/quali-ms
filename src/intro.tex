@@ -6,48 +6,48 @@ com frequência em computação, tanto na área acadêmica quanto
 na indústria~\cite{Ngai2009,Harding2006}. Tal exploração tem
 como objetivo uma melhor compreensão de fenômenos simulados
 ou medidos. Com base nos conhecimentos adquiridos durante a
-exploração é possível melhorar o processo de tomadas de
+exploração, espera-se aprimorar o processo de tomadas de
 decisões, como previsão de condições climáticas,
-diagnósticos de doenças, detecções de fraude, análise de
+diagnósticos médicos, detecção de fraude, análise de
 mercado, etc.
 
 % Dados multidimensionais 
 As investigações sobre os dados são precedidas pelas etapas
 de coleta e armazenamento que podem ser realizadas por
 sensores, sistemas de monitoramento, simulações
-computacionais ou aplicações diversas que utilizam banco de
-dados. Nessas etapas, busca-se registrar o máximo de
-detalhes sobre o fenômeno observado. No caso de análises
-climáticas, por exemplo, poderiam ser observadas variáveis
-como temperatura, velocidade do vento, umidade do ar, etc.
-As observações poderiam ser realizadas em diferentes
-posições geográficas, onde para cada posição teria-se uma
-coleção de variáveis. Comumente, denomina-se cada uma dessas
-coleções como uma instância de dados.  Como cada variável
-observada também pode ser chamada de dimensão, quando
-diversas instâncias de dados são coletadas obtém-se um
-conjunto de dados multidimensional. 
+computacionais ou aplicações diversas. Nessas etapas,
+busca-se registrar o máximo de detalhes sobre o fenômeno
+observado. No caso de análises climáticas, por exemplo,
+poderiam ser observadas variáveis como temperatura,
+velocidade do vento, umidade do ar, etc.  As observações
+poderiam ser realizadas em diferentes posições geográficas,
+onde para cada posição teria-se uma coleção de variáveis.
+Comumente, denomina-se cada uma dessas coleções como uma
+instância de dados.  Como cada variável observada também
+pode ser chamada de dimensão, quando diversas instâncias de
+dados são coletadas obtém-se um conjunto de dados
+multidimensional. 
 
 % Problema de dados multidimensionais
 Explorar conjuntos de dados multidimensionais envolve uma
-série de problemas. Um deles é a dificuldade em se
-identificar quais dos dados coletados são realmente
-relevantes para as análises. Isso faz com que, muitas vezes,
-se utilize nas investigações todas as variáveis observadas,
-sejam elas relevantes ou não. Nessas condições, eleva-se a
-complexidade das análises e também o custo computacional dos
-métodos que são aplicados sobre os dados~\cite{Beyer1999}.
-Um outro problema está relacionado com a falta de garantias
-de que os fatores fundamentais para a compreensão do
-problema tenham sido coletados. A maioria das aplicações
-está sujeita a essa situação, pois os sistemas de coleta de
-dados são suscetíveis a falhas e não reconhecem facilmente
-fatores subjetivos. 
+série de problemas. Um deles é a dificuldade em identificar
+quais dados coletados são relevantes para as análises. Isso
+faz com que, muitas vezes, se utilize nas investigações
+todas as variáveis observadas, sejam elas relevantes ou não.
+Essas condições impactam diretamente na complexidade das
+análises e também no custo computacional dos métodos que são
+aplicados sobre os dados~\cite{Beyer1999}. Outro
+problema está relacionado à falta de garantias de que os
+fatores fundamentais para a compreensão do problema tenham
+sido coletados. A maioria das aplicações está sujeita a essa
+situação, pois os sistemas de coleta de dados são
+suscetíveis a falhas e não reconhecem facilmente fatores
+subjetivos. 
 
 % Solução para o problema: transformar os dados Primeira
-Um modo de contornar esses problemas é transformar os dados
+Um modo de amenizar esses problemas é transformar os dados
 para torná-los mais representativos para a execução das
-tarefas subjacentes. A transformação mais comumente aplicada
+tarefas subjacentes. Uma transformação comumente aplicada
 é a redução de dimensionalidade. Esta tem
 por objetivo encontrar o menor espaço dimensional que é
 capaz de descrever os dados mantendo informações que são
@@ -62,13 +62,12 @@ Um dos problemas dos métodos de redução de dimensionalidade
 acordo com a aplicação. Além disso, os métodos tradicionais
 de redução apresentam uma natureza dita ``caixa-preta'',
 pois o usuário inspeciona apenas os dados de entrada e
-saída, desconhecendo o processamento realizado internamente.
-Esta natureza torna esses métodos pouco compreensíveis e,
-além disso, não possibilita que o usuário contribua com a
-sua experiência. Buscando tratar essa limitação, novos
-métodos têm sido propostos. Eles permitem que o usuário guie
-o processo de redução por meio da interação com
-representações gráficas dos dados.
+saída, desconhecendo o processamento interno. Isso torna
+esses métodos pouco compreensíveis e impossibilita que o
+usuário contribua com a sua experiência. Para tratar
+essas limitações, novos métodos têm sido propostos. Eles
+permitem que o usuário guie o processo de redução por meio
+da interação com representações gráficas dos dados.
 
 % Vantagens métodos visuais
 Técnicas baseadas em visualizações que permitem a
@@ -78,7 +77,7 @@ tarefas de redução de dimensionalidade, mas em diversas
 popularidade nos últimos anos~\cite{State2012} e propiciaram
 a consolidação da área de visualização de
 informação~\cite{Keim2002}. Grande parte do sucesso desta
-recente área pode ser atribuído ao uso efetivo da capacidade
+área pode ser atribuído ao uso efetivo da capacidade
 preemptiva da visão humana na exploração dos dados. Foi
 demonstrado que quando os dados são representados por 
 gráficos, o ser humano é capaz de detectar e reconhecer
@@ -90,14 +89,14 @@ No entanto, utilizar a capacidade preemptiva da visão humana
 não é a única vantagem das técnicas de visualização de
 informação. Ao permitirem que o usuário participe ativamente
 na geração dos resultados, essas técnicas viabilizam novas
-abordagens para se explorar e transformar os dados. A
+abordagens para explorar e transformar os dados. A
 construção interativa de dimensões é uma dessas novas
 abordagens e refere-se justamente a uma alternativa à
-redução de dimensionalidade para se transformar os conjuntos
+redução de dimensionalidade para transformar os conjuntos
 de dados.
 
 % Motivação construção 
-A necessidade de se construir novas dimensões surge em
+A necessidade de construir novas dimensões surge em
 situações em que a redução de dimensionalidade, seja ela
 automática ou interativa, não é suficiente para tornar os
 dados mais representativos. Isso ocorre quando fatores
@@ -125,15 +124,15 @@ a flexibilidade necessária para que o usuário modifique os
 dados adequadamente.
 
 % Objetivo do trabalho
-Deste modo, propomos o desenvolvimento de uma ferramenta
-visual interativa para a transformação de dados
+Este projeto tem como objetivo desenvolver novas
+técnicas visuais interativas para a transformação de dados
 multidimensionais que atenda às duas situações descritas
 anteriormente. A primeira, em que é necessário reduzir a
-dimensionalidade dos dados para se eliminar variáveis
+dimensionalidade dos dados para eliminar variáveis
 irrelevantes e redundantes. E a segunda, em que novas
 dimensões devem ser construídas com base no conhecimento do
 usuário para representar informações ausentes nos dados. A
-abordagem proposta leva em consideração as limitações dos
+abordagem proposta considera as limitações dos
 trabalhos do atual estado da arte e se baseia na
 simplicidade das visualizações e na integração  dos
 mecanismos de interação para superá-las. 
@@ -154,9 +153,8 @@ estabelecidas na literatura.
 % Organização monografia
 O restante deste documento está organizado da seguinte
 maneira. No Capítulo~\ref{chap:revisao}, apresenta-se um
-levantamento sobre outros trabalhos que também buscam
-transformar conjuntos de dados para torná-los mais
-representativos. Por fim, no Capítulo~\ref{chap:proposta},
-discute-se com mais detalhes a proposta deste trabalho e a
-metodologia a ser adotada. 
+levantamento sobre trabalhos que também buscam transformar
+conjuntos de dados para torná-los mais representativos. Por
+fim, no Capítulo~\ref{chap:proposta}, discute-se a proposta
+deste trabalho e a metodologia a ser adotada. 
 
