@@ -20,7 +20,7 @@ anos.
 
 \section{Redução de Dimensionalidade}\label{sec:rd}
 
-O problema de se a reduzir a dimensionalidade de conjuntos
+O problema de reduzir a dimensionalidade de conjuntos
 de dados pode ser descrito da seguinte forma: dado um
 conjunto de dados representado por uma matriz $\textbf{X}$
 composta por $n$ vetores $\textbf{x}_i~(i \in
@@ -29,7 +29,7 @@ transformação $t: \textbf{X} \rightarrow \textbf{Y}$, em que
 $\textbf{Y}$ é uma matriz composta por $n$ vetores
 $\textbf{y}_i~(i \in \{1,2,...n\})$ de dimensionalidade $p$
 ($p < m$).  Normalmente $p \ll m$ e, idealmente, $p$
-equivale à dimensionalidade intrínseca dos dados\footnote{A
+equivale à  \emph{dimensionalidade intrínseca dos dados}\footnote{A
 dimensionalidade intrínseca dos dados é o conjunto
 mínimo de variáveis necessárias para descrever as
 propriedades dos dados~\cite{Fukunaga1990}.}, fazendo
@@ -37,8 +37,8 @@ com que $t$ mantenha em $\textbf{Y}$ o máximo das
 propriedades de $\textbf{X}$ quanto for possível. 
 
 Um dos principais objetivos da redução de dimensionalidade é
-amenizar os efeitos da maldição da
-dimensionalidade\footnote{A maldição da dimensionalidade foi
+amenizar os efeitos da \emph{maldição da
+dimensionalidade}\footnote{A maldição da dimensionalidade foi
     um termo introduzido por \citet{Bellman1961} para se
     referir aos problemas que surgem ao lidar com conjuntos
     de dados com um elevado número de dimensões (centenas ou
@@ -70,11 +70,11 @@ se conhece as propriedades dos dados~\cite{Kaski2011}.
 
 A literatura em redução de dimensionalidade é extensa e os
 métodos desenvolvidos apresentam grande diversidade em
-relação a aspectos matemáticos e computacionais. Buscando
+relação a aspectos matemáticos e computacionais. Para 
 uma melhor organização, esta seção foi dividida em duas
 subseções. Na Subseção~\ref{ss:auto} busca-se descrever
 sucintamente os métodos automáticos e apresentar suas
-limitações, visando evidenciar que a falta da participação
+limitações, evidenciando que a falta da participação
 do usuário no processo faz com que muitas vezes os
 resultados obtidos não sejam facilmente compreendidos. Já a
 Subseção~\ref{ss:int}, apresenta os métodos que permitem ao
@@ -95,7 +95,7 @@ extraction}). Já a segunda abordagem busca selecionar quais
 dos atributos do conjunto de dados são realmente relevantes
 para as análises. Como os dados não são
 modificados, esta segunda abordagem é chamada de seleção de
-características (\emph{feature selection}). Essas duas
+características (\emph{feature selection}). Ambas 
 abordagens serão discutidas a seguir.
 
 \subsubsection{Extração de Características}
@@ -112,9 +112,9 @@ exemplo.
 
 \begin{table}[htbp] 
     \footnotesize
-\caption{Conjunto de dados fictício. Os
-    dados foram gerados arbitrariamente e não apresentam
-        necessariamente alguma relação com índices oficiais.}
+\caption{Conjunto de dados fictício. Os valores foram
+estabelecidos arbitrariamente e não apresentam
+necessariamente alguma relação com índices oficiais.}
     \begin{center}
     \begin{tabular}{|l|C{1.3cm}|C{1.2cm}|C{2.2cm}|C{1.8cm}|C{1.5cm}|C{2.5cm}|}
         \cline{2-7} \multicolumn{1}{c|}{\textbf{\textit{}}} &
@@ -122,18 +122,18 @@ exemplo.
         \textbf{\textit{gastronomia}} & \textbf{\textit{segurança}}
         & \textbf{\textit{recepção}} & \textbf{\textit{infraestrutura}}
         \\ \hline 
-        \textbf{Itália} &  7 & 8 & 9 & 5 & 7 & 7 \\ \hline 
-        \textbf{Espanha} & 7 & 9 & 9 & 5 & 8 & 8 \\ \hline 
-        \textbf{Croácia} & 5 & 6 & 6 & 6 & 5 & 6 \\ \hline 
-        \textbf{Brasil} & 5 & 8 & 7 & 3 & 8 & 3 \\ \hline 
-        \textbf{Rússia} & 6 & 2 & 2 & 3 & 3 & 6 \\ \hline
         \textbf{Alemanha} & 8 & 3 & 2 & 8 & 3 & 9 \\ \hline
-        \textbf{Turquia} & 5 & 8 & 9 & 3 & 9 & 3 \\ \hline
-        \textbf{Marrocos} & 4 & 7 & 8 & 2 & 9 & 2 \\ \hline
-        \textbf{Peru} & 5 & 6 & 6 & 3 & 6 & 4 \\ \hline
-        \textbf{Nigéria} & 2 & 4 & 4 & 2 & 7 & 2 \\ \hline
+        \textbf{Brasil} & 5 & 8 & 7 & 3 & 8 & 3 \\ \hline 
+        \textbf{Croácia} & 5 & 6 & 6 & 6 & 5 & 6 \\ \hline 
+        \textbf{Espanha} & 7 & 9 & 9 & 5 & 8 & 8 \\ \hline 
         \textbf{França} & 8 & 4 & 7 & 7 & 1 & 8 \\ \hline
+        \textbf{Itália} &  7 & 8 & 9 & 5 & 7 & 7 \\ \hline 
+        \textbf{Marrocos} & 4 & 7 & 8 & 2 & 9 & 2 \\ \hline
         \textbf{México} & 2 & 5 & 5 & 2 & 7 & 3 \\ \hline
+        \textbf{Nigéria} & 2 & 4 & 4 & 2 & 7 & 2 \\ \hline
+        \textbf{Peru} & 5 & 6 & 6 & 3 & 6 & 4 \\ \hline
+        \textbf{Rússia} & 6 & 2 & 2 & 3 & 3 & 6 \\ \hline
+        \textbf{Turquia} & 5 & 8 & 9 & 3 & 9 & 3 \\ \hline
     \end{tabular} 
     \end{center} 
     \label{tab:at} 
@@ -160,7 +160,8 @@ componentes.
     \footnotesize
     \caption[Resultado de PCA]
     {Resultado obtido pela técnica PCA para os dados da
-    Tabela~\ref{tab:at}.}
+    Tabela~\ref{tab:at}. As novas dimensões são combinações lineares das dimensões
+originais.}
     \begin{center}
         \begin{tabular}{|l|c|c|c|c|c|c|}
             \hline
@@ -171,18 +172,19 @@ componentes.
             & \multicolumn{1}{l|}{\textbf{\textit{Comp.5}}}
             & \multicolumn{1}{l|}{\textbf{\textit{Comp.6}}}
             \\ \hline
-    \textbf{Itália} & 0.0796 & -4.7684 & 0.0922 & 0.3013 & 0.3266 & 0.2819 \\ \hline
-    \textbf{Espanha} & 0.4513 & -5.7962 & 1.2968 & 0.3819 & 0.9095 & 0.1914 \\ \hline
-    \textbf{Croácia} & -1.7908 & -0.8416 & 0.0145 & -1.5911 & 0.1811 & -0.4065 \\ \hline
-    \textbf{Brasil} & 3.448 & -0.9062 & 0.2499 & 0.2469 & -0.6788 & -1.0215 \\ \hline
-    \textbf{Rússia} & -4.5417 & 4.3595 & -0.0156 & 1.76 & 0.4539 & -0.1299 \\ \hline
     \textbf{Alemanha} & -8.3095 & 0.5446 & 1.9864 & -0.3819 & -0.8144 & 0.0869 \\ \hline
-    \textbf{Turquia} & 4.5991 & -2.2306 & -0.3223 & 0.1513 & -0.6417 & 0.2367 \\ \hline
-    \textbf{Marrocos} & 5.1923 & -0.0863 & -0.4045 & 0.2746 & -0.5028 & 0.3295 \\ \hline
-    \textbf{Peru} & 0.913 & 0.6241 & -0.4731 & 0.4676 & 0.018 & -0.6031 \\ \hline
-    \textbf{Nigéria} & 2.5911 & 4.8643 & 0.1585 & -0.6316 & 0.2394 & 0.1379 \\ \hline
+    \textbf{Brasil} & 3.4480 & -0.9062 & 0.2499 & 0.2469 & -0.6788 & -1.0215 \\ \hline
+    \textbf{Croácia} & -1.7908 & -0.8416 & 0.0145 & -1.5911 & 0.1811 & -0.4065 \\ \hline
+    \textbf{Espanha} & 0.4513 & -5.7962 & 1.2968 & 0.3819 & 0.9095 & 0.1914 \\ \hline
     \textbf{França} & -6.6956 & -2.0063 & -2.7319 & -0.2799 & -0.0306 & 0.1222 \\ \hline
+    \textbf{Itália} & 0.0796 & -4.7684 & 0.0922 & 0.3013 & 0.3266 & 0.2819 \\ \hline
+    \textbf{Marrocos} & 5.1923 & -0.0863 & -0.4045 & 0.2746 & -0.5028 & 0.3295 \\ \hline
     \textbf{México} & 2.7158 & 3.3806 & 0.0858 & -0.6728 & 1.1078 & -0.0102 \\ \hline
+    \textbf{Nigéria} & 2.5911 & 4.8643 & 0.1585 & -0.6316 & 0.2394 & 0.1379 \\ \hline
+    \textbf{Peru} & 0.9130 & 0.6241 & -0.4731 & 0.4676 &
+            0.0180 & -0.6031 \\ \hline
+    \textbf{Rússia} & -4.5417 & 4.3595 & -0.0156 & 1.7600 & 0.4539 & -0.1299 \\ \hline
+    \textbf{Turquia} & 4.5991 & -2.2306 & -0.3223 & 0.1513 & -0.6417 & 0.2367 \\ \hline
         \end{tabular}
     \end{center}
     \label{tab:at-pcs}
@@ -211,7 +213,9 @@ que muitas vezes podem ser subjetivos.
     \includegraphics[width=12cm]{images/scree.pdf}
     \caption[Variância capturada pelos PCs]
         {Variância dos dados capturada por cada componente
-        para os dados da Tabela~\ref{tab:at}. }
+        para os dados da Tabela~\ref{tab:at}. Os
+        dois primeiros componentes capturam cerca de $92\%$
+        da variância.}
     \label{fig:scree}
 \end{figure}
 
@@ -219,12 +223,12 @@ Quando existem relações não lineares entre os atributos, PCA
 não é capaz de capturá-las. Em situações como esta, métodos
 não lineares como \textit{Multimensional Scaling}
 (MDS)~\cite{Cox2002} e \textit{Self Organizing Maps}
-(SOM)~\cite{Kohonen1990} podem ser utilizados. Porém,
-independentemente de quais técnicas se sobressaem sobre as
-outras, uma limitação que os métodos de extração
-compartilham entre si é a dificuldade em se compreender o
-resultado obtido, ou seja, o espaço dimensional gerado tem
-pouco significado para o usuário. 
+(SOM)~\cite{Kohonen1990} podem ser utilizados para uma maior
+eficácia. Porém, independentemente de quais técnicas se
+sobressaem sobre as outras, uma limitação que os métodos de
+extração compartilham entre si é a dificuldade em se
+compreender o resultado obtido, ou seja, o espaço
+dimensional gerado tem pouco significado para o usuário. 
 
 Como pode ser observado na Tabela~\ref{tab:at-pcs}, não
 existe uma correspondência direta entre as dimensões
@@ -248,8 +252,8 @@ determinar a importância de um atributo ao se avaliar sua
 correlação em respeito ao atributo classe, de modo que
 atributos com altos valores de correlação são de maior
 importância. Os métodos de seleção dividem-se basicamente
-em filtros, \emph{wrappers} e métodos
-embutidos~\cite{Guyon2003}. 
+em \emph{filtros}, \emph{wrappers} e \emph{métodos
+embutidos}~\cite{Guyon2003}. 
 
 Filtros utilizam um atributo alvo como referência e
 determinam, a partir de alguma medida de correlação, quanto
@@ -274,7 +278,7 @@ heurística. São justamente essas heurísticas que definem os
 diferentes métodos que podem ser utilizados. De um modo
 geral, a distinção entre \emph{wrappers} e métodos embutidos
 vem de que os primeiros enxergam o método de predição como
-uma caixa-preta, se interessando somente pelo resultado
+uma ``caixa-preta'', se interessando somente pelo resultado
 obtido e permitindo que diferentes preditores sejam
 aplicados sem a necessidade de modificar o método de
 seleção. Já os métodos embutidos são incorporados às etapas
@@ -289,60 +293,60 @@ usuário tem certo conhecimento sobre o conjunto de entrada,
 então será capaz de compreender os resultados obtidos. No
 entanto, eles compartilham da mesma natureza caixa-preta dos
 métodos de extração. Isto é, impedem qualquer tipo de 
-interação durante o processo de redução, proibindo que o
+interação durante o processo de redução, impedindo que o
 usuário contribua com seu conhecimento sobre o domínio e
 compreenda quais características dos seus dados foram
 responsáveis por aquele resultado. A seguir apresenta-se um
-levantamento dos trabalhos que buscam incluir o usuário no
+levantamento dos trabalhos que inserem o usuário no
 processo de redução para contornar essa limitação.
 
 \subsection{Métodos Interativos}\label{ss:int}
 
 Métodos visuais que permitem a interação do usuário ganharam
-grande popularidade nos últimos anos~\cite{State2012}.
-Grande parte deste sucesso pode ser atribuído ao uso efetivo
+popularidade nos últimos anos~\cite{State2012}.
+Grande parte deste sucesso deve-se ao uso efetivo
 da capacidade preemptiva da visão humana. Foi demonstrado
 que quando os dados são representados por alguma forma
 gráfica, o ser humano é capaz de detectar e reconhecer
-padrões facilmente e rapidamente~\cite{Healey1995}, mesmo em
+padrões facilmente e com rapidez~\cite{Healey1995}, mesmo em
 grandes conjuntos de dados~\cite{Fodor2002}. Mas utilizar a
-capacidade preemptiva de visão humana não é a única vantagem
+capacidade preemptiva da visão humana não é a única vantagem
 dos métodos visuais. Permitir que o usuário participe
 ativamente nos processos e na geração dos resultados é um
-dos grandes benefícios desses métodos. A seguir serão
-apresentados os trabalhos desta vertente que buscam executar
-redução de dimensionalidade de forma interativa. São trabalhos
-que não somente fazem uso da capacidade perceptiva humana,
-mas que também permitem que o usuário participe ativamente
-na geração dos resultados com o seu conhecimento sobre o
-domínio.
+dos grandes benefícios desses métodos. 
+
+A seguir serão apresentados os trabalhos desta vertente que
+buscam executar redução de dimensionalidade de forma
+interativa. São trabalhos que não somente fazem uso da
+capacidade perceptiva humana, mas que também permitem que o
+usuário participe ativamente na geração dos resultados com o
+seu conhecimento sobre o domínio.
 
 \subsubsection{Matrizes de Correlação}\label{sss:cormat}
 
-Uma das maneiras mais utilizadas para se inspecionar
+Uma das maneiras mais utilizadas para inspecionar
 relações entre dimensões são as matrizes de
 correlação~\cite{Friendly2002}. A Figura~\ref{fig:bs1}
 apresenta um exemplo deste tipo de representação para um
 conjunto de dados de \emph{baseball}~\cite{Friendly2002}. Com base em uma
 investigação visual sobre essa figura é possível levantar
-certas hipóteses sobre os dados. Observa-se, por exemplo,
+algumas hipóteses sobre os dados. Observa-se, por exemplo,
 uma relação direta entre os anos de carreira do jogador
-(Years) e o seu salário (logSal), ao mesmo tempo a
+(\emph{Years}) e o seu salário (\emph{logSal}), ao mesmo tempo a
 experiência tem uma relação inversa com o número de erros.
 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=10cm]{images/bs1.pdf}
     \caption[Matrizes de Correlação]
-    {Exemplo de matriz de correlação para dados de
-    \emph{baseball}. A cor azul indica correlação
-    positiva entre as variáveis, enquanto a vermelha
-    correlação negativa. A intensidade da cor é
-    proporcional à magnitude da correlação.}
+    {Exemplo de matriz de correlação. A cor azul indica
+    correlação positiva entre as variáveis, enquanto a
+vermelha correlação negativa. A intensidade da cor é
+proporcional à magnitude da correlação.}
     \label{fig:bs1}
 \end{figure}
 
-Esse tipo de representação é útil para se ter uma visão
+Esse tipo de representação é útil para ter uma visão
 geral das relações entre pares de dimensões. No entanto,
 para análises mais detalhadas, ou que exijam uma comparação
 entre mais do que simplesmente pares de elementos, não é uma
@@ -362,7 +366,7 @@ dimensões similares.
     \includegraphics[width=12cm]{images/coord.png}
     \caption[Ferramenta proposta por \cite{Guo2003}]
     {Visão geral da ferramenta desenvolvida por
-    \citet{Guo2003}.} 
+    \citet{Guo2003}. Imagem extraída de \cite{Guo2003}).} 
     \label{fig:coord}
 \end{figure}
 
@@ -384,9 +388,9 @@ ajudar o usuário a encontrar subconjuntos de atributos com
 características de interesse. Outros trabalhos
 \cite{Friendly2002,MacEachren2003,RBF2004,May2011ss,Johansson2009,Ingram2010,May2011}
 também adotam matrizes de correlação para atingir esse mesmo
-objetivo. Eles diferem na maneira de como é construída a
+objetivo. Eles diferem na maneira como é construída a
 matriz de correlação e de quais recursos são
-disponibilizados para o usuário interagir com os
+disponibilizados para o usuário interagir sobre os
 subconjuntos de dimensões. Um problema geral desses
 trabalhos é que certas análises podem exigir demasiado
 esforço do usuário devido à necessidade de se explorar
@@ -433,8 +437,8 @@ dimensionalidade dos dados.
     \caption{}
     \label{fig:vhdr2}
   \end{subfigure} \caption[VHDR: Visual Hierarchical
-  Dimension Reduction]{(a) Ilustração do funcionamento do
-  VHDR. (b) Exemplo da representação gráfica adotada pelos
+  Dimension Reduction]{Em (a) ilustra-se o funcionamento do
+  VHDR. Em (b) exemplifica-se a representação gráfica adotada pelos
   autores do VHDR. Ambas imagens extraídas de
   \cite{Yang2003}.}
 \end{figure}
@@ -485,7 +489,7 @@ mas também nos itens. Os trabalhos discutidos a seguir
 utilizam tal representação para reduzir a dimensionalidade
 dos conjuntos de dados. Esses trabalhos servem como
 inspiração para a construção das visualizações que
-utilizaremos na proposta.  
+utilizaremos na proposta deste projeto.  
 
 \subsubsection{Mapeamento de Elementos no Plano}
 
@@ -512,10 +516,11 @@ de dados.
     \label{fig:var2}
   \end{subfigure}
   \caption[VaR: Value and Relation]
-      {(a) Exemplo da ferramenta VaR. Imagem extraída de
-      \cite{Yang2004}. (b) Exemplo da representação
-  alternativa proposta como extensão da ferramenta VaR.
-  Imagem extraída  de \cite{Yang2007}.}
+      {Em (a) exemplifica-se a ferramenta VaR. Em (b)
+          apresenta-se um exemplo da representação
+          alternativa proposta como extensão da ferramenta
+          VaR. Imagens extraídas de \cite{Yang2004} e
+      \cite{Yang2007}, respectivamente.}
 \end{figure}
 
 Na representação visual da ferramenta VaR, cada dimensão é
@@ -545,12 +550,12 @@ no plano.
 Observando a Figura~\ref{fig:var1} nota-se que o
 uso de glifos faz com que ocorram sobreposições, pois cada
 glifo requer um espaço relativamente grande para que seja
-observado adequadamente.  As sobreposições dificultam as
+analisado adequadamente.  As sobreposições dificultam as
 análises de regiões de interesse e podem fazer com que o
 usuário alcance conclusões inválidas, devido a oclusão de
 algum elemento importante.  
 
-Buscando tratar o problema de sobreposição de elementos,
+Para tratar o problema de sobreposição de elementos,
 \citet{Yang2007} desenvolveram a extensão ilustrada na
 Figura~\ref{fig:var2}, onde apresentaram alternativas para o
 mapeamento dos glifos no plano. Porém, a abordagem 
@@ -568,7 +573,7 @@ anteriormente, ou seja, não é capaz de lidar com
 características locais em subconjuntos dos dados. Um outro
 aspecto importante que os próprios autores mencionam em
 relação ao uso de glifos é que os usuários têm dificuldade
-em comparar glifos que se encontram afastados entre si. 
+em comparar glifos que se encontram afastados. 
 
 \begin{figure}[h!] \centering
     \begin{subfigure}[b]{0.45\textwidth}
@@ -584,14 +589,16 @@ em comparar glifos que se encontram afastados entre si.
     \label{fig:bd2}
   \end{subfigure}
   \caption[Brushing Dimensions]
-  {(a) Ilustração do conceito proposto na ferramenta
-  \emph{Brushing Dimensions}. (b) Em (1) apresenta-se a
-  representação visual dos itens e (2) a das dimensões.}
+  {Em (a) ilustra-se o conceito principal do trabalho de
+  \citet{Turkay2011}, \emph{Brushing Dimensions}. Em (b) à
+  esquerda (1) apresenta-se a representação visual dos itens
+  e na direita (2) a das dimensões. Imagens extraídas de
+  \cite{Turkay2011}}
   \label{fig:bd}
 \end{figure}
 
 O trabalho proposto por \citet{Turkay2011}, \emph{Brushing
-Dimensions} (BD), cobre esse limitação da ferramenta
+Dimensions} (BD), cobre essa limitação da ferramenta
 VaR, pois permite aos usuários interagir tanto com as
 dimensões dos conjunto de dados quanto com os itens.  Como
 pode ser observado na Figura~\ref{fig:bd} o usuário pode
@@ -609,24 +616,14 @@ outras visões e permite que se visualize, por exemplo,
 variações na importância de um atributo em diferentes
 subconjuntos dos dados. Uma das limitações de ambos os
 métodos, VaR e BD, é não permitir que o usuário construa
-novas dimensões com base nas originais ou com base no seu
+novas dimensões com base nas originais ou com base em seu
 conhecimento.
-
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=16cm]{images/ds.png}
-    \caption[DimStiller]
-    {Abordagem proposta pela ferramenta \emph{DimStiller}
-    para criar mapeamentos de dados multidimensionais
-    interativamente.}
-    \label{fig:ds}
-\end{figure}
 
 Uma questão inerente de se mapear elementos de um espaço de
 alta dimensionalidade em um plano, sejam os elementos itens
 ou dimensões, é que não há garantias de que o mapeamento
 seja válido. Em casos onde a dimensionalidade intrínseca dos
-dados for maior do que ao do espaço alvo, então poderá haver
+dados for maior do que a do espaço alvo, então poderá haver
 sobreposição de elementos sem necessariamente significar que
 os elementos sobrepostos sejam realmente semelhantes. Ambos
 VaR e BD não atentam para esta questão, mas
@@ -635,9 +632,19 @@ VaR e BD não atentam para esta questão, mas
 dados multidimensionais levando em consideração este
 problema. 
 
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=16cm]{images/ds.png}
+    \caption[DimStiller]
+    {Abordagem proposta pela ferramenta \emph{DimStiller}
+    para criar mapeamentos de dados multidimensionais
+interativamente. Imagem extraída de \cite{Ingram2010}}
+    \label{fig:ds}
+\end{figure}
+
 A Figura~\ref{fig:ds} ilustra a ferramenta
 \emph{DimStiller}. Pelo gráfico de barras (janela canto
-inferior esquerdo) o usuário atenta para a dimensionalidade
+inferior esquerdo) o usuário reconhece a dimensionalidade
 intrínseca dos dados e para os limites da redução de
 dimensionalidade. O mapeamento resultante da redução é
 apresentado em um gráfico dos dois componentes principais
@@ -645,9 +652,9 @@ apresentado em um gráfico dos dois componentes principais
 visualização, não existem estruturas de interesse nos dados.
 No entanto, ao observar mapeamentos com outros componentes
 da redução (janela canto superior direito), o usuário pode
-identificar certos padrões nos dados.
+identificar padrões nos dados.
 
-Um outro aspecto importante da redução de dimensionalidade,
+Outro aspecto importante da redução de dimensionalidade,
 que muitas vezes não é levado em consideração, é que
 dependendo do método adotado, diferentes características dos
 dados podem ser mantidas e outras perdidas. Este problema é
@@ -656,14 +663,14 @@ de gráficos de perda de informação para diferentes medidas,
 o usuário pode entender quais características dos seus dados
 são mantidas e perdidas ao longo do processo de redução. 
 
-O trabalho de \citet{Johansson2009}, assim como o
-\emph{DimStiller}, pode ser dito consciente de incerteza.
-Isso, pois se preocupam em apresentar aos usuários os fatores que
-podem resultar em interpretações ambíguas dos resultados e
-na perda de possíveis informações de interesse. 
-Tal preocupação não é presente em muitas das ferramentas de
-visualização atuais, mas tem se tornado cada vez mais uma
-exigência~\cite{Dill2012}.
+O trabalho de \citet{Johansson2009} e \cite{Ingram2010} 
+fornecem meios para o usuário avaliar a incerteza dos
+resultados. Apresentam aos
+usuários os fatores que podem resultar em interpretações
+ambíguas dos resultados e na perda de possíveis informações
+de interesse. Tal característica não é presente em muitas das
+ferramentas de visualização atuais, mas tem se tornado cada
+vez mais uma exigência~\cite{Dill2012}.
 
 As ferramentas de redução de dimensionalidade não são
 restritas a totalmente automáticas ou integralmente
@@ -676,28 +683,30 @@ Existem métodos que não fazem uso de representações
 visuais para realizar a redução de dimensionalidade em si,
 mas sim para tornar os métodos automáticos mais
 compreensivos. Eles buscam incluir a participação do usuário
-nesse processo para tornar essas ``caixas pretas'' mais
-intuitivas. 
+nesse processo para tornar esses métodos ``caixas-pretas'' mais
+intuitivos. 
 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=12cm]{images/ipca.png}
-    \caption[iPCA]{Ilustração da ferramenta iPCA.}
+    \caption[iPCA]{Ilustração da ferramenta iPCA. Imagem
+    extraída de ~\cite{Jeong2009}}
     \label{fig:ipca}
 \end{figure}
 
-A ferramenta iPCA~\cite{Jeong2009}, por exemplo, provê meios
-para o usuário manipular a importância de cada atributo na
-técnica PCA e, assim, ser capaz de entender mais facilmente as 
-transformações realizadas sobre os dados. O funcionamento
-dessa ferramenta é ilustrado na Figura~\ref{fig:ipca}. Em
-(A) apresenta-se o mapeamento dos elementos no plano
-utilizando dois componentes principais selecionados pelo
-usuário. (B) e (C) referem-se a visualizações dos dados
-originais e transformados, respectivamente. Em (D) é
-apresentada uma matriz de correlação. O principal mecanismo
-de interação é indicado por (E), o qual permite ao usuário
-definir a contribuição de cada atributo no resultado final.
+No contexto de extração de características, a ferramenta
+iPCA~\cite{Jeong2009} provê meios para o usuário manipular a
+importância de cada atributo na técnica PCA e, assim, ser
+capaz de entender mais facilmente as transformações
+realizadas sobre os dados. O funcionamento dessa ferramenta
+é ilustrado na Figura~\ref{fig:ipca}. Em (A) apresenta-se o
+mapeamento dos elementos no plano utilizando dois
+componentes principais selecionados pelo usuário. (B) e (C)
+referem-se a visualizações dos dados originais e
+transformados, respectivamente. Em (D) é apresentada uma
+matriz de correlação. O principal mecanismo de interação é
+indicado por (E), o qual permite ao usuário definir a
+contribuição de cada atributo no resultado final.
 
 Similarmente, \citet{Williams2004}
 permitem que o usuário guie o processo de redução de
@@ -708,34 +717,31 @@ ferramenta que permite ao usuário monitorar visualmente os
 recursos computacionais utilizados pelo método SOM e definir
 interativamente os parâmetros para sua execução.
 
-Dentro do contexto de seleção de características, o trabalho
-de \citet{Dy2000} busca tornar este processo mais interativo.
-Possibilitando ao usuário escolher grupos de itens para
-análises mais detalhadas e fornecendo mecanismos interativos
-para adição e remoção de atributos em cada etapa dos métodos
-de seleção. O trabalho de \citet{Brandoli2010} apresenta um
-objetivo similar, porém com um enfoque em auxiliar o
-usuário a definir os parâmetros dos métodos de seleção de
-características.
+As visualizações também podem ser utilizadas para tornar
+métodos de seleção de características mais intuitivos. O
+trabalho de \citet{Dy2000}, por exemplo, possibilita que o
+usuário adicione ou remova atributos interativamente ao
+longo do processo de redução. Por outro lado, o trabalho de
+\citet{Brandoli2010} auxilia o usuário a definir os
+parâmetros dos métodos de seleção de características.
 
-Os trabalhos propostos por \citet{Zhang2006}, \citet{Choo2010}
-e \citet{Paiva2012} são abordagens que buscam tornar o
+Encontra-se na literatura alguns trabalhos que buscam tornar o
 processo de redução de dimensionalidade mais intuitivo no
-contexto de classificação de dados. Nesses métodos, a redução
+contexto de classificação de dados~\citet{Zhang2006,
+Choo2010, Paiva2012}. Nesses trabalhos, a redução
 de dimensionalidade reflete diretamente na qualidade das
 classificações. 
 
-Um problema das ferramentas que criam visualizações de métodos
-automáticos é a necessidade do usuário ter um certo
-conhecimento sobre o método por trás da visualização. Por
-exemplo, no caso da ferramenta iPCA, o usuário pode ver
-pouca utilidade na visualização da janela B apresentada na
-Figura~\ref{fig:ipca} se não souber o que significa um
-componente principal. Para pesquisadores da área pode ser
-até pressuposto que o usuário tenha este tipo de
+Um problema das ferramentas que criam visualizações de
+métodos automáticos é a necessidade do usuário ter um certo
+conhecimento sobre o método utilizado para a construção da
+visualização. Por exemplo, o usuário pode não fazer um uso
+efetivo da ferramenta \emph{iPCA} se não compreender o significado
+de  um componente principal.  Para pesquisadores da área
+pode ser até pressuposto que o usuário tenha este tipo de
 conhecimento, no entanto, se o objetivo for criar uma
-ferramenta para o público em geral, então tal suposição pode
-restringir o seu uso.
+ferramenta para o público em geral, então tal suposição 
+restringe seu uso.
 
 \section{Construção Interativa de Atributos}\label{sec:tr}
 
