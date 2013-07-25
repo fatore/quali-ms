@@ -24,7 +24,7 @@ executadas de maneira totalmente automática. A principal
 motivação desta área parte do princípio de quando o usuário
 consegue compreender o resultado apresentado por uma
 representação visual, ele confia neste resultado e
-consegue tirar melhor proveito das análises~\cite{Wong1999}.
+consegue obter melhor proveito das análises~\cite{Wong1999}.
 
 Uma característica fundamental para ferramentas MVD é manter
 a simplicidade em todos aspectos do sistema~\cite{Wong1999}.
@@ -41,7 +41,7 @@ Um outro aspecto que deve ser levado em consideração para o
 desenvolvimento dessas ferramentas é permitir seu uso em
 diversos domínios~\cite{Wong1999}. Para isso, diferentes
 mecanismos de interação devem ser oferecidos, já que nenhum
-mecanismo será capaz de operar otimamente para todas as
+será capaz de operar otimamente para todas as
 aplicações. Porém, unir em um único ambiente os principais
 mecanismos necessários para a modificação efetiva dos dados
 não é tarefa trivial e nenhum dos trabalhos estudados provê
@@ -65,11 +65,11 @@ abordagem que apresente essas características e que seja
 capaz de superar as limitações dos trabalhos do atual estado
 da arte.
 
-O estabelecimento de biplots como base para este trabalho é
+O estabelecimento de \emph{biplots} como base para este trabalho é
 adequado, pois biplots oferecem uma representação simultânea
 entre itens e dimensões de forma simples. A
 Figura~\ref{fig:biplot} apresenta um exemplo de biplot para
-um levantamento de certas características de alguns países.
+os dados da Tabela~\ref{tab:at}.
 Neste exemplo, os pontos representam os países e as setas
 representam os aspectos avaliados no levantamento. A
 distância entre os pontos é relacionada com a similaridade
@@ -83,7 +83,8 @@ padrão das variáveis que representam.
 \begin{figure}[h!]
     \centering
     \includegraphics[width=10cm]{images/biplot.pdf}
-    \caption{Exemplo de biplot.}
+    \caption{Exemplo de biplot para os dados da
+    Tabela~\ref{tab:at}.}
     \label{fig:biplot}
 \end{figure}
 
@@ -95,14 +96,14 @@ coerência entre as duas representações e essa é uma
 propriedade de biplots que os tornam ferramentas únicas. Tal
 propriedade pode ser observada na Figura~\ref{fig:biplot},
 onde nota-se, por exemplo, que o Brasil se encontra naquela
-posição do espaço, pois é um país acolhedor, com clima
-agradável e boa comida. 
+posição do espaço, pois é um país com excelente
+hospitalidade, clima agradável e boa comida. 
 
 Essas características de biplots fazem com que seu uso seja
 propício para a construção de ferramentas interativas de
 transformação de dados multidimensionais. No entanto,
 desconhece-se qualquer trabalho na literatura que faça uso
-de tal representação gráfica para se transformar
+de tal representação gráfica para transformar
 interativamente conjuntos de dados. Assim, acredita-se que
 mesmo os mecanismos interativos que já foram utilizados em
 outros trabalhos, como os de redução de dimensionalidade
@@ -209,7 +210,7 @@ onde $U$ é uma matriz $n \times r$, $V$ é uma matriz $m
 com números positivos $\alpha_1,\alpha_2,\ldots,\alpha_r$ em
 uma ordem decrescente. 
 
-Para se obter o formato estabelecido na Equação~\ref{eq:bp}
+Para obter o formato estabelecido na Equação~\ref{eq:bp}
 basta distribuir a matriz $D$ às outras matrizes. Dependendo
 do modo que essa distribuição é realizada diferentes
 resultados visuais são obtidos. Ao se atribuir $D$ a $U$
@@ -224,7 +225,7 @@ para a criação da representação visual. Assim, a qualidade
 do resultado dependerá do erro da aproximação e da
 dimensionalidade intrínseca dos dados. 
 
-Uma vez construída a base das visualizações, 
+Uma vez construída a base para as visualizações, 
 prosseguiremos para a etapa de desenvolvimento dos
 mecanismos de interação que são detalhados a seguir.
 
@@ -239,7 +240,7 @@ funcionamentos por meio de esboços.
 \subsubsection{Mecanismo de Seleção de Itens e Atributos}
 
 O mecanismo de seleção age tanto sobre os itens quanto
-dimensões. Do ponto de vista de itens seu propósito é
+dimensões. Do ponto de vista de itens, seu propósito é
 viabilizar analises locais por meio da criação de
 subconjuntos dos dados. Pode ser utilizado também para a
 remoção de \emph{outliers}. A Figura~\ref{fig:item-sel}
@@ -270,9 +271,9 @@ basicamente dois problemas. O primeiro, chamado de mínimo
 em construir um subconjunto dos atributos de entrada
 evitando ao máximo a redundância entre eles. Um caso prático
 deste problema está na construção de um classificador, onde
-ao se evitar redundância entre os atributos de entrada
-pode-se fazer com que o método obtenha ganhos tanto no tempo
-de execução quanto na qualidade dos resultados obtidos. 
+ao evitar redundância entre os atributos de entrada
+pode-se fazer com que o método obtenha ganhos no tempo
+de execução e na qualidade dos resultados. 
 
 Já o segundo problema, conhecido como todos relevantes
 (\emph{all relevant})~\cite{Nilsson2007}, equivale a
@@ -289,17 +290,17 @@ primeiro problema, o usuário pode definir quais atributos
 são redundantes ao observar as direções dos eixos. Assim,
 quanto menor o ângulo entre dois eixos, maior é a correlação
 entre eles e consequentemente maior a redundância. No
-exemplo apresentado na Figura~\ref{fig:biplot} observa-se
+exemplo apresentado na Figura~\ref{fig:biplot}, observa-se
 que os eixos correspondentes às variáveis infraestrutura e
-segurança se encontram praticamente sobrepostos. Logo, o
+segurança estão praticamente sobrepostos. Logo, o
 usuário poderia descartar uma delas. 
 
-Para lidar com o segundo problema, o usuário deve tomar
+Para lidar com o segundo problema, o usuário deve adotar 
 algum eixo como referência. Como é exemplificado na
 Figura~\ref{fig:item-sel}, o usuário poderia estar
 interessado em investigar principalmente a infraestrutura
 dos países. Assim, observaria que as variáveis gastronomia,
-clima e hospitalidade não são muito relacionadas com esse
+clima e hospitalidade são pouco relacionadas com esse
 aspecto e poderia descartá-las. Ao realizar essa seleção o
 usuário observaria uma nítida separação dos países europeus
 e os restantes.
@@ -336,8 +337,8 @@ O mecanismo de combinação parte de um subconjunto de atributos
 definido pelo usuário e retorna um único atributo que busca
 representar o máximo da informação contida nesse subconjunto. A
 Figura~\ref{fig:comb} ilustra uma combinação entre os atributos
-gastronomia e clima. Espera-se que o eixo resultante tenha
-direção semelhante aos dos que o originaram e que as
+gastronomia e clima. Espera-se que o eixo resultante possua 
+direção semelhante aos que lhe deram origem e que as
 características dos dados sejam preservadas.
 
 \begin{figure}[h!]
@@ -366,19 +367,19 @@ combinação pode ser preferível, pois não exige que o usuário
 decida quais atributos devem ser descartados.
 
 Acreditamos que o uso concomitante dos mecanismos de seleção
-e combinação deve ser suficiente para se reduzir
+e combinação seja suficiente para se reduzir
 eficientemente a dimensionalidade dos conjuntos de dados.
 Entretanto, este projeto se propõe ir além do processo de
 redução ao permitir que o usuário agregue mais incisivamente
 seu conhecimento nos dados por meio do mecanismo de
 construção de atributos que é detalhado a seguir.
 
-\subsubsection{Mecanismo de Combinação de Atributos}
+\subsubsection{Mecanismo de Construção de Atributos}
 
 Existem trabalhos na literatura que são capazes de agregar
 o conhecimento do usuário nos dados. No entanto, esses
-trabalhos modificam todo o conjunto de dados original para
-isso. O mecanismo que propomos busca conservar as dimensões
+trabalhos modificam todo o conjunto de dados original
+no processo. O mecanismo que propomos busca conservar as dimensões
 originais e utilizar atributos ``fantasmas'' para
 representar o conhecimento do usuário.
 
@@ -421,15 +422,15 @@ Hit}~\cite{Paulovich2008} e \emph{Neighborhood
 Preservation}~\cite{Paulovich2008a}. Tais medidas
 podem ser transmitidas nas representações visuais por meio
 do uso de cores. Assim, durante todo o processo de
-investigação e transformação dos dados, o usuário está
-ciente da qualidade dos resultados apresentados. 
+investigação e transformação dos dados, o usuário 
+pode acompanhar a qualidade dos resultados apresentados. 
 
 Dentre as possíveis aplicações para a ferramenta
 desenvolvida, considera-se de grande relevância as
 engajadas no contexto de recuperação de informação
 (\emph{Information Retrieval})~\cite{Manning2008}.
 Cogita-se, inclusive, o desenvolvimento de um protótipo de um
-sistema de recomendação. O sistema levaria em consideração
+sistema de recomendação. O sistema consideraria
 as interações do usuário para retornar recomendações mais
 pertinentes. Acredita-se que as transformações serão de
 grande valia, pois os interesses e preferências dos usuários
@@ -463,7 +464,7 @@ Rand~\cite{Rand1971}.
 
 A escolha de biplots como a visualização básica para este
 projeto não foi uma decisão imediata. Inicialmente,
-cogitamos o uso de visões coordenadas entre itens e
+trabalhamos com visões coordenadas entre itens e
 dimensões, algo como o apresentado na Figura~\ref{fig:dual}.
 Para este exemplo utilizamos o conjunto de dados
 Iris~\cite{Fisher1936} que possui 150 elementos e 5
@@ -533,13 +534,13 @@ A qualidade de uma medida de similaridade varia de
 acordo com o domínio em que é aplicada. Normalmente, uma
 medida é dita adequada quando há uma concordância entre o
 valor obtido e a opinião de um especialista da área. No
-entanto, mesmo um especialista sobre um assunto pode ter
+entanto, mesmo um especialista em um assunto pode ter
 dificuldade em determinar com precisão a semelhança entre
 dois objetos. Assim, é muito difícil definir um modelo
 matemático que meça a similaridade entre dois atributos com
 precisão para todas as aplicações de forma genérica. 
 
-A dificuldade em se definir uma medida de similaridade é
+A dificuldade em definir uma medida de similaridade é
 somente um dos problemas dessa abordagem inicial.
 Diferentemente do que acontece com biplots, a construção da
 visualização apresentada na Figura~\ref{fig:dual} (b) exige
