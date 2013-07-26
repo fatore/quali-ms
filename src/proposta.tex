@@ -443,23 +443,65 @@ dos resultados.
 \section{Forma de Análise dos Resultados}
 
 Com dados melhor representados, os métodos que operam sobre
-eles, como classificadores e agrupadores de dados, devem
-apresentar melhores resultados. Será justamente por meio de
-uma quantificação dessa melhoria que será feita a validação
-deste trabalho. A referência para se definir a qualidade dos
-resultados será estabelecida com base em uma comparação com
-métodos automáticos. 
+eles, como algoritmos de classificação e agrupamento de
+dados, devem apresentar melhores resultados. Será justamente
+por meio de uma quantificação dessa melhoria que será feita
+a avaliação deste trabalho. A referência para se definir um
+resultado como bom ou ruim será estabelecida com base em uma
+comparação empírica com métodos automáticos de redução de
+dimensionalidade. Essa forma de análise é similar à
+proposta por \citet{Maaten2009} e envolve as seguintes
+tarefas:
 
-Normalmente essas comparações são
-feitas com base na taxa de acerto da classificação com os
-dados originais e com os dados
-transformados~\cite{Guyon2003,Joshi2007}. No entanto, devido
-a heterogeneidade dos métodos de redução não é trivial
-definir uma métrica única para as
-avaliações~\cite{Medeiros2011}. Assim, considera-se também o
-uso de medidas de avaliação de agrupadores de dados, como a
-medida da Silhueta~\cite{Rousseeuw1987} e o Índice
-Rand~\cite{Rand1971}.
+\begin{enumerate}
+    \item Escolher os conjuntos de dados para os
+        experimentos;
+    \item Separar cada conjunto em dados de treinamento
+        e teste;
+    \item Escolher as técnicas de redução de
+        dimensionalidade para comparação;
+    \item Transformar os conjuntos de treinamento utilizando
+        as técnicas desenvolvidas e as de comparação;
+    \item Utilizar cada conjunto de dados transformados para
+        treinar um classificador;
+    \item Calcular medidas de avaliação para cada
+        classificador;
+    \item Comparar as medidas sobre os classificadores para
+        cada técnica.
+\end{enumerate}
+
+Em relação aos conjuntos de dados, deve-se escolher
+conjuntos com características diversas que permitam avaliar as
+técnicas em diversas situações. Os conjuntos devem conter
+informação de classe para viabilizar o uso de algoritmos
+supervisionados e permitir o cálculo de medidas de qualidade
+dos resultados. Cada conjunto será dividido na metade, sendo
+uma parte correspondente aos dados de treinamento e a outra
+aos de teste.
+
+Os métodos de redução de dimensionalidade mais adequados
+para as comparações são aqueles que não exigem a escolha de
+parâmetros de entrada, como PCA e \emph{Sammon
+Mapping}~\cite{Sammon1969}. Tal característica é preferível,
+pois não é trivial encontrar os parâmetros ideais para a
+execução de cada técnica para os diferentes conjuntos de
+dados.
+
+Os dados transformados pelas técnicas serão utilizados como
+conjuntos de treinamento para diferentes execuções do
+algoritmo de classificação SVM~\cite{Cortes1995} em sua
+forma original. A escolha por este algoritmo nesta forma é
+justificada pelo fato que desejamos evitar novas
+transformações sobre os dados.  
+
+Encontra-se na literatura alguns trabalhos que utilizam somente a
+taxa de acerto das classificações para comparar as técnicas
+de redução de dimensionalidade~\cite{Guyon2003,Joshi2007}.
+No entanto, devido à heterogeneidade dos métodos de redução
+não é trivial definir uma métrica única para as
+avaliações~\cite{Medeiros2011}. Assim, consideramos também o
+uso de medidas como \emph{precisão, revocação,
+sensibilidade} e \emph{especificidade}~\cite{Mitchell1997}.
 
 Na próxima seção resume-se o que foi desenvolvido
 até o momento da escrita deste documento. Isso inclui a
@@ -610,11 +652,11 @@ As principais atividades deste trabalho de mestrado são as seguintes:
 
     \item Revisão bibliográfica;
 
-    \item Implementação dos biplots como base da
+    \item Implementação da técnica biplot como base da
         ferramenta visual;
 
     \item Desenvolvimento dos mecanismos de seleção e
-        extração para redução interativa de
+        extração de atributos para redução interativa de
         dimensionalidade;
 
     \item Desenvolvimento do mecanismo de construção
@@ -626,9 +668,9 @@ As principais atividades deste trabalho de mestrado são as seguintes:
     \item Implementação do protótipo de um sistema de
         recomendação;
 
-    \item Avaliação dos resultados;
+    \item Análise dos resultados;
 
-    \item Escrita e apresentação da dissertação para uma banca
+    \item Escrita e apresentação da dissertação para a banca
         avaliadora. 
 \end{enumerate}
 
