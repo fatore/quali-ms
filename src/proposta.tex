@@ -33,9 +33,9 @@ se baseiam em interfaces demasiadamente complexas, as quais
 exigem do usuário um certo período de treinamento para um
 uso efetivo. Tendo em vista que o objetivo das ferramentas
 visuais é tornar as análises mais intuitivas, qualquer tipo
-de obstáculo, como a necessidade de treinamento do usuário,
-pode ser desfavorável ao se comparar com os métodos
-automáticos.
+de obstáculo, como a necessidade de um exaustivo treinamento
+do usuário, pode ser desfavorável ao se comparar com os
+métodos automáticos.
 
 Um outro aspecto que deve ser levado em consideração para o
 desenvolvimento dessas ferramentas é permitir seu uso em
@@ -66,9 +66,10 @@ capaz de superar as limitações dos trabalhos do atual estado
 da arte.
 
 O estabelecimento de \emph{biplots} como base para este trabalho é
-adequado, pois biplots oferecem uma representação simultânea
+adequado, pois eles oferecem uma representação simultânea
 entre itens e dimensões de forma simples. A
-Figura~\ref{fig:biplot} apresenta um exemplo de biplot para
+Figura~\ref{fig:biplot} apresenta um exemplo de
+\emph{biplot} para
 os dados da Tabela~\ref{tab:at}.
 Neste exemplo, os pontos representam os países e as setas
 representam os aspectos avaliados no levantamento. A
@@ -83,8 +84,10 @@ padrão das variáveis que representam.
 \begin{figure}[h!]
     \centering
     \includegraphics[width=10cm]{images/biplot.pdf}
-    \caption{Exemplo de biplot para os dados da
-    Tabela~\ref{tab:at}.}
+    \caption[Exemplo de \emph{biplot}]
+    {Exemplo de \emph{biplot} para os dados da
+    Tabela~\ref{tab:at}. Os países são representados pelos  
+pontos e os atributos da tabela pelas setas.}
     \label{fig:biplot}
 \end{figure}
 
@@ -93,18 +96,17 @@ simultaneamente informações sobre itens e dimensões em uma
 única representação. Mesmo entre a minoria que apresenta
 essa característica, nenhuma é capaz de estabelecer uma
 coerência entre as duas representações e essa é uma
-propriedade de biplots que os tornam ferramentas únicas. Tal
+propriedade de \emph{biplots} que os tornam ferramentas únicas. Tal
 propriedade pode ser observada na Figura~\ref{fig:biplot},
-onde nota-se, por exemplo, que o Brasil se encontra naquela
-posição do espaço, pois é um país com excelente
-hospitalidade, clima agradável e boa comida. 
+onde com base no posicionamento dos itens é possível deduzir
+as características de destaque dos países.
 
-Essas características de biplots fazem com que seu uso seja
+Essas características de \emph{biplots} fazem com que seu uso seja
 propício para a construção de ferramentas interativas de
 transformação de dados multidimensionais. No entanto,
 desconhece-se qualquer trabalho na literatura que faça uso
 de tal representação gráfica para transformar
-interativamente conjuntos de dados. Assim, acredita-se que
+interativamente conjuntos de dados. Assim, acreditamos que
 mesmo os mecanismos interativos que já foram utilizados em
 outros trabalhos, como os de redução de dimensionalidade
 interativa, apresentarão características únicas na
@@ -113,19 +115,19 @@ metodologia aqui proposta.
 De um modo geral, o objetivo deste trabalho pode ser
 declarado da seguinte maneira:
 
-\begin{quote} \emph{``Este projeto de mestrado tem como
-        objetivo desenvolver em um ambiente integrado novas
-        técnicas visuais interativas para a transformação de
-        dados multidimensionais. A metodologia proposta se
-        baseia no uso de biplots e na ação conjunta de três
-        principais mecanismos de interação para superar as
-        limitações do estado da arte. Os dois primeiros,
-        seleção e combinação, possibilitam a redução da
-        dimensionalidade dos dados em busca de eliminar
-        variáveis irrelevantes e redundantes. O terceiro
-        mecanismo, construção, permite que o usuário crie
-        novas dimensões com base em seu conhecimento para
-        representar informações ausentes nos dados.''}
+\begin{quote} \emph{``O objetivo deste trabalho é
+        desenvolver novas técnicas visuais interativas para
+        a transformação de dados multidimensionais. A
+        metodologia proposta se baseia no uso de biplots e
+        na ação conjunta de três principais mecanismos de
+        interação para superar as limitações do estado da
+        arte. Os dois primeiros, seleção e combinação,
+        possibilitam a redução da dimensionalidade dos dados
+        em busca de eliminar variáveis irrelevantes e
+        redundantes. O terceiro mecanismo, construção,
+    permite que o usuário crie novas dimensões com base em
+seu conhecimento para representar informações ausentes nos
+dados.''}
 \end{quote}
 
 A seguir apresenta-se a metodologia proposta por este
@@ -133,7 +135,7 @@ trabalho para alcançar esse objetivo.
 
 \section{Metodologia}
 
-Aqui descrevemos o modo de construção de biplots e os três
+Aqui descrevemos o modo de construção de \emph{biplots} e os três
 principais mecanismos de interação propostos sobre tal
 representação. 
 
@@ -147,7 +149,7 @@ ser representada por:
     S = XY^T
 \end{equation}
 
-onde $X$ é uma matriz $n \times r$ e $Y$ uma matriz $m
+\noindent onde $X$ é uma matriz $n \times r$ e $Y$ uma matriz $m
 \times r$, ambas de posto $r$~\cite{Gabriel1971}. Os valores
 internos da matriz $S$ são o produto escalar entre os
 vetores correspondentes de $X$ e $Y$. Por exemplo, em:
@@ -171,7 +173,7 @@ vetores correspondentes de $X$ e $Y$. Por exemplo, em:
 \right)
 \end{equation}
 
-o elemento $S_{2,3}$, 3, da matriz é o
+\noindent o elemento $S_{2,3}$, 3, da matriz é o
 produto escalar entre $X_2$ e $Y^T_3$, $1 \times \left( -1
 \right) + 2 \times 2$. Em casos como o deste
 exemplo, onde o posto da matriz é dois, é possível desenhar os
@@ -192,12 +194,13 @@ Uma das maneiras mais adotadas para encontrar essa
 aproximação é por meio da decomposição em valores
 singulares, ou simplesmente SVD (\emph{Singular value
 decomposition})~\cite{Kalman1996}. O uso do método SVD é
-adequado para a construção de biplots, pois além de
+adequado para a construção de \emph{biplots}, pois além de
 resolver o problema da aproximação, seu resultado possui
-um formato muito similar ao exigido pela formulação de biplots,
+um formato muito similar ao exigido pela formulação de
+\emph{biplots},
 apresentada na Equação~\ref{eq:bp}.
 
-Basicamente, o método SVD declara que qualquer matriz $Y$
+Basicamente, usando o método SVD qualquer matriz $Y$
 de tamanho $n \times m$ e posto $r$ pode ser expressa como o
 produto de três matrizes:
 
@@ -205,7 +208,7 @@ produto de três matrizes:
     Y = UD_{\alpha}V^T
 \end{equation}
 
-onde $U$ é uma matriz $n \times r$, $V$ é uma matriz $m
+\noindent onde $U$ é uma matriz $n \times r$, $V$ é uma matriz $m
 \times r$ e $D_\alpha$ é uma matriz diagonal $r \times r$
 com números positivos $\alpha_1,\alpha_2,\ldots,\alpha_r$ em
 uma ordem decrescente. 
@@ -217,7 +220,7 @@ resultados visuais são obtidos. Ao se atribuir $D$ a $U$
 destaca-se as relações entre as instâncias de dados. Quando
 isso é feito em relação a $V$ destaca-se as relações entre
 os atributos. E quando se atribui parcialmente $D$ a ambas
-matrizes $U$ e $V$ obtém-se um biplot simétrico que não
+matrizes $U$ e $V$ obtém-se um \emph{biplot} simétrico que não
 prioriza características específicas dos dados.
 Independentemente do posto da matriz ser igual a dois,
 utiliza-se apenas os dois primeiros vetores de $U$ e $V$
@@ -261,7 +264,9 @@ investiga esse subconjunto com mais detalhes.
     \includegraphics[width=\textwidth]{images/item-sel.pdf}
     \caption{Resultado esperado.}
   \end{subfigure} 
-  \caption{Exemplo de seleção sobre itens.}
+  \caption[Exemplo de seleção sobre itens.]
+  {Exemplo de seleção sobre itens. O círculo azul
+  corresponde a seleção realizada pelo usuário.}
   \label{fig:item-sel}
 \end{figure}
 
@@ -278,13 +283,13 @@ de execução e na qualidade dos resultados.
 Já o segundo problema, conhecido como todos relevantes
 (\emph{all relevant})~\cite{Nilsson2007}, equivale a
 encontrar todos os atributos que são de algum modo
-relevantes para a compreensão do fenómeno observado. Uma
+relevantes para a compreensão do fenômeno observado. Uma
 aplicação real deste problema pode ser encontrada no
 contexto de análise de expressões gênicas, onde deseja-se
 identificar quais genes apresentam maior relação com o
 diagnóstico de alguma doença. 
 
-O uso de biplots permite que o usuário lide prontamente com
+O uso de \emph{biplots} permite que o usuário lide prontamente com
 os dois problemas da seleção sobre dimensões. Em relação ao
 primeiro problema, o usuário pode definir quais atributos
 são redundantes ao observar as direções dos eixos. Assim,
@@ -318,7 +323,9 @@ e os restantes.
     \includegraphics[width=\textwidth]{images/dim-sel.pdf}
     \caption{Resultado esperado.}
   \end{subfigure} 
-  \caption{Exemplo de seleção sobre atributos.}
+  \caption[Exemplo de seleção sobre atributos.]
+  {Exemplo de seleção sobre atributos. O círculo azul
+  corresponde a seleção realizada pelo usuário.}
   \label{fig:item-sel}
 \end{figure}
 
@@ -354,7 +361,10 @@ características dos dados sejam preservadas.
     \includegraphics[width=\textwidth]{images/comb.pdf}
     \caption{Resultado esperado.}
   \end{subfigure} 
-  \caption{Exemplo de combinação de atributos.}
+  \caption[Exemplo de combinação de atributos.]
+  {Exemplo de combinação de atributos. O círculo azul
+  corresponde a seleção realizada pelo usuário para
+  determinar quais atributos devem ser combinados.}
   \label{fig:comb}
 \end{figure}
 
@@ -376,12 +386,13 @@ construção de atributos que é detalhado a seguir.
 
 \subsubsection{Mecanismo de Construção de Atributos}
 
-Existem trabalhos na literatura que são capazes de agregar
-o conhecimento do usuário nos dados. No entanto, esses
-trabalhos modificam todo o conjunto de dados original
-no processo. O mecanismo que propomos busca conservar as dimensões
-originais e utilizar atributos ``fantasmas'' para
-representar o conhecimento do usuário.
+Existem trabalhos na literatura que são capazes de agregar o
+conhecimento do usuário nos dados. No entanto, esses
+trabalhos modificam todo o conjunto de dados original no
+processo. O mecanismo de construção de atributos que
+propomos busca conservar as dimensões originais e utilizar
+atributos ``fantasmas'' para representar o conhecimento do
+usuário.
 
 A Figura~\ref{fig:constr} ilustra o mecanismo de construção.
 Inicialmente, cria-se um atributo ``fantasma'' com valores
@@ -407,14 +418,19 @@ obtenham melhores resultados.
     \centering
     \includegraphics[width=\textwidth]{images/constr.pdf}
     \caption{Resultado esperado.}
-  \end{subfigure} 
-  \caption{Exemplo de construção de atributos.}
+  \end{subfigure}
+  \caption[Exemplo de construção de atributos.]
+  {Exemplo de construção de atributos. A seta vermelha
+      pontilhada em (a) corresponde ao atributo
+      ``fantasma''. As setas em azul correspondem às
+      interações realizadas pelo usuário. A seta vermelha em
+      (b) indica a nova dimensão construída.}
   \label{fig:constr}
 \end{figure}
 
 Como mencionado anteriormente, um aspecto importante de
 ferramentas de visualização é a avaliação da incerteza dos
-resultados. Como um biplot é também um mapeamento de
+resultados. Como um \emph{biplot} é também um mapeamento de
 elementos no plano, ferramentas voltadas para esse tipo de
 representação podem ser reaproveitadas, como
 \emph{stress}~\cite{Kruskal1964}, \emph{Neighborhood
@@ -489,10 +505,10 @@ dados.
 
 Os dados transformados pelas técnicas serão utilizados como
 conjuntos de treinamento para diferentes execuções do
-algoritmo de classificação SVM~\cite{Cortes1995} em sua
-forma original. A escolha por este algoritmo nesta forma é
-justificada pelo fato que desejamos evitar novas
-transformações sobre os dados.  
+algoritmo de classificação SVM (\emph{Support Vector
+Machine}) em sua forma original~\cite{Cortes1995}. A escolha
+por este algoritmo nesta forma é justificada pelo fato que
+desejamos evitar novas transformações sobre os dados.  
 
 Encontra-se na literatura alguns trabalhos que utilizam somente a
 taxa de acerto das classificações para comparar as técnicas
@@ -505,26 +521,23 @@ sensibilidade} e \emph{especificidade}~\cite{Mitchell1997}.
 
 Na próxima seção resume-se o que foi desenvolvido
 até o momento da escrita deste documento. Isso inclui a
-abordagem adotada antes da escolha de biplots como base para
+abordagem adotada antes da escolha de \emph{biplots} como base para
 as visualizações e também o arcabouço computacional da
 ferramenta a ser desenvolvida.
 
 \section{Resultados Preliminares}
 
-A escolha de biplots como a visualização básica para este
-projeto não foi uma decisão imediata. Inicialmente,
-trabalhamos com visões coordenadas entre itens e
-dimensões, algo como o apresentado na Figura~\ref{fig:dual}.
-Para este exemplo utilizamos o conjunto de dados
+A escolha de \emph{biplots} como a visualização básica para
+este projeto não foi uma decisão imediata. Inicialmente,
+trabalhamos com visões coordenadas entre itens e dimensões,
+algo como o apresentado na Figura~\ref{fig:dual}.  Para este
+exemplo utilizamos o conjunto de dados
 Iris~\cite{Fisher1936} que possui 150 elementos e 5
-atributos, sendo que um deles é a espécie das flores. Em
-(a) temos a representação dos itens que pode ser construída
-com base em qualquer técnica de redução de dimensionalidade
-como PCA ou MDS. Enquanto em (b) apresenta-se a representação das
-dimensões que demanda um processo de construção mais
-elaborado. Em ambos casos a proximidade entre os
-pontos é diretamente proporcional à similaridade dos
-elementos que representam.
+atributos, sendo que um deles é a espécie das flores. Em (a)
+apresenta-se a representação dos itens e em (b) a das
+dimensões. Em ambos casos a proximidade entre os pontos é
+diretamente proporcional à similaridade dos elementos que
+representam.
 
 \begin{figure}[h!]
     \centering
@@ -543,7 +556,8 @@ elementos que representam.
         \end{framed}
         \caption{}
     \end{subfigure} 
-    \caption{Exemplo da abordagem adotada inicialmente. Em
+    \caption[Exemplo da abordagem adotada inicialmente]
+    {Exemplo da abordagem adotada inicialmente. Em
         (a) apresenta-se os itens com diferentes cores para
         flores de diferentes espécies. Em (b) apresenta-se
         as dimensões e destaca-se o atributo referente à
@@ -551,64 +565,60 @@ elementos que representam.
     \label{fig:dual}
 \end{figure}
 
-O procedimento para a construção da representação das
-dimensões é mais elaborado, pois envolve a difícil tarefa de
-escolha de uma medida de similaridade entre atributos. De um
-modo geral, uma medida de similaridade pode ser definida da
-seguinte maneira: dado um conjunto de dados contendo $n$
-elementos com $m-$dimensões, suas colunas podem ser
-descritas por $m$ vetores $A_i(0\leq~i<m)$, cada uma
-contendo $n$ números reais $a_{i,k},(0\leq~k<~n)$, uma
-medida de similaridade $S$ deve retornar um número real
-($S:\mathbb{R}^n\times \mathbb{R}^n\rightarrow\mathbb{R}$)
-satisfazendo as seguintes condições:
+Os procedimentos para a construção das duas visualizações
+são muito similares. Em ambos cria-se uma
+matriz de distâncias com base em medidas de dissimilaridade
+entre pares de elementos. Em seguida, aplica-se sobre cada 
+matriz uma técnica de MDS para mapear os elementos em 
+posições do espaço bidimensional. Finalmente, utiliza-se
+alguma forma gráfica, no caso pequenos círculos, para
+indicar as posições referentes aos elementos mapeados.
 
-\begin{enumerate}
+O que torna esses procedimentos distintos é a maneira de
+como é construída a matriz de distâncias. No caso dos itens,
+utilizamos a Distância Euclidiana~\cite{Cha2007} para
+definir a dissimilaridade entre duas instâncias de dados.
+Apesar desta medida não ser aplicável a qualquer tipo de
+aplicação~\cite{Cha2007}, acreditamos ser suficiente para os
+propósitos desta visualização. Em relação a representação
+das dimensões, adotamos um procedimento similar ao sugerido
+por~\citet{Yang2003}, construímos a matriz de distâncias com
+base no coeficiente de correlação linear de Pearson entre
+pares de dimensões.
 
-    \item Positividade: $\forall A_i,A_j \in \mathbb{R}^n:
-        S(A_i,A_j) \geq 0 $
-
-    \item Reflexividade: $\forall A_i,A_j \in
-        \mathbb{R}^n: (A_i = A_j) \Leftrightarrow
-        S(A_i,A_j) = 0 $
-
-    \item Simetria: $\forall A_i,A_j \in
-        \mathbb{R}^n: S(A_i,A_j) =
-        S(A_j,A_i)$, onde $(0 \leq i,j <
-        d)$.
-
-\end{enumerate}
-
-A qualidade de uma medida de similaridade varia de
-acordo com o domínio em que é aplicada. Normalmente, uma
-medida é dita adequada quando há uma concordância entre o
-valor obtido e a opinião de um especialista da área. No
-entanto, mesmo um especialista em um assunto pode ter
-dificuldade em determinar com precisão a semelhança entre
-dois objetos. Assim, é muito difícil definir um modelo
-matemático que meça a similaridade entre dois atributos com
-precisão para todas as aplicações de forma genérica. 
+É importante destacar que a qualidade dos resultados visuais
+são diretamente relacionados às medidas de dissimilaridade
+adotadas. Por sua vez, a qualidade de uma medida de
+similaridade varia de acordo com o domínio em que é
+aplicada. Normalmente, uma medida é dita adequada quando há
+uma concordância entre o valor obtido e a opinião de um
+especialista da área. No entanto, mesmo um especialista em
+um assunto pode ter dificuldade em determinar com precisão a
+semelhança entre dois objetos. Assim, é muito difícil
+definir um modelo matemático que meça a similaridade entre
+dois atributos com precisão para todas as aplicações de
+forma genérica. 
 
 A dificuldade em definir uma medida de similaridade é
 somente um dos problemas dessa abordagem inicial.
-Diferentemente do que acontece com biplots, a construção da
+Diferentemente do que acontece com \emph{biplots}, a construção da
 visualização apresentada na Figura~\ref{fig:dual} (b) exige
 um processamento distinto do realizado para a
 Figura~\ref{fig:dual} (a). Isso faz com que o custo
-computacional seja praticamente duas vezes maior do que
-utilizando-se biplots. Além disso, tal abordagem não
+computacional seja maior do que
+utilizando-se \emph{biplots}. Além disso, tal abordagem não
 apresenta a coerência espacial entre o posicionamento dos
-itens e das dimensões que os biplots oferecem.
+itens e das dimensões que os \emph{biplots} oferecem.
 
 Apesar de termos descartado essa abordagem inicial, grande
 parte do que foi desenvolvido nessa etapa poderá ser
 reaproveitado. Isso inclui a base da interface gráfica e
-alguns dos mecanismos de interação. A
-Figura~\ref{fig:dual-main} apresenta uma visão do geral do
-protótipo desenvolvido. As janelas indicadas por (a) e (b)
-correspondem às visualizações discutidas anteriormente.
-Sobre essas visualizações já é possível selecionar
-subconjuntos dos dados, tanto itens quanto dimensões. 
+alguns dos mecanismos de interação desenvolvidos no
+protótipo apresentado na Figura~\ref{fig:dual-main}. As
+janelas indicadas por (a) e (b) correspondem às
+visualizações discutidas anteriormente.  Sobre essas
+visualizações já é possível selecionar subconjuntos dos
+dados, tanto itens quanto dimensões. 
 
 \begin{figure}[h!]
     \centering
@@ -652,7 +662,7 @@ As principais atividades deste trabalho de mestrado são as seguintes:
 
     \item Revisão bibliográfica;
 
-    \item Implementação da técnica biplot como base da
+    \item Implementação da técnica \emph{biplot} como base da
         ferramenta visual;
 
     \item Desenvolvimento dos mecanismos de seleção e
@@ -661,9 +671,6 @@ As principais atividades deste trabalho de mestrado são as seguintes:
 
     \item Desenvolvimento do mecanismo de construção
         interativa de atributos;
-
-    \item Desenvolvimento de um método para expressar
-        a qualidade dos resultados apresentados;
 
     \item Implementação do protótipo de um sistema de
         recomendação;
@@ -696,12 +703,11 @@ O cronograma de execução das atividades é apresentado na Tabela~\ref{t:ativid
         1     &\y\y    &\y\y      &\x\x     &\x\x      &\x\x     \\ \hline
         2     &\x\x    &\y\y      &\y\y     &\r\r      &\r\x     \\ \hline
         3     &\x\x    &\x\y      &\y\y     &\r\x      &\x\x     \\ \hline
-        4     &\x\x    &\x\x      &\y\y     &\r\r      &\x\x     \\ \hline
-        5     &\x\x    &\x\x      &\x\y     &\r\r      &\r\x     \\ \hline
-        6     &\x\x    &\x\x      &\x\x     &\x\x      &\r\x     \\ \hline
-        7     &\x\x    &\x\x      &\x\x     &\x\x      &\r\x     \\ \hline
-        8     &\x\x    &\x\x      &\x\y     &\r\r      &\r\x     \\ \hline
-        9     &\x\x    &\x\x      &\x\x     &\r\r      &\r\x     \\ \hline
+        4     &\x\x    &\x\x      &\y\y     &\r\x      &\x\x     \\ \hline
+        5     &\x\x    &\x\x      &\x\x     &\r\r      &\x\x     \\ \hline
+        6     &\x\x    &\x\x      &\x\x     &\x\r      &\x\x     \\ \hline
+        7     &\x\x    &\x\x      &\x\x     &\x\r      &\x\x     \\ \hline
+        8     &\x\x    &\x\x      &\x\x     &\x\r      &\r\x     \\ \hline
         %     &       2012        &       2013         &       2014       \\
 \end{tabular}
 \end{center}

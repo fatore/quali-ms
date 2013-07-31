@@ -38,9 +38,11 @@
 \usepackage{fancychap}
 \usepackage{hyperref}
 \usepackage{array}
-%\usepackage{pdfpages}
+\usepackage{pdfpages}
 %\usepackage{titlesec}
 \usepackage[table]{xcolor}
+
+\captionsetup{justification = centerlast}
 
 \newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 
@@ -81,6 +83,8 @@
 
 \author{Francisco Morgani Fatore}
 
+\includepdf[pages={-}]{src/capa.pdf}
+
 \titulation{\hyphenpenalty=10000 Monografia apresentada ao Instituto
 de Ciências Matemáticas e de Computação -- ICMC/USP, para o Exame de Qualificação, como parte dos requisitos para a obtenção do título de Mestre na Área de Ciências de Computação e Matemática Computacional.} 
 \advisor{Prof. Dr. Fernando Vieira Paulovich}
@@ -99,7 +103,6 @@ de Ciências Matemáticas e de Computação -- ICMC/USP, para o Exame de Qualifi
         Novembro\or
         Dezembro\fi/\the\year}
 \begingroup
-\maketitle
 
 \frontmatter \pagestyle{plain}
 
